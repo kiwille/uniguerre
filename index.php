@@ -1,9 +1,6 @@
 <?php
 
-if (filesize("config.php") == 0) {
-    echo "config non rempli";
-    
-}
-
-
+require_once 'tools/includes.php';
+//header("location: " . WOOTOOK_DIR_VIEW . "/login.php");
+header("location: ./view/login.php");
 ?>

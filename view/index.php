@@ -1,7 +1,8 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+if (filesize("config.php") == 0) {
+    echo "config non rempli";
+} else {
+    header("location: login.php");
+}
 ?>

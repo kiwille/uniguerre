@@ -42,7 +42,7 @@ class Page {
      */
     private function getTemplate($templateName, $parse) {
         //$filename = TEMPLATE_DIR . '/' . TEMPLATE_NAME . "/{$templateName}.html";
-        $filename = dirname(__DIR__) . "\\templates\\{$templateName}.html";
+        $filename = WOOTOOK_DIR_VIEW . "design\\default\\{$templateName}.html";
 
         $template = $this->ReadFromFile($filename);
 
