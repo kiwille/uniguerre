@@ -8,6 +8,7 @@ ini_set('max_execution_time', 15);
 define("WOOTOOK_DIR_ROOT", __DIR__);
 define("WOOTOOK_DIR_INSTALL", WOOTOOK_ROOT . "/install/");
 define("WOOTOOK_DIR_ADMIN", WOOTOOK_ROOT . "/admin/");
+define("WOOTOOK_DIR_ADMIN", WOOTOOK_ROOT . "/tools/");
 define("WOOTOOK_DIR_CONTROLLER", WOOTOOK_ROOT . "/controller/");
 define("WOOTOOK_DIR_MODEL", WOOTOOK_ROOT . "/model/");
 define("WOOTOOK_DIR_VIEW", WOOTOOK_ROOT . "/view/");
