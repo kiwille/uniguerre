@@ -1,7 +1,7 @@
 <?php
 
-if (filesize("config") == 0) {
-    
+if (filesize("config.php") == 0) {
+    echo "config non rempli";
     
 }
 
