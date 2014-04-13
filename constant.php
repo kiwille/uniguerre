@@ -5,18 +5,17 @@ ini_set('display_errors', true);
 ini_set('max_execution_time', 15);
 
 // === PARAMETRES DE CHEMINS DU JEU
-define("WOOTOOK_ROOT", dirname(__FILE__));
-define("WOOTOOK_INSTALL", WOOTOOK_ROOT . "/install/");
-define("WOOTOOK_ADMIN", WOOTOOK_ROOT . "/admin/");
-define("WOOTOOK_CONTROLLER", WOOTOOK_ROOT . "/controller/");
-define("WOOTOOK_MODEL", WOOTOOK_ROOT . "/model/");
-define("WOOTOOK_VIEW", WOOTOOK_ROOT . "/view/");
+define("WOOTOOK_DIR_ROOT", __DIR__);
+define("WOOTOOK_DIR_INSTALL", WOOTOOK_ROOT . "/install/");
+define("WOOTOOK_DIR_ADMIN", WOOTOOK_ROOT . "/admin/");
+define("WOOTOOK_DIR_CONTROLLER", WOOTOOK_ROOT . "/controller/");
+define("WOOTOOK_DIR_MODEL", WOOTOOK_ROOT . "/model/");
+define("WOOTOOK_DIR_VIEW", WOOTOOK_ROOT . "/view/");
 
-// === PARAMETRES DU JEU
-define("GAME_NUMBER_MAX_GALAXY", 9); 
-define("GAME_NUMBER_MAX_SYSTEM", 499);
-define("GAME_NUMBER_MAX_PLANET", 15);
-define("GAME_DIAMETER_MAX_PLANET", 300);
+// ==== PARAMETRE DES FICHIERS DE JEU
+define("WOOTOOK_FILE_CONFIG", "config.php");
+define("WOOTOOK_FILE_CONSTANT", "constant.php");
+define("WOOTOOK_FILE_COMMON", "common.php");
 
 
 ?>
