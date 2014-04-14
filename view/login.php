@@ -2,7 +2,9 @@
 
     require_once dirname(__DIR__) . "/tools/includes.php";
 
-    $page = new Page();
     $parse = array();
-    $page->construirePageFinale('login_body_page', $parse, "Uniguerre");
+    $parse['navbar_login'] = Page::construirePagePartielle('navbar_login', $parse);
+    //$parse['body_login'] = Page::construirePagePartielle('', $parse);
+    
+    Page::construirePageFinale('login_body_page', $parse, "Uniguerre");
 ?>

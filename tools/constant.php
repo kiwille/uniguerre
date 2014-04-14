@@ -13,7 +13,7 @@ define("WOOTOOK_DIR_CONTROLLER", WOOTOOK_DIR_ROOT . "/controller/");
 define("WOOTOOK_DIR_MODEL", WOOTOOK_DIR_ROOT . "/model/");
 define("WOOTOOK_DIR_VIEW", WOOTOOK_DIR_ROOT . "/view/");
 
-// ==== PARAMETRE DES FICHIERS DE JEU
+// ==== PARAMETRES DES FICHIERS DE JEU
 define("WOOTOOK_FILE_CONFIG", "config.php");
 define("WOOTOOK_FILE_COMMON", "common.php");
 

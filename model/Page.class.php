@@ -9,8 +9,8 @@ class Page {
      * @param array $parse
      * @return string
      */
-    function construirePagePartielle($templateName, $parse) {
-        return $this->getTemplate($templateName, $parse);
+    static function construirePagePartielle($templateName, $parse) {
+        return self::getTemplate($templateName, $parse);
     }
 
     /**
@@ -20,15 +20,15 @@ class Page {
      * @param array $parse
      * @param string $titre
      */
-    function construirePageFinale($templateName, $parse, $titre = '') {
+    static function construirePageFinale($templateName, $parse, $titre = '') {
         //Construction de la page par morceau.
         $parse["titrePage"] = $titre;
-        $parse["scriptPage"] = $this->construirePagePartielle('script_page', $parse);
-        $parse["stylesheetPage"] = $this->construirePagePartielle('stylesheet_page', $parse);
-        $parse['bodyPage'] = $this->construirePagePartielle($templateName, $parse);
+        $parse["scriptPage"] = self::construirePagePartielle('script_page', $parse);
+        $parse["stylesheetPage"] = self::construirePagePartielle('stylesheet_page', $parse);
+        $parse['bodyPage'] = self::construirePagePartielle($templateName, $parse);
 
         //Construire la page avec les morceaux.
-        echo $this->getTemplate('html_page', $parse);
+        echo self::getTemplate('html_page', $parse);
         die();
     }
 
@@ -40,11 +40,11 @@ class Page {
      * @param array $parse
      * @return string
      */
-    private function getTemplate($templateName, $parse) {
+    static private function getTemplate($templateName, $parse) {
         //$filename = TEMPLATE_DIR . '/' . TEMPLATE_NAME . "/{$templateName}.html";
         $filename = WOOTOOK_DIR_VIEW . "design\\default\\{$templateName}.html";
 
-        $template = $this->ReadFromFile($filename);
+        $template = self::ReadFromFile($filename);
 
         if (strlen(trim($template)) > 0) {
             $page = preg_replace('#\{([a-z0-9\-_]*?)\}#Ssie', '( ( isset($parse[\'\1\']) ) ? $parse[\'\1\'] : \'\' );', $template);
@@ -63,7 +63,7 @@ class Page {
      * @param string $extension
      * @return void
      */
-    function includeLang($filename, $extension = '.mo') {
+    static function includeLang($filename, $extension = '.mo') {
         global $user;
 
         $pathPattern = ROOT_PATH . "language/%s/{$filename}%s";
@@ -91,7 +91,7 @@ class Page {
      * @param string $filename
      * @return string
      */
-    private function ReadFromFile($filename) {
+    static private function ReadFromFile($filename) {
         return @file_get_contents($filename);
     }
 
@@ -101,7 +101,7 @@ class Page {
      * @param string $filename
      * @param mixed $content
      */
-    private function saveToFile($filename, $content) {
+    static private function saveToFile($filename, $content) {
         $content = file_put_contents($filename, $content);
     }
 
