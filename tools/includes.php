@@ -2,6 +2,6 @@
 
 require_once "constant.php";
 require_once WOOTOOK_DIR_TOOLS . '/guid.php';
-require_once WOOTOOK_DIR_MODEL . '/Page.class.php';
+require_once WOOTOOK_DIR_CONTROLLER . '/Page.class.php';
 
 ?>
