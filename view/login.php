@@ -2,6 +2,7 @@
 
     require_once dirname(__DIR__) . "/tools/includes.php";
 
+    $_GET["mode"] = isset($_GET["mode"]) ? $_GET["mode"] : '';
     $mode = iif( (isset($_GET["mode"]) ), $_GET["mode"], "");
     
     
