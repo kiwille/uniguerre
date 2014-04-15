@@ -1,3 +1,5 @@
+ol, ul { list-style: none; }
+
 #headlogin {
     background:transparent;
     width:100%;
@@ -28,11 +30,4 @@
     font-size:14px; 
     color:#969696;
     padding:0 10px;
-}
-#headlogin nav#menu-dx-login ul li.wireless {
-    background:url(../img/accueil/wireless-icon-login.png) 10px 2px no-repeat;
-    width:22px;
-    height:18px;
-    top:3px;
-    padding:0 5px;
 }

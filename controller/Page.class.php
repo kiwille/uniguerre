@@ -1,6 +1,13 @@
 <?php
 
 class Page {
+    
+    const NAME_SCRIPTPAGE = "head_scriptpage";
+    const NAME_CSSPAGE = "head_csspage";
+    const NAME_FINALPAGE = "finalpage";
+    const DIR_TPL_IN_VIEW = "\\design\\default\\"; //Sera remplacé par le chemin de bdd.
+    const EXT_TEMPLATES = ".html";
+    
 
     /**
      * Permet la construction partiel d'une page.
@@ -23,12 +30,12 @@ class Page {
     static function construirePageFinale($templateName, $parse, $titre = '') {
         //Construction de la page par morceau.
         $parse["titrePage"] = $titre;
-        $parse["scriptPage"] = self::construirePagePartielle('script_page', $parse);
-        $parse["stylesheetPage"] = self::construirePagePartielle('stylesheet_page', $parse);
+        $parse["scriptPage"] = self::construirePagePartielle(self::NAME_SCRIPTPAGE, $parse);
+        $parse["stylesheetPage"] = self::construirePagePartielle(self::NAME_CSSPAGE, $parse);
         $parse['bodyPage'] = self::construirePagePartielle($templateName, $parse);
 
         //Construire la page avec les morceaux.
-        echo self::getTemplate('html_page', $parse);
+        echo self::getTemplate(self::NAME_FINALPAGE, $parse);
         die();
     }
 
@@ -42,7 +49,7 @@ class Page {
      */
     static private function getTemplate($templateName, $parse) {
         //$filename = TEMPLATE_DIR . '/' . TEMPLATE_NAME . "/{$templateName}.html";
-        $filename = WOOTOOK_DIR_VIEW . "design\\default\\{$templateName}.html";
+        $filename = WOOTOOK_DIR_VIEW . self::DIR_TPL_IN_VIEW . $templateName . self::EXT_TEMPLATES;
 
         $template = self::ReadFromFile($filename);
 
