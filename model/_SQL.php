@@ -9,7 +9,7 @@
 class _SQL {
 
     /** Variable d'interface d'abstraction à l'accès de données */
-    private $pdo;
+    protected $pdo;
 
     /** Tableau de paramètres pour une requete */
     private $param;
@@ -54,7 +54,7 @@ class _SQL {
     }
 
     /**
-     * Execute la requête.
+     * Execute la requête. Le préfix est ajouté automatiquement au nom de la table.
      * 
      * @example $sql->query("SELECT * FROM {table1} t1, {table2} t2 WHERE t1.idT1 = t2.idT1;", array("Table1", "Table2"));
      * @param string $requete Requete à exécuter
@@ -72,12 +72,12 @@ class _SQL {
                 $requete = str_replace("{table}", PREFIXTB . $tables, $requete);
             }
 
-            var_dump($requete);
+            //var_dump($requete);
             $req = $this->pdo->prepare($requete);
             $success = $req->execute($this->param);
 
             if (!$success) {
-                Throw new ErrorException("La requête n'a pas pu être exécuté en raison d'une erreur");
+                throw new ErrorException("La requête n'a pas pu être exécuté en raison d'une erreur");
             }
 
             return $req;
