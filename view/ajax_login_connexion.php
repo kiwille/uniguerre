@@ -1,7 +1,7 @@
 <?php
 
-    require_once dirname(__DIR__) . "/tools/includes.php";
-    
-    $parse = array();
-    echo Page::construirePagePartielle('part_login_connexion', $parse);
+require_once dirname(__DIR__) . "/tools/includes.php";
+
+$parse = array();
+echo Page::construirePagePartielle('part_login_connexion', $parse);
 ?>
