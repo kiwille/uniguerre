@@ -1,14 +1,14 @@
 <?php
 
 class Page {
-    
+
     const NAME_SCRIPTPAGE = "head_scriptpage";
     const NAME_CSSPAGE = "head_csspage";
     const NAME_FINALPAGE = "finalpage";
-    const DIR_TPL_IN_VIEW = "\\design\\default\\"; //Sera remplacé par le chemin de bdd.
+    const DIR_TPL_IN_VIEW = "view/default/"; //Sera remplacé par le chemin de bdd.
     const EXT_TEMPLATES = ".html";
+    const DEFAULT_LANG = "fr";
     
-
     /**
      * Permet la construction partiel d'une page.
      * 
@@ -17,6 +17,8 @@ class Page {
      * @return string
      */
     static function construirePagePartielle($templateName, $parse) {
+        $parse["path_design"] = self::DIR_TPL_IN_VIEW;
+        
         return self::getTemplate($templateName, $parse);
     }
 
@@ -30,6 +32,8 @@ class Page {
     static function construirePageFinale($templateName, $parse, $titre = '') {
         //Construction de la page par morceau.
         $parse["titrePage"] = $titre;
+        $parse["path_design"] = self::DIR_TPL_IN_VIEW;
+
         $parse["scriptPage"] = self::construirePagePartielle(self::NAME_SCRIPTPAGE, $parse);
         $parse["stylesheetPage"] = self::construirePagePartielle(self::NAME_CSSPAGE, $parse);
         $parse['bodyPage'] = self::construirePagePartielle($templateName, $parse);
@@ -48,15 +52,14 @@ class Page {
      * @return string
      */
     static private function getTemplate($templateName, $parse) {
-        //$filename = TEMPLATE_DIR . '/' . TEMPLATE_NAME . "/{$templateName}.html";
-        $filename = WOOTOOK_DIR_VIEW . self::DIR_TPL_IN_VIEW . $templateName . self::EXT_TEMPLATES;
+        $filename = dirname(__DIR__) . DIRECTORY_SEPARATOR . self::DIR_TPL_IN_VIEW . $templateName . self::EXT_TEMPLATES;
 
         $template = self::ReadFromFile($filename);
 
         if (strlen(trim($template)) > 0) {
             $page = preg_replace('#\{([a-z0-9\-_]*?)\}#Ssie', '( ( isset($parse[\'\1\']) ) ? $parse[\'\1\'] : \'\' );', $template);
         } else {
-            trigger_error("Le template {$templateName} est introuvable", E_USER_ERROR);
+            trigger_error("Le template {$templateName} est introuvable sous ce chemin: {$filename}", E_USER_ERROR);
             $page = "";
         }
 
@@ -88,7 +91,7 @@ class Page {
             }
         }
 
-        require_once sprintf($pathPattern, DEFAULT_LANG, '.mo');
+        require_once sprintf($pathPattern, self::DEFAULT_LANG, '.mo');
         return;
     }
 

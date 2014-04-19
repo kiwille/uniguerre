@@ -1,3 +1,5 @@
+var dir_controller = "controller/";
+
 function createXHR()
 {
     if (window.XMLHttpRequest)
@@ -24,7 +26,7 @@ function createXHR()
 
 
 
-function executerRequete(url, querystring, nameid)
+function ExeRqt(url, querystring, nameid)
 {
     var xhr = createXHR();
     xhr.onreadystatechange = function() {
@@ -41,7 +43,7 @@ function executerRequete(url, querystring, nameid)
         }
     };
 
-    xhr.open("GET", url + "?" + querystring, true);
+    xhr.open("GET", dir_controller + url + "?" + querystring, true);
     xhr.send(null);
 }
 

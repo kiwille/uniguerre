@@ -1,5 +1,7 @@
 <?php
 
+//require_once '../config.php';
+
 /**
  * La classe _SQL permet de simplifier les requetes SQL.
  *
