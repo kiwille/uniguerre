@@ -43,7 +43,9 @@ function ExeRqt(url, querystring, nameid)
         }
     };
 
-    xhr.open("GET", dir_controller + url + "?" + querystring, true);
+	var entities = encodeURIComponent(querystring);
+	
+    xhr.open("GET", dir_controller + url + "?" + entities, true);
     xhr.send(null);
 }
 
