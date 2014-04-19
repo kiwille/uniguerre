@@ -4,6 +4,7 @@ $autorized = array(
     "index",
     "login",
     "inscription",
+	"connexion",
 );
 
 $page = (isset($_POST["page"]) && in_array($_POST["page"], $autorized)) ? $_POST["page"] : "index";
