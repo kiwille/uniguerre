@@ -8,6 +8,7 @@ class Page {
     const DIR_TPL_IN_VIEW = "view/default/"; //Sera remplacé par le chemin de bdd.
     const EXT_TEMPLATES = ".html";
     const DEFAULT_LANG = "fr";
+	const TITLE_PAGE = "Uniguerre";
     
     /**
      * Permet la construction partiel d'une page.
@@ -19,7 +20,7 @@ class Page {
     static function construirePagePartielle($templateName, $parse) {
         $parse["path_design"] = self::DIR_TPL_IN_VIEW;
         
-        return self::getTemplate($templateName, $parse);
+        return self::getTemplate($templateName, $parse ,self::TITLE_PAGE);
     }
 
     /**

@@ -8,5 +8,5 @@
     
     $parse['body_login'] = Page::construirePagePartielle('part_login_accueil', $parse);
     
-    Page::construirePageFinale('part_body_login', $parse, "Uniguerre");
+    Page::construirePageFinale('part_body_login', $parse);
 ?>
