@@ -4,6 +4,6 @@
 define("HOSTNAME", "localhost");
 define("USERNAME", "root");
 define("PASSWORD", "");
-define("DATABASE", "wootook");
-define("PREFIXTB", "game_");
+define("DATABASE", "db_wootooktest");
+define("PREFIXTB", "");
 ?>
