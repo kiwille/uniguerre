@@ -35,7 +35,7 @@ class _SQL {
         } catch (Exception $ex) {
             throw new Exception("Échec de la connexion : " . $ex->getMessage(), E_USER_ERROR);
         }
-		return $this->pdo;
+        return $this->pdo;
     }
 
     /**
@@ -47,7 +47,7 @@ class _SQL {
     public function getPDO() {
         return $this->connexion();
     }
-	
+
     /**
      * Permet la déconnexion à la base de données.
      */
@@ -75,8 +75,8 @@ class _SQL {
                 $requete = str_replace("{table}", PREFIXTB . $tables, $requete);
             }
 
-			$para = explode(":",$requete);
-			$db = $this->getPDO();
+            $para = explode(":", $requete);
+            $db = $this->getPDO();
             $req = $db->prepare($requete);
 
             return $req;
@@ -86,30 +86,27 @@ class _SQL {
             throw new Exception("Echec exécution SQL" . $exc->getMessage());
         }
     }
-	
+
     /**
      * Créer un paramètre pour une requête
      * 
      * @param String $valeur
      * @return int index où la valeur a été stocké
      */
-    public function parameter($req,$champ,$valeur)
-	{
-		if(is_numeric($valeur))
-		{
-			$req->bindParam($champ,$valeur,PARAM_INT);
-		}
-		else
-		{
-			$req->bindParam($champ,$valeur);
-		}
-		
-		$success = $req->execute();
-		if (!$success) {
-					throw new ErrorException("La requête n'a pas pu être exécuté en raison d'une erreur");
-		}
-		return $req;
+    public function parameter($req, $champ, $valeur) {
+        if (is_numeric($valeur)) {
+            $req->bindParam($champ, $valeur, PARAM_INT);
+        } else {
+            $req->bindParam($champ, $valeur);
+        }
+
+        $success = $req->execute();
+        if (!$success) {
+            throw new ErrorException("La requête n'a pas pu être exécuté en raison d'une erreur");
+        }
+        return $req;
     }
+
 }
 
 ?>

@@ -1,6 +1,12 @@
 <?php
+
+/*
+ * précision: la table se nomme users il y a les champs sid , username ,
+             password, email pour les tests .
+ */
+
 	require_once dirname(__DIR__) . "/tools/includes.php";
-	require_once dirname(__DIR__) . "/". WOOTOOK_FILE_COMMON;
+	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . WOOTOOK_FILE_COMMON;
 	
 	# fonctionne
 	$requete = $sql->query("SELECT * FROM {table1};",array("users"));
