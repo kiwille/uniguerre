@@ -3,6 +3,6 @@
 require_once dirname(__FILE__) . "/tools/includes.php";
 
 //echo guid();
-echo EncodeString("L'élève <br /> est <b>malade</b>");
+var_dump(wordLength_respected("a", SIGNE_SUP_STRICT, 0));
 
 ?>
