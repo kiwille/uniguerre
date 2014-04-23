@@ -16,4 +16,5 @@ Développement d'une version wootook test
 ###### Participants au projet
 
 - Kiwille (Développeur)
+- Hoegarden (Développeur)
 - Mandalorien (Designer, Développeur)
