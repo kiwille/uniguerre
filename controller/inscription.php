@@ -38,8 +38,6 @@ if (isset($_POST["PM"]) && wordLength_respected($_POST["PM"], SIGNE_SUP_EGAL, 3)
 
 //Toutes les informations sont complètes...
 if ($infos_complete) {
-    var_dump($identifiant, $motDePasse, $email, $planeteMere);
-
     //Création planète
     //...
     //Création utilisateur
@@ -48,9 +46,11 @@ if ($infos_complete) {
     $u->setMotDePasse($motDePasse);
     $u->setEmail($email);
     UtilisateurDAL::insertUtilisateur($u);
+    
+    echo "inscription terminée!";
 } else {
     //TODO: afficher erreur...
-    var_dump("pas assez d'infos");
+    echo "pas assez d'infos";
     var_dump($_POST);
 }
 ?>

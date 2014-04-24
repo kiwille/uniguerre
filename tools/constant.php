@@ -16,7 +16,6 @@ define("WOOTOOK_DIR_DAL", WOOTOOK_DIR_ROOT . "/dal/");
 
 // ==== PARAMETRES DES FICHIERS DE JEU
 define("WOOTOOK_FILE_CONFIG", "config.php");
-define("WOOTOOK_FILE_COMMON", "common.php");
 
 
 ?>

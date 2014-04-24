@@ -1,10 +1,14 @@
 <?php
+
+# on demarre la session
+session_start();
+
 //Liste des pages autorisées à voir (que ceux qui sont dans 
 $autorized = array(
     "index",
     "login",
     "inscription",
-	"connexion",
+    "connexion",
 );
 
 $page = (isset($_POST["page"]) && in_array($_POST["page"], $autorized)) ? $_POST["page"] : "index";

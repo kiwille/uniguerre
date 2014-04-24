@@ -2,11 +2,20 @@
 
 class Utilisateur {
 
+    private $id;
     private $identifiant;
     private $motDePasse;
     private $email;
     private $idPlaneteMere;
 
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+    
     public function getIdentifiant() {
         return $this->identifiant;
     }

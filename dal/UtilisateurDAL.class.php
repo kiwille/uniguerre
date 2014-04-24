@@ -1,6 +1,5 @@
 <?php
 
-
 require_once WOOTOOK_DIR_TOOLS . '/secure.php';
 
 class UtilisateurDAL {
@@ -22,9 +21,9 @@ class UtilisateurDAL {
                 $u->setIdentifiant($row["username"]);
                 $u->setMotDePasse($row["password"]);
             }
-            
+
             $sql->deconnexion();
-            
+
             return $u;
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
@@ -52,5 +51,31 @@ class UtilisateurDAL {
         }
     }
 
+    static function verifierIdentiteConnexion($identifiant, $motDePasse) {
+        $requete = "SELECT id FROM {table1} WHERE username = :username AND password = :password  ";
+        $tables = array("users");
+        $id = null;
+
+        try {
+            $sql = new _SQL();
+
+            $sql->connexion();
+            $req = $sql->query($requete, $tables);
+            $sql->parametre($req, "username", $identifiant);
+            $sql->parametre($req, "motdepasse", $motDePasse);
+            $sql->execute($req);
+            while ($row = $req->fetch()) {
+                $id = $row["id"];
+            }
+
+            $sql->deconnexion();
+
+            return $id;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
 }
+
 ?>
