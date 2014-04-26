@@ -11,10 +11,13 @@ require_once WOOTOOK_DIR_TOOLS . '/wordLength.php';
 
 /** Model */
 require_once WOOTOOK_DIR_MODEL . '/_SQL.php';
+require_once WOOTOOK_DIR_MODEL . '/BddSave.class.php';
 require_once WOOTOOK_DIR_MODEL . '/Page.class.php';
 require_once WOOTOOK_DIR_MODEL . '/Utilisateur.class.php';
 
 /** DAL (Data Access Layer) */
 require_once WOOTOOK_DIR_DAL . '/UtilisateurDAL.class.php';
+
+
 
 ?>
