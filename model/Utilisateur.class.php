@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__DIR__) . "/tools/secure.php";
+
 class Utilisateur {
 
     private $id;
@@ -29,7 +31,7 @@ class Utilisateur {
     }
 
     public function setMotDePasse($motDePasse) {
-        $this->motDePasse = $motDePasse;
+        $this->motDePasse = EncodePassword($motDePasse);
     }
 
     public function getEmail() {
