@@ -12,7 +12,7 @@ class UtilisateurDAL {
             $sql = new _SQL();
 
             $sql->connexion();
-            $req = $sql->query($requete, $tables);
+            $req = $sql->prepare($requete, $tables);
             $sql->parametre($req, "id", $id);
             $sql->execute($req);
             while ($row = $req->fetch()) {
@@ -52,7 +52,7 @@ class UtilisateurDAL {
     }
 
     static function verifierIdentiteConnexion($identifiant, $motDePasse) {
-        $requete = "SELECT id FROM {table1} WHERE username = :username AND password = :password  ";
+        $requete = "SELECT * FROM {table1} WHERE username = :username ";
         $tables = array("users");
         $id = null;
 
@@ -60,12 +60,17 @@ class UtilisateurDAL {
             $sql = new _SQL();
 
             $sql->connexion();
-            $req = $sql->query($requete, $tables);
+            $req = $sql->prepare($requete, $tables);
             $sql->parametre($req, "username", $identifiant);
-            $sql->parametre($req, "motdepasse", $motDePasse);
             $sql->execute($req);
             while ($row = $req->fetch()) {
-                $id = $row["id"];
+				if ( crypt($motDePasse, $row["password"]) === $row["password"]) {
+					$id=$row["id"];
+					//echo "Connection r&eacute;ussi";
+				} else {
+					$id=-1;
+					//echo "Mot de passe incorrect";
+				}
             }
 
             $sql->deconnexion();
