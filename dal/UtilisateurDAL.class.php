@@ -63,14 +63,8 @@ class UtilisateurDAL {
             $req = $sql->prepare($requete, $tables);
             $sql->parametre($req, "username", $identifiant);
             $sql->execute($req);
-            while ($row = $req->fetch()) {
-				if ( crypt($motDePasse, $row["password"]) === $row["password"]) {
-					$id=$row["id"];
-					//echo "Connection r&eacute;ussi";
-				} else {
-					$id=-1;
-					//echo "Mot de passe incorrect";
-				}
+            while ($row = $req->fetch()) { 
+                $id = iif(crypt($motDePasse, $row["password"]) === $row["password"], $row["id"], -1);
             }
 
             $sql->deconnexion();
@@ -79,6 +73,31 @@ class UtilisateurDAL {
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
+    }
+    
+    static function compterMemeNomUtilisateur($identifiant) {
+        $requete = "SELECT COUNT(*) AS nbJoueur FROM {table1} WHERE username = :username";
+        $tables = array("users");
+        $nb = null;
+        
+        try {
+            $sql = new SQL();
+            
+            $sql->connexion();
+            $req = $sql->prepare($requete, $tables);
+            $sql->parametre($req, "username", $identifiant);
+            $sql->execute($req);
+            while ($row = $req->fetch()) { 
+                $nb = $row["nbJoueur"];
+            }
+            
+            $sql->deconnexion();
+
+            return $nb;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+            
     }
 
 }

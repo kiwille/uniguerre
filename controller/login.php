@@ -1,9 +1,6 @@
 <?php
 
     require_once dirname(__DIR__) . "/tools/includes.php";
-    
-	$test = new BddSave();
-	$essai = $test->dumpMySQL();
 	
     $parse = array();
     $parse['navbar_login'] = Page::construirePagePartielle('part_navbar_login', $parse);

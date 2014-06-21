@@ -4,9 +4,9 @@ require_once dirname(__DIR__) . "/tools/includes.php";
 
 $infos_complete = true;
 
+//#### Vérification de la saisie utilisateur
 //Validation de l'username
 if (isset($_POST["identifiant"]) && wordLength_respected($_POST["identifiant"], SIGNE_SUP_EGAL, 3)) {
-    //TODO: Vérifier que le pseudo n'est pas déjà utilisé...
     $identifiant = EncodeString($_POST["identifiant"]);
 } else {
     $infos_complete = false;
@@ -26,9 +26,8 @@ if ($infos_complete) {
         $_SESSION["id"] = $id;
         echo "Connection &eacute;tablie!!";
     } else {
-		echo "Boulet!! C'est pas le bon pseudo ou mot de passe";
-	}
-    
+	echo "Boulet!! C'est pas le bon pseudo ou mot de passe";
+    }
 } else {
     //TODO: afficher erreur...
     echo "pas assez d'infos";
