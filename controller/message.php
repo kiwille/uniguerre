@@ -1,14 +1,26 @@
 <?php
 
-function message($message, $titre, $retour) {
-    $parse['navbar_login'] = Page::construirePagePartielle('part_navbar_login', $parse);
-    $parse['clock_login'] = Page::construirePagePartielle('part_clock', $parse);
-    
+include_once "/tools/includes.php";
+
+const MESSAGE_SUCCESS = "panel-success";
+const MESSAGE_INFORMATION = "panel-info";
+const MESSAGE_WARNING = "panel-warning";
+const MESSAGE_ERROR = "panel-danger";
+
+function message($message, $titre, $lien = null, $type_message = MESSAGE_ERROR) {
+    $parse = array();
+        
     $parse['message'] = $message;
     $parse['titre'] = $titre;
-    $parse['retour'] = $retour;
+    $parse['type_message'] = $type_message;
+    $parse['lien'] = iif($lien, getAsUrl($lien, "Retour"), "");
     
-    Page::construirePageFinale('part_body_erreur', $parse);
+    $parse['navbar_login'] = Page::construirePagePartielle('part_navbar_login', $parse);
+    $parse['clock_login'] = Page::construirePagePartielle('part_clock', $parse);
+    $parse['body_login'] = Page::construirePagePartielle('part_erreur', $parse);
+
+    Page::construirePageFinale('part_body_login', $parse);
+    
     die();
 }
 

@@ -1,8 +1,9 @@
 <?php
 
 require_once dirname(__FILE__) . "/tools/includes.php";
+require_once dirname(__FILE__) . "/controller/message.php";
 
 //echo guid();
-var_dump(wordLength_respected("a", SIGNE_SUP_STRICT, 0));
+message("message", "titre", "http://www.google.fr", MESSAGE_SUCCESS);
 
 ?>
