@@ -3,6 +3,7 @@
     require_once dirname(__DIR__) . "/tools/includes.php";
 	
     $parse = array();
+	$parse = $lang;
     $parse['navbar_login'] = Page::construirePagePartielle('part_navbar_login', $parse);
     $parse['clock_login'] = Page::construirePagePartielle('part_clock', $parse);
     

@@ -1,0 +1,12 @@
+IndexOptions FancyIndexing SuppressDescription SuppressLastModified SuppressSize
+IndexIgnore *
+
+RewriteEngine Off
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+
+
+

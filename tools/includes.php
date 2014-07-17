@@ -18,7 +18,5 @@ require_once WOOTOOK_DIR_MODEL . '/Utilisateur.class.php';
 
 /** DAL (Data Access Layer) */
 require_once WOOTOOK_DIR_DAL . '/UtilisateurDAL.class.php';
-
-
-
+Page::includeLang('uniguerre','.php');
 ?>

@@ -1,18 +1,16 @@
 <div class="col-lg-4"></div>
 <div class="col-lg-4">
     <fieldset>
-        <legend>Bienvenue sur Wootook</legend>
+        <legend>{title_login}</legend>
         <div class="form-group">
-            Wootook est un jeu de stratégie en ligne gratuit, jouable par navigateur. 
-            Partez à la conquête de l'univers en développant votre empire. 
-            Imposez-vous et dominez en combattant les autres joueurs. <br />
+            {title_dec_1}<br />
             <br />
-            Rejoingnez-nous!
+            {title_dec_2}
         </div>
         <br />
         <div class="form-group">
-            <input type="button" class="btn btn-success" value="S'inscrire"  onclick="ExeRqt('ajax_login_inscription.php', '', 'pageLogin');">
-            <input type="button" class="btn btn-primary" value="Se connecter"  onclick="ExeRqt('ajax_login_connexion.php', '', 'pageLogin');">
+            <input type="button" class="btn btn-success" value="{register}"  onclick="ExeRqt('ajax_login_inscription.php', '', 'pageLogin');">
+            <input type="button" class="btn btn-primary" value="{connect}"  onclick="ExeRqt('ajax_login_connexion.php', '', 'pageLogin');">
         </div>
     </fieldset>  
 </div>

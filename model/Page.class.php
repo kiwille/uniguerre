@@ -74,21 +74,23 @@ class Page {
      * @param string $extension
      * @return void
      */
-    static function includeLang($filename,$extension = '.mo') {
-        global $user;
+    static function includeLang($filename,$extension) {
+        global $lang,$user;
 
-        $pathPattern = ROOT_PATH . "language/%s/{$filename}%s";
+        $pathPattern = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "language/%s/{$filename}%s";
         if (isset($user['lang']) && !empty($user['lang'])) {
-			if ($fp = @fopen($filename = sprintf($pathPattern, $user['lang'], $extension), 'r', true)) {
+			if ($fp = @fopen($filename = sprintf($pathPattern, $user['lang'], $extension),'r', true)) {
                 fclose($fp);
 
                 require_once $filename;
                 return;
             }
         }
-
-        require_once sprintf($pathPattern, self::DEFAULT_LANG,$extension);
-        return;
+		else
+		{
+			require_once sprintf($pathPattern, self::DEFAULT_LANG,$extension);
+			return;
+		}
     }
 
     /**

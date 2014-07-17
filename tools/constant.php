@@ -3,6 +3,7 @@
 // === PARAMETRES DE DEVELOPPEMENT
 ini_set('display_errors', true);
 ini_set('max_execution_time', 15);
+ini_set('date.timezone','Europe/Paris'); # fuseau horaire de paris
 
 // === PARAMETRES DE CHEMINS DU JEU
 define("WOOTOOK_DIR_ROOT", dirname(__DIR__));

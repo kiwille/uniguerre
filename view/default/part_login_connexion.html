@@ -4,22 +4,22 @@
         <input type="hidden" name="page" value="connexion" /> <!-- la redirection -->
         
         <fieldset>
-            <legend>Connexion sur Wootook</legend>
+            <legend>{title_conn}</legend>
             <div class="form-group">
-                <label for="ididentifiant" class="col-lg-4 control-label">Identifiant: </label>
+                <label for="ididentifiant" class="col-lg-4 control-label">{username}: </label>
                 <div class="col-lg-8">
-                    <input type="text" placeholder="identifiant" name="identifiant" id="ididentifiant" class="form-control" />
+                    <input type="text" placeholder="{username}" name="identifiant" id="ididentifiant" class="form-control" />
                 </div>
             </div>
             <div class="form-group">
-                <label for="idmotdepasse" class="col-lg-4 control-label">Mot de passe: </label>
+                <label for="idmotdepasse" class="col-lg-4 control-label">{password}: </label>
                 <div class="col-lg-8">
-                    <input type="password" placeholder="Mot de passe" name="motdepasse" id="idmotdepasse" class="form-control" />
+                    <input type="password" placeholder="{password}" name="motdepasse" id="idmotdepasse" class="form-control" />
                 </div>
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" class="btn btn-success" value="Connexion">
+                <input type="submit" class="btn btn-success" value="{btn_connect}">
             </div>
         </fieldset>
     </form>

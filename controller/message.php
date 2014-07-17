@@ -9,6 +9,7 @@ const MESSAGE_ERROR = "panel-danger";
 
 function message($message, $titre, $lien = null, $type_message = MESSAGE_ERROR) {
     $parse = array();
+	$parse = $lang;
         
     $parse['message'] = $message;
     $parse['titre'] = $titre;
