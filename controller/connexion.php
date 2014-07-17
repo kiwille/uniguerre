@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname(__DIR__) . "/tools/includes.php";
+require_once dirname(__DIR__) . "/controller/message.php";
 
 $infos_complete = true;
 
@@ -24,7 +25,8 @@ if ($infos_complete) {
     $id = UtilisateurDAL::verifierIdentiteConnexion($identifiant, $motDePasse);
     if ($id > 0) {
         $_SESSION["id"] = $id;
-        echo "Connection &eacute;tablie!!";
+			message("Bienvenue ".$identifiant,"Connexion",null, MESSAGE_SUCCESS);
+        // echo "Connection &eacute;tablie!!";
     } else {
 	echo "Boulet!! C'est pas le bon pseudo ou mot de passe";
     }

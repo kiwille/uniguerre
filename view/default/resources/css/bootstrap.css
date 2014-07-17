@@ -277,8 +277,8 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #888888;
-  background:url('../img/fond2.jpg') center top #060606;
-  background-attachment : fixed;
+  background-image:url('../img/fond2.jpg');
+  background-attachment :fixed;
   background-repeat:no-repeat;
   -webkit-background-size: cover; /* Pour Chrome et Safari */
   -moz-background-size: cover; /* Pour Firefox */

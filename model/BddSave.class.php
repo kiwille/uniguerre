@@ -35,7 +35,7 @@ class BddSave extends _SQL {
             }
             # si l'utilisateur veux les inserts
             if ($mode > 1) {
-                var_dump($table[0]);
+                // var_dump($table[0]);
                 $req3 = "SELECT * FROM " . $table[0];
                 $donnees = $db->query($req3);
                 $insertions .= "-- -----------------------------\n";
