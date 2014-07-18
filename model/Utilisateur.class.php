@@ -47,8 +47,5 @@ class Utilisateur {
     public function setIdPlaneteMere($idPlaneteMere) {
         $this->idPlaneteMere = $idPlaneteMere;
     }
-
-    
 }
-
 ?>
