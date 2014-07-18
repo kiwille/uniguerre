@@ -21,19 +21,18 @@ if (isset($_POST["motdepasse"]) && wordLength_respected($_POST["motdepasse"], SI
 }
 
 //Toutes les informations sont complètes...
-if ($infos_complete) {
+if ($infos_complete)
+{
     $id = UtilisateurDAL::verifierIdentiteConnexion($identifiant, $motDePasse);
     if ($id > 0) {
-        $_SESSION["id"] = $id;
-			message("Bienvenue ".$identifiant,"Connexion",null, MESSAGE_SUCCESS);
-        // echo "Connection &eacute;tablie!!";
-    } else {
-	echo "Boulet!! C'est pas le bon pseudo ou mot de passe";
-    }
+		$_SESSION["id"] = $id;
+		message(sprintf($lang['welcome'],$identifiant),$lang['title_conn'],null, MESSAGE_SUCCESS);
+	} else {
+		message($lang['error_write_conn'],$lang['title_conn'],"". WOOTOOK_WEB_URL ."", MESSAGE_ERROR);
+	}
 } else {
-    //TODO: afficher erreur...
-    echo "pas assez d'infos";
-    var_dump($_POST);
+	message($lang['error_champs_empty'],$lang['title_conn'],"". WOOTOOK_WEB_URL ."",MESSAGE_WARNING);
+    // var_dump($_POST);
 }
 
 

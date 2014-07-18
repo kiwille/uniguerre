@@ -75,17 +75,18 @@ class UtilisateurDAL {
         }
     }
     
-    static function compterMemeNomUtilisateur($identifiant) {
-        $requete = "SELECT COUNT(*) AS nbJoueur FROM {table1} WHERE username = :username";
+    static function compterMemeNomUtilisateur($identifiant,$mail) {
+        $requete = "SELECT COUNT(*) AS nbJoueur FROM {table1} WHERE username = :username OR email =:email";
         $tables = array("users");
         $nb = null;
         
         try {
-            $sql = new SQL();
+            $sql = new _SQL();
             
             $sql->connexion();
             $req = $sql->prepare($requete, $tables);
             $sql->parametre($req, "username", $identifiant);
+			$sql->parametre($req, "email",$mail);
             $sql->execute($req);
             while ($row = $req->fetch()) { 
                 $nb = $row["nbJoueur"];

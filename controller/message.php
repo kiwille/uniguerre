@@ -8,13 +8,14 @@ const MESSAGE_WARNING = "panel-warning";
 const MESSAGE_ERROR = "panel-danger";
 
 function message($message, $titre, $lien = null, $type_message = MESSAGE_ERROR) {
+	global $lang;
     $parse = array();
 	$parse = $lang;
         
     $parse['message'] = $message;
     $parse['titre'] = $titre;
     $parse['type_message'] = $type_message;
-    $parse['lien'] = iif($lien, getAsUrl($lien, "Retour"), "");
+    $parse['lien'] = iif($lien, getAsUrl($lien,$lang['return']), "");
     
     $parse['navbar_login'] = Page::construirePagePartielle('part_navbar_login', $parse);
     $parse['clock_login'] = Page::construirePagePartielle('part_clock', $parse);
