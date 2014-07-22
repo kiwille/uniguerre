@@ -38,7 +38,7 @@ if (isset($_POST["PM"]) && wordLength_respected($_POST["PM"], SIGNE_SUP_EGAL, 3)
 
 //Toutes les informations sont complètes...
 if ($infos_complete) {
-    $verif = UtilisateurDAL::compterMemeNomUtilisateur($identifiant, $email);
+    $verif = UtilisateurDAO::selectCompterMemeNomUtilisateur($identifiant, $email);
     if ($verif > 0) {
 		message($lang['error_isset_user'],$lang['title_sign'],"". WOOTOOK_WEB_URL ."",MESSAGE_WARNING);
 	}else{
@@ -49,7 +49,7 @@ if ($infos_complete) {
 		$u->setIdentifiant($identifiant);
 		$u->setMotDePasse($motDePasse);
 		$u->setEmail($email);
-		UtilisateurDAL::insertUtilisateur($u);
+		UtilisateurDAO::insertUtilisateur($u);
 		
 		message(sprintf($lang['sign_finish'],$identifiant,$lang['return_mail']),$lang['title_sign'],null, MESSAGE_SUCCESS);
 		# voir pour creer la session direct avec redirection!

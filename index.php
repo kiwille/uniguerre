@@ -3,7 +3,7 @@
 # on demarre la session
 session_start();
 
-//Liste des pages autorisées à voir (que ceux qui sont dans 
+//Liste des pages autorisées à voir
 $autorized = array(
     "index",
     "login",

@@ -23,7 +23,7 @@ if (isset($_POST["motdepasse"]) && wordLength_respected($_POST["motdepasse"], SI
 //Toutes les informations sont complètes...
 if ($infos_complete)
 {
-    $id = UtilisateurDAL::verifierIdentiteConnexion($identifiant, $motDePasse);
+    $id = UtilisateurDAO::selectVerifierIdentiteConnexion($identifiant, $motDePasse);
     if ($id > 0) {
 		$_SESSION["id"] = $id;
 		message(sprintf($lang['welcome'],$identifiant),$lang['title_conn'],null, MESSAGE_SUCCESS);

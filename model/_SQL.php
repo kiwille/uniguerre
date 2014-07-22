@@ -3,7 +3,7 @@
 /**
  * La classe _SQL permet de simplifier les requetes SQL.
  *
- * @author Wootook
+ * @author Alves
  * @version 1.2
  */
 class _SQL {

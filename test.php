@@ -7,7 +7,7 @@ require_once dirname(__FILE__) . "/controller/message.php";
 // message("message", "titre", "http://www.google.fr", MESSAGE_SUCCESS);
 
 /* voir energie appart */
-$Allressources = RessourcesDAL::getRessources();
+$Allressources = RessourceDAO::selectRessources();
 foreach($Allressources as $thisressource)
 {
 	# voir si on met l'id ou le nom ....
