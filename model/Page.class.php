@@ -5,7 +5,7 @@ class Page {
     const NAME_SCRIPTPAGE = "head_scriptpage";
     const NAME_CSSPAGE = "head_csspage";
     const NAME_FINALPAGE = "finalpage";
-    const DIR_TPL_IN_VIEW = "view/default/"; //Sera remplacé par le chemin de bdd.
+    const DIR_TPL_IN_VIEW = "default/"; //Sera remplacé par le chemin de bdd.
     const EXT_TEMPLATES = ".html";
     const DEFAULT_LANG = "fr";
 	const TITLE_PAGE = "Uniguerre";
