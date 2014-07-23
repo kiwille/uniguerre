@@ -18,4 +18,6 @@ foreach($Allressources as $thisressource)
 	$prod[$Ressourcename] = Formuleressource($thisressource['coef_prod'],$batimentlevel);
 	var_dump($prod);
 }
+
+return (new SQLSelectCompterMemeNomUtilisateur("", $email))->read();
 ?>

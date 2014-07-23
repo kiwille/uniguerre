@@ -19,7 +19,7 @@ class Page {
      * @return string
      */
     static function construirePagePartielle($templateName, $parse) {
-        $parse["path_design"] = self::DIR_THEME;
+        $parse["path_design"] = self::DIR_TPL_IN_VIEW . self::DIR_THEME;
         
         return self::getTemplate($templateName, $parse ,self::TITLE_PAGE);
     }
@@ -34,7 +34,7 @@ class Page {
     static function construirePageFinale($templateName, $parse, $titre = '') {
         //Construction de la page par morceau.
         $parse["titrePage"] = $titre;
-        $parse["path_design"] = self::DIR_THEME;
+        $parse["path_design"] = self::DIR_TPL_IN_VIEW . self::DIR_THEME;
 
         $parse["scriptPage"] = self::construirePagePartielle(self::NAME_SCRIPTPAGE, $parse);
         $parse["stylesheetPage"] = self::construirePagePartielle(self::NAME_CSSPAGE, $parse);

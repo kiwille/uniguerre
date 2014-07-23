@@ -16,6 +16,11 @@ abstract class SqlWrite extends SqlBase {
     
     public function write()
     {
+        $requete = $this->requeteSQL();
+        $tables = $this->tables();
+        
+        
+        
         //TODO Kiwille écrira la fonction d'écriture.
     }
     
