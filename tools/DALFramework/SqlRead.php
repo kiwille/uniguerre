@@ -41,8 +41,8 @@ abstract class SqlRead extends SqlBase {
             $sql->deconnexion();
 
             return $result;
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+        } catch (Exception $ex) {
+            throw $ex;
         }
         
     }

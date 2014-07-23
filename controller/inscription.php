@@ -40,23 +40,21 @@ if (isset($_POST["PM"]) && wordLength_respected($_POST["PM"], SIGNE_SUP_EGAL, 3)
 if ($infos_complete) {
     $verif = UtilisateurDAO::selectCompterMemeNomUtilisateur($identifiant, $email);
     if ($verif > 0) {
-		message($lang['error_isset_user'],$lang['title_sign'],"". WOOTOOK_WEB_URL ."",MESSAGE_WARNING);
-	}else{
-		//Création planète
-		//...
-		//Création utilisateur
-		$u = new Utilisateur();
-		$u->setIdentifiant($identifiant);
-		$u->setMotDePasse($motDePasse);
-		$u->setEmail($email);
-		UtilisateurDAO::insertUtilisateur($u);
-		
-		message(sprintf($lang['sign_finish'],$identifiant,$lang['return_mail']),$lang['title_sign'],null, MESSAGE_SUCCESS);
-		# voir pour creer la session direct avec redirection!
-	}
+        message($lang['error_isset_user'], $lang['title_sign'], "" . WOOTOOK_WEB_URL . "", MESSAGE_WARNING);
+    } else {
+        //Création planète
+        //...
+        //Création utilisateur
+        $u = new Utilisateur();
+        $u->setIdentifiant($identifiant);
+        $u->setMotDePasse($motDePasse);
+        $u->setEmail($email);
+        UtilisateurDAO::insertUtilisateur($u);
+
+        message(sprintf($lang['sign_finish'], $identifiant, $lang['return_mail']), $lang['title_sign'], null, MESSAGE_SUCCESS);
+        # voir pour creer la session direct avec redirection!
+    }
 } else {
-    //TODO: afficher erreur...
-	message($lang['error_champs_empty'],$lang['title_sign'],"". WOOTOOK_WEB_URL ."",MESSAGE_ERROR);
-    var_dump($_POST);
+    message($lang['error_champs_empty'], $lang['title_sign'], "" . WOOTOOK_WEB_URL . "", MESSAGE_ERROR);
 }
 ?>

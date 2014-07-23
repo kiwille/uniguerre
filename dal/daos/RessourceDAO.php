@@ -12,8 +12,8 @@ class RessourceDAO {
      public static function selectRessources() {
          try {
              return (new SQLSelectRessources())->read();
-         } catch (Exception $exc) {
-             echo $exc->getTraceAsString();
+         } catch (Exception $ex) {
+             throw $ex;
          }
      }
      

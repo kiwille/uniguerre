@@ -35,8 +35,8 @@ abstract class SqlWrite extends SqlBase {
             $sql->execute($req);
 
             $sql->deconnexion();
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
     
