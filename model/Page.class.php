@@ -5,7 +5,8 @@ class Page {
     const NAME_SCRIPTPAGE = "head_scriptpage";
     const NAME_CSSPAGE = "head_csspage";
     const NAME_FINALPAGE = "finalpage";
-    const DIR_TPL_IN_VIEW = "default/"; //Sera remplacé par le chemin de bdd.
+    const DIR_TPL_IN_VIEW = "view/"; //Sera remplacé par le chemin de bdd.
+	const DIR_THEME = "default/"; //Sera remplacé par le chemin de bdd.
     const EXT_TEMPLATES = ".html";
     const DEFAULT_LANG = "fr";
 	const TITLE_PAGE = "Uniguerre";
@@ -18,7 +19,7 @@ class Page {
      * @return string
      */
     static function construirePagePartielle($templateName, $parse) {
-        $parse["path_design"] = self::DIR_TPL_IN_VIEW;
+        $parse["path_design"] = self::DIR_THEME;
         
         return self::getTemplate($templateName, $parse ,self::TITLE_PAGE);
     }
@@ -33,7 +34,7 @@ class Page {
     static function construirePageFinale($templateName, $parse, $titre = '') {
         //Construction de la page par morceau.
         $parse["titrePage"] = $titre;
-        $parse["path_design"] = self::DIR_TPL_IN_VIEW;
+        $parse["path_design"] = self::DIR_THEME;
 
         $parse["scriptPage"] = self::construirePagePartielle(self::NAME_SCRIPTPAGE, $parse);
         $parse["stylesheetPage"] = self::construirePagePartielle(self::NAME_CSSPAGE, $parse);
@@ -53,7 +54,7 @@ class Page {
      * @return string
      */
     static private function getTemplate($templateName, $parse) {
-        $filename = dirname(__DIR__) . DIRECTORY_SEPARATOR . self::DIR_TPL_IN_VIEW . $templateName . self::EXT_TEMPLATES;
+        $filename = dirname(__DIR__) . DIRECTORY_SEPARATOR . self::DIR_TPL_IN_VIEW . self::DIR_THEME . $templateName . self::EXT_TEMPLATES;
 
         $template = self::ReadFromFile($filename);
 

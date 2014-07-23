@@ -27,7 +27,7 @@ function init(){
     
 	// on créé la sphère et on lui applique une texture sous forme d’image
 	var geometry = new THREE.SphereGeometry( 200, 32, 32 );
-	var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture('Textures/p01.jpg', new THREE.SphericalReflectionMapping()), overdraw: true } );
+	var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture('default/Textures/p01.jpg', new THREE.SphericalReflectionMapping()), overdraw: true } );
 	mesh = new THREE.Mesh( geometry, material );
 	scene.add( mesh );
 

@@ -7,9 +7,8 @@ IndexIgnore *
 		RewriteBase /uniguerre_v6/
 		RewriteCond %{REQUEST_FILENAME} !-f
 		RewriteCond %{REQUEST_FILENAME} !-d
-		RewriteCond %{REQUEST_FILENAME} !-l
-		RewriteRule ([a-z]+)/textures/(.*)  view/$1/resources/img/texture/$2 [L]
-		RewriteRule ([a-z]+)/images/(.*)  view/$1/resources/img/$2 [L]
-		RewriteRule ([a-z]+)/css/(.*)  view/$1/resources/css/$2 [L]
-		RewriteRule ([a-z]+)/js/(.*)  view/$1/resources/js/$2 [L]
+		RewriteRule ([a-z]+)/Textures/(.*)  view/$1/resources/img/texture/$2 [L]
+		RewriteRule ([a-z]+)/Images/(.*)  view/$1/resources/img/$2 [L]
+		RewriteRule ([a-z]+)/Css/(.*)  view/$1/resources/css/$2 [L]
+		RewriteRule ([a-z]+)/Js/(.*)  view/$1/resources/js/$2 [L]
 </IfModule>
