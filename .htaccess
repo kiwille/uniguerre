@@ -1,12 +1,12 @@
 IndexOptions FancyIndexing SuppressDescription SuppressLastModified SuppressSize
 IndexIgnore *
 
-RewriteEngine Off
-RewriteBase /
+RewriteEngine On
+RewriteBase /uniguerre_v6/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-
-
-
-
+RewriteRule Textures/(.*)  view/default/resources/img/texture/$1 [L]
+RewriteRule Images/(.*)  view/default/resources/img/$1 [L]
+RewriteRule Css/(.*)  view/default/resources/css/$1 [L]
+RewriteRule Js/(.*)  view/default/resources/js/$1 [L]
+RewriteRule Ajax/(.*)  view/default/ajax/$1 [L]
