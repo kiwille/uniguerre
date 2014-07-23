@@ -21,7 +21,6 @@ abstract class SqlWrite extends SqlBase {
         
         
         
-        //TODO Kiwille écrira la fonction d'écriture.
     }
     
 }

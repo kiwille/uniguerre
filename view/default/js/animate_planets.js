@@ -17,7 +17,7 @@ function init(){
     scene = new THREE.Scene();
 
     // on initialise la camera que l’on place ensuite sur la scène
-    camera = new THREE.PerspectiveCamera(50, posX / posY, 1, 10000 );
+    camera = new THREE.PerspectiveCamera(posZ, posX / posY, 1, 10000 );
     camera.position.set(0, 0, 1000);
     scene.add(camera);
     
