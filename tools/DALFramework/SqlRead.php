@@ -1,6 +1,6 @@
 <?php
 
-require_once 'SqlBase.php';
+require_once dirname(__FILE__) . '/SqlBase.php';
 
 /**
  *
@@ -11,15 +11,15 @@ abstract class SqlRead extends SqlBase {
     /**
      * @return array Obtient les éléments de retour
      */
-    protected abstract function retours(PDOStatement $req);
+    abstract protected function retours(PDOStatement $req);
     
     /**
      * Retourne le résultat de la requete
      * @return PDOStatement 
      */
     public function read() {
-        $requete = $this->getRequeteSQL();
-        $tables = $this->getTables();
+        $requete = $this->requeteSQL();
+        $tables = $this->tables();
         
         try {
             $sql = new _SQL();

@@ -15,17 +15,17 @@ abstract class SqlBase {
     /**
      * @return String Retourne la requete SQL
      */
-    protected abstract function requeteSQL();
+    abstract protected function requeteSQL();
     
     /**
      * @return array Retourne un tableau de tables, dans l'ordre de requête
      */
-    protected abstract function tables();
+    abstract protected function tables();
     
     /**
      * @return array Retourne la liste des paramètres
      */
-    protected abstract function parametres();
+    abstract protected function parametres();
     
 }
 

@@ -19,8 +19,25 @@ abstract class SqlWrite extends SqlBase {
         $requete = $this->requeteSQL();
         $tables = $this->tables();
         
-        
-        
+        try {
+            $sql = new _SQL();
+
+            $sql->connexion();
+            $req = $sql->prepare($requete,$tables);
+            
+            $parametres = $this->getParameters();
+            if (isset($parametres)) {
+                foreach ($parametres as $champ => $valeur) {
+                    $sql->parametre($req, $champ, $valeur);
+                }
+            }
+            
+            $sql->execute($req);
+
+            $sql->deconnexion();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
     }
     
 }
