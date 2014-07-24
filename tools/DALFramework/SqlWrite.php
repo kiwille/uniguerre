@@ -13,25 +13,25 @@ require_once 'SqlBase.php';
  * @author Alves
  */
 abstract class SqlWrite extends SqlBase {
-    
-    public function write()
-    {
-        $requete = $this->requeteSQL();
-        $tables = $this->tables();
-        
+
+    public function write() {
         try {
+
+            $requete = $this->requeteSQL();
+            $tables = $this->tables();
+            $parametres = $this->parametres()->getParametres();
+
             $sql = new _SQL();
 
             $sql->connexion();
-            $req = $sql->prepare($requete,$tables);
-            
-            $parametres = $this->getParameters();
+            $req = $sql->prepare($requete, $tables);
+
             if (isset($parametres)) {
                 foreach ($parametres as $champ => $valeur) {
                     $sql->parametre($req, $champ, $valeur);
                 }
             }
-            
+
             $sql->execute($req);
 
             $sql->deconnexion();
@@ -39,7 +39,7 @@ abstract class SqlWrite extends SqlBase {
             throw $ex;
         }
     }
-    
+
 }
 
 ?>

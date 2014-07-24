@@ -102,13 +102,13 @@ class _SQL {
     /**
      * Execute la requete
      * 
-     * @param type $req
+     * @param PDOStatement $req
      * @throws ErrorException
      */
     public function execute($req) {
         $success = $req->execute();
         if (!$success) {
-            throw new ErrorException("La requête n'a pas pu être exécuté en raison d'une erreur");
+            throw new ErrorException("La requete n'a pas pu etre execute en raison d'une erreur");
         }
     }
 

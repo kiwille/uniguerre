@@ -18,7 +18,7 @@ class Parameters {
         $this->parameters[$champ] = $valeur;
     }
     
-    public function getParameters() {
+    public function getParametres() {
         return $this->parameters;
     }
     

@@ -18,17 +18,17 @@ abstract class SqlRead extends SqlBase {
      * @return PDOStatement 
      */
     public function read() {
-        $requete = $this->requeteSQL();
-        $tables = $this->tables();
-        
         try {
+            $requete = $this->requeteSQL();
+            $tables = $this->tables();
+            $parametres = $this->parametres()->getParametres();
+            
             $sql = new _SQL();
 
             $sql->connexion();
             $req = $sql->prepare($requete,$tables);
             
-            $parametres = $this->getParameters();
-            if (isset($parametres)) {
+            if (is_array($parametres)) {
                 foreach ($parametres as $champ => $valeur) {
                     $sql->parametre($req, $champ, $valeur);
                 }

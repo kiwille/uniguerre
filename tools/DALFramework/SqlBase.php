@@ -23,7 +23,7 @@ abstract class SqlBase {
     abstract protected function tables();
     
     /**
-     * @return array Retourne la liste des paramètres
+     * @return Parameters Retourne la liste des paramètres
      */
     abstract protected function parametres();
     

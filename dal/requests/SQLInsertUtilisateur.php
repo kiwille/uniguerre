@@ -31,8 +31,8 @@ class SQLInsertUtilisateur extends SqlWrite {
 
     protected function requeteSQL() {
         $requete = "INSERT INTO {table1} ( ";
-        $requete .= table_users::username + ", ";
-        $requete .= table_users::password + ", ";
+        $requete .= table_users::username . ", ";
+        $requete .= table_users::password . ", ";
         $requete .= table_users::email;
         //...
         $requete .= " ) VALUES (";
