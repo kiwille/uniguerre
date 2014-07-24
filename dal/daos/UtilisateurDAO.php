@@ -10,42 +10,47 @@
 class UtilisateurDAO {
     
     public static function selectUtilisateurs() {
-        try {
-            return (new SQLSelectUtilisateurs)->read();
+        try{
+			$SQLSelectUtilisateurs = new SQLSelectUtilisateurs();
+            return $SQLSelectUtilisateurs->read();
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+            throw $exc->getTraceAsString();
         }
     }
     
     public static  function selectUtilisateurParId($id) {
         try {
-            return (new SQLSelectUtilisateurParId($id))->read();
+			$SQLSelectUtilisateurParId = new SQLSelectUtilisateurParId($id);
+            return $SQLSelectUtilisateurParId->read();
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+            throw $exc->getTraceAsString();
         }
     }
     
     public static  function insertUtilisateur(\Utilisateur $utilisateur) {
         try {
-            return (new SQLInsertUtilisateur($utilisateur))->write();
+			$SQLInsertUtilisateur = new SQLInsertUtilisateur($utilisateur);
+            return $SQLInsertUtilisateur->write();
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+            throw $exc->getTraceAsString();
         }
     }
     
     public static  function selectVerifierIdentiteConnexion($identifiant, $motdepasse) {
         try {
-            return (new SQLSelectVerifierIdentiteConnexion($identifiant, $motdepasse))->read();
+			$SQLSelectVerifierIdentiteConnexion = new SQLSelectVerifierIdentiteConnexion($identifiant, $motdepasse);
+            return $SQLSelectVerifierIdentiteConnexion->read();
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+            throw $exc->getTraceAsString();
         }
     }
     
     public static function selectCompterMemeNomUtilisateur($identifiant, $email) {
         try {
-            return (new SQLSelectCompterMemeNomUtilisateur($identifiant, $email))->read();
+			$SQLSelectCompterMemeNomUtilisateur = new SQLSelectCompterMemeNomUtilisateur($identifiant, $email);
+            return $SQLSelectCompterMemeNomUtilisateur->read();
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+            throw $exc->getTraceAsString();
         }
     }
     
