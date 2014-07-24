@@ -5,12 +5,11 @@ class Page {
     const NAME_SCRIPTPAGE = "head_scriptpage";
     const NAME_CSSPAGE = "head_csspage";
     const NAME_FINALPAGE = "finalpage";
-    const DIR_TPL_IN_VIEW = "view/"; //Sera remplacé par le chemin de bdd.
-	const DIR_THEME = "default/"; //Sera remplacé par le chemin de bdd.
     const EXT_TEMPLATES = ".html";
     const DEFAULT_LANG = "fr";
-	const TITLE_PAGE = "Uniguerre";
-    
+    const TITLE_PAGE = "Uniguerre";
+    const DIR_THEME = "view/default/"; //A remplacer par la valeur utilisateur en BDD
+
     /**
      * Permet la construction partiel d'une page.
      * 
@@ -19,9 +18,9 @@ class Page {
      * @return string
      */
     static function construirePagePartielle($templateName, $parse) {
-        $parse["path_design"] = self::DIR_TPL_IN_VIEW . self::DIR_THEME;
+        $parse["path_design"] = self::DIR_THEME;
         
-        return self::getTemplate($templateName, $parse ,self::TITLE_PAGE);
+        return self::getTemplate($templateName, $parse, self::TITLE_PAGE);
     }
 
     /**
@@ -34,7 +33,7 @@ class Page {
     static function construirePageFinale($templateName, $parse, $titre = '') {
         //Construction de la page par morceau.
         $parse["titrePage"] = $titre;
-        $parse["path_design"] = self::DIR_TPL_IN_VIEW . self::DIR_THEME;
+        $parse["path_design"] = self::DIR_THEME;
 
         $parse["scriptPage"] = self::construirePagePartielle(self::NAME_SCRIPTPAGE, $parse);
         $parse["stylesheetPage"] = self::construirePagePartielle(self::NAME_CSSPAGE, $parse);
@@ -54,7 +53,7 @@ class Page {
      * @return string
      */
     static private function getTemplate($templateName, $parse) {
-        $filename = dirname(__DIR__) . DIRECTORY_SEPARATOR . self::DIR_TPL_IN_VIEW . self::DIR_THEME . $templateName . self::EXT_TEMPLATES;
+        $filename = WOOTOOK_DIR_ROOT. DIRECTORY_SEPARATOR . self::DIR_THEME . $templateName . self::EXT_TEMPLATES;
 
         $template = self::ReadFromFile($filename);
 
@@ -75,23 +74,21 @@ class Page {
      * @param string $extension
      * @return void
      */
-    static function includeLang($filename,$extension) {
-        global $lang,$user;
+    static function includeLang($filename, $extension) {
+        global $lang, $user;
 
         $pathPattern = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "language/%s/{$filename}%s";
         if (isset($user['lang']) && !empty($user['lang'])) {
-			if ($fp = @fopen($filename = sprintf($pathPattern, $user['lang'], $extension),'r', true)) {
+            if ($fp = @fopen($filename = sprintf($pathPattern, $user['lang'], $extension), 'r', true)) {
                 fclose($fp);
 
                 require_once $filename;
                 return;
             }
+        } else {
+            require_once sprintf($pathPattern, self::DEFAULT_LANG, $extension);
+            return;
         }
-		else
-		{
-			require_once sprintf($pathPattern, self::DEFAULT_LANG,$extension);
-			return;
-		}
     }
 
     /**

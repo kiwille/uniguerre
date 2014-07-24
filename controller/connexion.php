@@ -21,39 +21,19 @@ if (isset($_POST["motdepasse"]) && wordLength_respected($_POST["motdepasse"], SI
 }
 
 //Toutes les informations sont complètes...
-if ($infos_complete)
-{
+if ($infos_complete) {
     $id = UtilisateurDAO::selectVerifierIdentiteConnexion($identifiant, $motDePasse);
+    //Si les données sont exactes, on va alors tenté la redirection
     if ($id > 0) {
-		$_SESSION["id"] = $id;
-		message(sprintf($lang['welcome'],$identifiant),$lang['title_conn'],null, MESSAGE_SUCCESS);
-	} else {
-		message($lang['error_write_conn'],$lang['title_conn'],"". WOOTOOK_WEB_URL ."", MESSAGE_ERROR);
-	}
+        $_SESSION["id"] = $id;
+        
+        require_once 'overview.php';
+    } else {
+        message($lang['error_write_conn'], $lang['title_conn'], "" . WOOTOOK_WEB_URL . "", MESSAGE_ERROR);
+    }
 } else {
-	message($lang['error_champs_empty'],$lang['title_conn'],"". WOOTOOK_WEB_URL ."",MESSAGE_WARNING);
-    // var_dump($_POST);
+    message($lang['error_champs_empty'], $lang['title_conn'], "" . WOOTOOK_WEB_URL . "", MESSAGE_WARNING);
 }
 
-
-
-# fonctionne
-//Sert a rien pour le moment... 
-/*$sql = new _SQL();
-$requete = $sql->prepare("SELECT * FROM {table1};", array("users"));
-$requete->execute();
-$test = $requete->fetchAll();
-
-$requete2 = $sql->prepare("SELECT * FROM {table1} WHERE username=:username;", array("users"));
-$param = $sql->parametre($requete2, ':username', 'x');
-$param->execute();
-$test2 = $requete2->fetch();
-var_dump($test2);
-*/
-
-/* faire :
- * si les donner son bonne alors on rerige avec une session vers la page overview
- * sinon il retourne à la case départ 
- */
 die();
 ?>

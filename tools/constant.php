@@ -14,11 +14,12 @@ unset($fragment[intval($var - 1)]);
 $baseUrl = implode("/",$fragment);
 
 if($_SERVER['HTTP_HOST'] == "127.0.0.1" || $_SERVER['HTTP_HOST'] == "localhost"){
-	define("WOOTOOK_WEB_URL","http://".$_SERVER['HTTP_HOST'] ."/".$baseUrl."");
+	$url = "http://".$_SERVER['HTTP_HOST'] ."/".$baseUrl."";
 }else{
-	define("WOOTOOK_WEB_URL","http://www.".$_SERVER['HTTP_HOST'] ."/".$baseUrl."/");
+	$url = "http://www.".$_SERVER['HTTP_HOST'] ."/".$baseUrl."/";
 }
 
+define("WOOTOOK_WEB_URL", $url);
 define("WOOTOOK_NAME","wootook"); # peux etre changer
 
 // === PARAMETRES DE CHEMINS DU JEU

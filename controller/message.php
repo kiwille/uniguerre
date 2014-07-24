@@ -1,6 +1,6 @@
 <?php
 
-include_once "/tools/includes.php";
+include_once WOOTOOK_DIR_TOOLS . "/includes.php";
 
 const MESSAGE_SUCCESS = "panel-success";
 const MESSAGE_INFORMATION = "panel-info";
