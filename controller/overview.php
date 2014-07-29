@@ -8,7 +8,11 @@ if (access_denied()) {
 }else{
     
     $parse = $lang;
-    
+	$id = intval($_SESSION["id"]);
+    /* parser qui se repete ... en attendant detrouver une page qui se repete dans le game*/
+	$player = UtilisateurDAO::selectUtilisateurParId($id);
+	$parse['player'] = $player->getIdentifiant();
+
     $parse['navbar_game'] = Page::construirePagePartielle('part_navbar_game', $parse);
     $parse['clock_game'] = Page::construirePagePartielle('part_clock', $parse);
     

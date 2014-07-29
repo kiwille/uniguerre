@@ -18,7 +18,7 @@ class UtilisateurDAO {
         }
     }
     
-    public static  function selectUtilisateurParId($id) {
+    public static function selectUtilisateurParId($id) {
         try {
 			$SQLSelectUtilisateurParId = new SQLSelectUtilisateurParId($id);
             return $SQLSelectUtilisateurParId->read();
@@ -27,7 +27,7 @@ class UtilisateurDAO {
         }
     }
     
-    public static  function insertUtilisateur(\Utilisateur $utilisateur) {
+    public static function insertUtilisateur(\Utilisateur $utilisateur) {
         try {
 			$SQLInsertUtilisateur = new SQLInsertUtilisateur($utilisateur);
             return $SQLInsertUtilisateur->write();
@@ -36,7 +36,7 @@ class UtilisateurDAO {
         }
     }
     
-    public static  function selectVerifierIdentiteConnexion($identifiant, $motdepasse) {
+    public static function selectVerifierIdentiteConnexion($identifiant, $motdepasse) {
         try {
 			$SQLSelectVerifierIdentiteConnexion = new SQLSelectVerifierIdentiteConnexion($identifiant, $motdepasse);
             return $SQLSelectVerifierIdentiteConnexion->read();

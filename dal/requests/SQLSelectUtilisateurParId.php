@@ -25,7 +25,7 @@ class SQLSelectUtilisateurParId extends SqlRead {
         $requete .= " * ";
         $requete .= " FROM {table1} ";
         $requete .= " WHERE ";
-        $requete .= table_users::id + " = :id ";
+        $requete .= table_users::id ." = :id ";
         
         return $requete;
     }
@@ -39,7 +39,7 @@ class SQLSelectUtilisateurParId extends SqlRead {
         
         if ($row) {
             $u = new Utilisateur();
-            $u->setEmail($row[table_users::mail]);
+            $u->setEmail($row[table_users::email]);
             $u->setIdentifiant($row[table_users::username]);
             $u->setMotDePasse($row[table_users::password]);
         }

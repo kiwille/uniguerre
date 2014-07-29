@@ -91,7 +91,7 @@ class _SQL {
      */
     public function parametre($req, $champ, $valeur) {
         if (is_numeric($valeur)) {
-            $req->bindParam($champ, $valeur, PARAM_INT);
+            $req->bindParam($champ,$valeur,PDO::PARAM_INT);
         } else {
             $req->bindParam($champ, $valeur);
         }
