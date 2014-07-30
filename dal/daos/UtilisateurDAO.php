@@ -11,8 +11,8 @@ class UtilisateurDAO {
         try {
             $SQLSelectUtilisateurs = new SQLSelectUtilisateurs();
             return $SQLSelectUtilisateurs->read();
-        } catch (Exception $exc) {
-            throw $exc->getTraceAsString();
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
 
@@ -20,8 +20,8 @@ class UtilisateurDAO {
         try {
             $SQLSelectUtilisateurParId = new SQLSelectUtilisateurParId($id);
             return $SQLSelectUtilisateurParId->read();
-        } catch (Exception $exc) {
-            throw $exc->getTraceAsString();
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
 
@@ -29,8 +29,8 @@ class UtilisateurDAO {
         try {
             $SQLInsertUtilisateur = new SQLInsertUtilisateur($utilisateur);
             return $SQLInsertUtilisateur->write();
-        } catch (Exception $exc) {
-            throw $exc->getTraceAsString();
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
 
@@ -38,8 +38,8 @@ class UtilisateurDAO {
         try {
             $SQLSelectVerifierIdentiteConnexion = new SQLSelectVerifierIdentiteConnexion($identifiant, $motdepasse);
             return $SQLSelectVerifierIdentiteConnexion->read();
-        } catch (Exception $exc) {
-            throw $exc->getTraceAsString();
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
 
@@ -47,8 +47,8 @@ class UtilisateurDAO {
         try {
             $SQLSelectCompterMemeNomUtilisateur = new SQLSelectCompterMemeNomUtilisateur($identifiant, $email);
             return $SQLSelectCompterMemeNomUtilisateur->read();
-        } catch (Exception $exc) {
-            throw $exc->getTraceAsString();
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
 
