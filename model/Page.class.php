@@ -58,7 +58,7 @@ class Page {
         $template = self::ReadFromFile($filename);
 
         if (strlen(trim($template)) > 0) {
-            $page = preg_replace('#\{([a-z0-9\-_]*?)\}#Ssie', '( ( isset($parse[\'\1\']) ) ? $parse[\'\1\'] : \'\' );', $template);
+            $page = preg_replace_callback('#\{([a-z0-9\-_]*?)\}#Ssie', '( ( isset($parse[\'\1\']) ) ? $parse[\'\1\'] : \'\' );', $template);
         } else {
             trigger_error("Le template {$templateName} est introuvable sous ce chemin: {$filename}", E_USER_ERROR);
             $page = "";
