@@ -108,7 +108,7 @@ class _SQL {
     public function execute($req) {
         $success = $req->execute();
         if (!$success) {
-            throw new ErrorException("La requete n'a pas pu etre execute en raison d'une erreur");
+            throw new Exception("Erreur sur la requete: " . $req->errorInfo()[2] , E_ERROR);
         }
     }
 
