@@ -44,4 +44,9 @@
 	$lang['credit_fnd'] = "Fondateur";
 	$lang['credit_dev'] = "Développeurs";
 	$lang['credit_des'] = "Designer";
+	
+	//GAME
+	$lang['ressources1'] = "métal";
+	$lang['ressources2'] = "crystal";
+	$lang['ressources3'] = "deuterium";
 ?>

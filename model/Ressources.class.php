@@ -26,7 +26,7 @@ class Ressources {
         return $this->coefprod;
     }
 
-    public function setMotDePasse($coefprod) {
+    public function setCoefProd($coefprod) {
         $this->coefprod = $coefprod;
     }
 }

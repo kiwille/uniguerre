@@ -30,7 +30,7 @@ class SQLSelectCompterMemeNomUtilisateur extends SqlRead {
 
     protected function requeteSQL() {
         //TODO Réécrire la requete de la meme forme que les autres classes.
-        return "SELECT COUNT(*) AS nbJoueur FROM {table1} WHERE username = :username OR email =:email";
+        return "SELECT COUNT(*) AS nbJoueur FROM {table1} WHERE ". table_users::username ." = :username OR ". table_users::email ." =:email";
     }
 
     protected function retours(\PDOStatement $req) {

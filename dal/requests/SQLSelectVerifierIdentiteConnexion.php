@@ -28,7 +28,7 @@ class SQLSelectVerifierIdentiteConnexion extends SqlRead {
     }
 
     protected function requeteSQL() {
-        return "SELECT * FROM {table1} WHERE username = :username ";
+        return "SELECT * FROM {table1} WHERE ". table_users::username ." = :username ";
     }
 
     protected function retours(\PDOStatement $req) {

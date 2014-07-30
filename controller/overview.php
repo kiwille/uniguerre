@@ -13,8 +13,23 @@ if (access_denied()) {
 	$player = UtilisateurDAO::selectUtilisateurParId($id);
 	$parse['player'] = $player->getIdentifiant();
 
+	$Allressources = RessourceDAO::selectRessources();
+	// var_dump($Allressources);
+	$ressource = "";
+	foreach($Allressources as $thisressource)
+	{
+		// # voir si on met l'id ou le nom ....
+		$rid = $thisressource['rid'];
+		$Ressourcename = $thisressource['name'];
+		$batimentlevel = 2;
+		$prod= array();
+		$prod[$Ressourcename] = Formuleressource($thisressource['coef_prod'],$batimentlevel);
+		$ressource .= "<td>".$lang[$Ressourcename]." : ".$prod[$Ressourcename]."</td>"; 
+	}
+	$parse['ressource'] = $ressource;
     $parse['navbar_game'] = Page::construirePagePartielle('part_navbar_game', $parse);
     $parse['clock_game'] = Page::construirePagePartielle('part_clock', $parse);
+	$parse['ressource_game'] = Page::construirePagePartielle('part_ressource_game', $parse);
     
     $parse['body_game'] = Page::construirePagePartielle('part_game_overview', $parse);
     

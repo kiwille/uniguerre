@@ -9,8 +9,16 @@
 
 <script type="text/javascript">
     var img_texture = "{path_design}img/texture/p08.jpg";
-    var posX = 400;
-    var posY = 500;
+	if(mobile() == true)
+	{
+		var posX = 200;
+		var posY = 250;
+	}
+	else
+	{
+		var posX = 400;
+		var posY = 500;
+	}
     var posZ = 50;
 </script>
 <script type="text/javascript" src="{path_design}js/animate_planets.js" ></script>

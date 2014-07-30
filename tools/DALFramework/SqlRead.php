@@ -21,14 +21,22 @@ abstract class SqlRead extends SqlBase {
         try {
             $requete = $this->requeteSQL();
             $tables = $this->tables();
-            $parametres = $this->parametres()->getParametres();
+			if(!is_null($this->parametres()))
+			{
+				$parametres = $this->parametres()->getParametres();
+			}
+			else
+			{
+				$parametres= null;
+			}
+			
             
             $sql = new _SQL();
 
             $sql->connexion();
             $req = $sql->prepare($requete,$tables);
             
-            if (is_array($parametres)) {
+            if (!is_null($parametres) && is_array($parametres)) {
                 foreach ($parametres as $champ => $valeur) {
                     $sql->parametre($req, $champ, $valeur);
                 }
@@ -37,7 +45,6 @@ abstract class SqlRead extends SqlBase {
             $sql->execute($req);
             
             $result = $this->retours($req);
-
             $sql->deconnexion();
 
             return $result;

@@ -1,10 +1,19 @@
 
-var renderer, scene, camera, mesh;
+var renderer, scene, camera, mesh,taille;
 
 init();
 animate();
 
 function init(){
+	
+	if(mobile() == true)
+	{
+		taille = 150;
+	}
+	else
+	{
+		taille = 200;
+	}
     // on initialise le moteur de rendu
     renderer = new THREE.WebGLRenderer();
 
@@ -22,14 +31,14 @@ function init(){
     scene.add(camera);
     
 	// on créé la sphère et on lui applique une texture sous forme d’image
-	var geometry = new THREE.SphereGeometry( 200, 32, 32 );
+	var geometry = new THREE.SphereGeometry( taille, 32, 32 );
 	var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture(img_texture, new THREE.SphericalReflectionMapping()), overdraw: true } );
 	mesh = new THREE.Mesh( geometry, material );
 	scene.add( mesh );
 
 	// on ajoute une lumière blanche
 	var lumiere = new THREE.DirectionalLight( 0xffffff, 1.0 );
-	lumiere.position.set( 0, 0, 400 );
+	lumiere.position.set( 0, 0,taille);
 	scene.add( lumiere );
 
 }

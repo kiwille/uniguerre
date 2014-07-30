@@ -12,21 +12,22 @@
  */
 class SQLSelectRessources extends SqlRead{
     
-    public function __construct() {
-        
-    }
-    
     protected function parametres() {
         return null;        
     }
 
     protected function requeteSQL() {
-        return "SELECT * FROM {table1}";
+        $requete = " SELECT ";
+        $requete .= " * ";
+        $requete .= " FROM {table1}";
+		
+		return $requete;
     }
 
     protected function retours(\PDOStatement $req) {
-        return $req->fetchAll(PDO::FETCH_ASSOC);
-    }
+		$row = $req->fetchAll(PDO::FETCH_ASSOC);
+		return $row;
+	}
 
     protected function tables() {
         return array(table_resources::NAME_TABLE);

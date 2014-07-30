@@ -12,9 +12,12 @@
  */
 class table_resources {
     //Nom de la table
-    const NAME_TABLE = "";
+    const NAME_TABLE = "ressources";
     
     //Champs de la table
+    const rid = "rid";
+    const name = "name";
+    const coef_prod = "coef_prod";
 }
 
 ?>
