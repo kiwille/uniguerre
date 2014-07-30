@@ -19,7 +19,7 @@ if (access_denied()) {
 	foreach($Allressources as $thisressource)
 	{
 		// # voir si on met l'id ou le nom ....
-		$rid = $thisressource['rid'];
+		$rid = $thisressource['id'];
 		$Ressourcename = $thisressource['name'];
 		$batimentlevel = 2;
 		$prod= array();

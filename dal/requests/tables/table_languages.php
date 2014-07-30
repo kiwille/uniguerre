@@ -6,21 +6,18 @@
  */
 
 /**
- * Description of users
+ * Description of table_languages
  *
  * @author Alves
  */
-class table_users {
-    
+class table_languages {
     //Nom de la table
-    const NAME_TABLE = "users";
+    const NAME_TABLE = "languages";
     
     //Champs de la table
     const id = "id";
-    const id_language = "id_language";
-    const username = "username";
-    const password = "password";
-    const email = "email";
+    const code = "code";
+    const name = "name";
 }
 
 ?>

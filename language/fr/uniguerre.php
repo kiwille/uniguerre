@@ -1,5 +1,22 @@
 <?php
-	
+
+/*
+ * TODO A faire:
+ * 
+ * Je viens de me rendre compte avec les noms de ressources d'un problème.
+ * 
+ * J'ai fait une table dans la BDD. On ira mettre tout le code dans la table "translation".
+ * Ce choix a été fait en raison de la flexibilité du jeu,
+ * car l'admin pourra par exemple choisir le texte à afficher à certains endroits.
+ * Sur ce fait, la traduction se fera plus tard via une page qu'aura accès l'administrateur.
+ * A voir si on ne met pas en place la liste de traduction par partie, comme par exemple des mots
+ * qui appartiennent spécifiquement à la vue générale, d'autres à la vue galactique, etc.
+ * 
+ * L'utilisateur aura le choix à son inscription de sa langue, ainsi que de la modifier via ses options.
+ * 
+ * La BDD peut être récupéré dans AUTRES > wootook.sql
+ */
+
 	// general
 	$lang['title_game'] = WOOTOOK_NAME;
 	$lang['username'] = "Identifiant";
