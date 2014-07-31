@@ -1647,7 +1647,7 @@ legend {
   line-height: inherit;
   color: #cccccc;
   border: 0;
-  border-bottom: 1px solid #282828;
+  border-bottom: 1px solid #aaaaaa;
 }
 label {
   display: inline-block;
