@@ -17,12 +17,11 @@ foreach ($Allressources as $thisressource) {
 
 $parse['ressource'] = $ressource;
 
-
 $parse['navbar_game'] = Page::construirePagePartielle('part_navbar_game', $parse);
 $parse['clock_game'] = Page::construirePagePartielle('part_clock', $parse);
 $parse['ressource_game'] = Page::construirePagePartielle('part_game_barre_ressources', $parse);
 
-$parse['body_game'] = Page::construirePagePartielle('part_game_vue_generale', $parse);
+$parse['body_game'] = Page::construirePagePartielle('part_game_vue_planetaire', $parse);
 
 Page::construirePageFinale('part_body_game', $parse);
 ?>
