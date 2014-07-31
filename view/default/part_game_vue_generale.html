@@ -8,17 +8,19 @@
 <div class="col-lg-4"></div>
 
 <script type="text/javascript">
-    var img_texture = "{path_design}img/texture/p08.jpg";
-	if(mobile() == true)
-	{
-		var posX = 200;
-		var posY = 250;
-	}
-	else
-	{
-		var posX = 400;
-		var posY = 500;
-	}
-    var posZ = 50;
+    var img_texture = "{path_design}img/texture/p07.jpg";
+    var posX;
+    var poxY;
+    var posZ;
+    
+    if(mobile() === true) {
+	posX = 200;
+	posY = 250;
+        posZ = 50;
+    } else {
+	posX = 400;
+        posY = 500;
+        posZ = 50;
+    }
 </script>
 <script type="text/javascript" src="{path_design}js/animate_planets.js" ></script>

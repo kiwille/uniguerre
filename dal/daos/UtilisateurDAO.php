@@ -6,7 +6,13 @@
  * @author Alves
  */
 class UtilisateurDAO {
-
+    
+    /**
+     * Retourne la liste des joueurs du jeu
+     * 
+     * @return Utilisateur
+     * @throws Exception
+     */
     public static function selectUtilisateurs() {
         try {
             $SQLSelectUtilisateurs = new SQLSelectUtilisateurs();
@@ -16,6 +22,13 @@ class UtilisateurDAO {
         }
     }
 
+    /**
+     * Retourne un joueur à partir de son id
+     * 
+     * @param Integer $id
+     * @return Utilisateur
+     * @throws Exception
+     */
     public static function selectUtilisateurParId($id) {
         try {
             $SQLSelectUtilisateurParId = new SQLSelectUtilisateurParId($id);

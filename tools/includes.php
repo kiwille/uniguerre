@@ -32,6 +32,7 @@ require_once WOOTOOK_DIR_DAL . '/daos/RessourceDAO.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) */
 require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectRessources.php';
+require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectRessourcesParIdLangue.php';
 require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectUtilisateurs.php';
 require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectUtilisateurParId.php';
 require_once WOOTOOK_DIR_DAL . '/requests/SQLInsertUtilisateur.php';
@@ -42,6 +43,8 @@ require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectCompterMemeNomUtilisateur.php
 require_once WOOTOOK_DIR_DAL . '/requests/tables/table_planets.php';
 require_once WOOTOOK_DIR_DAL . '/requests/tables/table_resources.php';
 require_once WOOTOOK_DIR_DAL . '/requests/tables/table_users.php';
+require_once WOOTOOK_DIR_DAL . '/requests/tables/table_languages.php';
+require_once WOOTOOK_DIR_DAL . '/requests/tables/table_translations.php';
 
 /** Langues **/
 Page::includeLang('uniguerre','.php');

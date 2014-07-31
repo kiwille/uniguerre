@@ -3,11 +3,12 @@
 class Utilisateur {
 
     private $id;
+    private $id_langue;
     private $identifiant;
     private $motDePasse;
     private $email;
     private $idPlaneteMere;
-
+    
     public function getId() {
         return $this->id;
     }
@@ -15,7 +16,15 @@ class Utilisateur {
     public function setId($id) {
         $this->id = $id;
     }
-    
+
+    public function getId_langue() {
+        return $this->id_langue;
+    }
+
+    public function setId_langue($id_langue) {
+        $this->id_langue = $id_langue;
+    }
+
     public function getIdentifiant() {
         return $this->identifiant;
     }
@@ -29,7 +38,7 @@ class Utilisateur {
     }
 
     public function setMotDePasse($motDePasse) {
-        $this->motDePasse = EncodePassword($motDePasse);
+        $this->motDePasse = $motDePasse;
     }
 
     public function getEmail() {

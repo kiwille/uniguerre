@@ -16,6 +16,14 @@ class RessourceDAO {
          }
      }
      
+     public static function selectRessourcesParLangue($id_language) {
+         try {
+            $SQLSelectRessources = new SQLSelectRessourcesParIdLangue($id_language);
+            return $SQLSelectRessources->read();
+         } catch (Exception $ex) {
+             throw $ex;
+         }
+     }
 }
 
 ?>

@@ -4,7 +4,7 @@
  * @author Alves
  */
 class SQLSelectRessources extends SqlRead {
-
+    
     protected function parametres() {
         return null;
     }
@@ -12,7 +12,7 @@ class SQLSelectRessources extends SqlRead {
     protected function requeteSQL() {
         $requete = " SELECT ";
         $requete .= " * ";
-        $requete .= " FROM {table1}";
+        $requete .= " FROM {table1} ";
 
         return $requete;
     }

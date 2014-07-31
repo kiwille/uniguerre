@@ -39,9 +39,11 @@ class SQLSelectUtilisateurParId extends SqlRead {
         
         if ($row) {
             $u = new Utilisateur();
-            $u->setEmail($row[table_users::email]);
+            $u->setId($row[table_users::id]);
+            $u->setId_langue($row[table_users::id_language]);
             $u->setIdentifiant($row[table_users::username]);
             $u->setMotDePasse($row[table_users::password]);
+            $u->setEmail($row[table_users::email]);
         }
         
         return $u;
