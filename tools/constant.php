@@ -13,7 +13,8 @@ unset($fragment[0]);
 unset($fragment[intval($var - 1)]);
 $baseUrl = implode("/",$fragment);
 
-if($_SERVER['HTTP_HOST'] == "127.0.0.1" || $_SERVER['HTTP_HOST'] == "localhost"){
+if(stristr($_SERVER['HTTP_HOST'],"127.0.0.1") !== False  || stristr($_SERVER['HTTP_HOST'],"localhost") !== False){
+
 	$url = "http://".$_SERVER['HTTP_HOST'] ."/".$baseUrl."";
 }else{
 	$url = "http://www.".$_SERVER['HTTP_HOST'] ."/".$baseUrl."/";
