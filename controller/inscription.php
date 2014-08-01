@@ -2,6 +2,7 @@
 
 require_once dirname(__DIR__) . "/tools/includes.php";
 require_once dirname(__DIR__) . "/controller/message.php";
+require_once dirname(__DIR__) . "/tools/secure.php";
 
 
 $infos_complete = true;
@@ -47,7 +48,7 @@ if ($infos_complete) {
         //Création utilisateur
         $u = new Utilisateur();
         $u->setIdentifiant($identifiant);
-        $u->setMotDePasse($motDePasse);
+        $u->setMotDePasse(EncodePassword($motDePasse));
         $u->setEmail($email);
         UtilisateurDAO::insertUtilisateur($u);
 
