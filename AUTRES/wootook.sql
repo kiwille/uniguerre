@@ -85,8 +85,8 @@ INSERT INTO `game_resources` (`id`, `name`, `coef_prod`) VALUES
 
 CREATE TABLE IF NOT EXISTS `game_translations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_lang` int(11) NOT NULL,
-  `key` varchar(50) NOT NULL,
+  `id_language` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `value` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `game_translations` (
 -- Contenu de la table `game_translations`
 --
 
-INSERT INTO `game_translations` (`id`, `id_lang`, `key`, `value`) VALUES
+INSERT INTO `game_translations` (`id`, `id_lang`, `name`, `value`) VALUES
 (1, 1, 'res_metal', 'Métal'),
 (2, 1, 'res_cristal', 'Cristal'),
 (3, 2, 'res_metal', 'Metal'),
