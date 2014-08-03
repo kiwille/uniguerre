@@ -5883,3 +5883,7 @@ legend {
   color: #fff;
 }
 
+.language
+{
+	cursor:pointer;
+}

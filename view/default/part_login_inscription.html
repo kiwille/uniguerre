@@ -3,7 +3,7 @@
     <form class="form-horizontal" method="POST">
         <input type="hidden" name="page" value="inscription" /> <!-- la redirection -->  
         <fieldset>
-            <legend>{title_sign}</legend>
+            <legend>{title_sign} {title_game}</legend>
             <div class="form-group">
                 <label for="ididentifiant" class="col-lg-4 control-label">{username}: </label>
                 <div class="col-lg-8">
@@ -28,6 +28,15 @@
                     <input type="text" placeholder="{sign_name_pla}" name="PM" id="idPM" class="form-control" />
                 </div>
             </div>
+            <div class="form-group">
+                <label for="idLang" class="col-lg-4 control-label">{sign_name_lang}:</label>
+                <div class="col-lg-8">
+					<select class="form-control" id="select" name="Lang">
+							  <option value="*">Selectionnez votre langue</option>
+							{option_langage}
+							</select>
+                </div>
+            </div>
             <br />
             <div class="form-group">
                 <input type="submit" class="btn btn-success" value="{sign_valide}">
@@ -37,3 +46,4 @@
     </form>
 </div>
 <div class="col-lg-4"></div>
+<input type="hidden" id="ajaxpage" value="ajax_login_inscription" />

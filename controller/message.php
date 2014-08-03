@@ -8,10 +8,10 @@ const MESSAGE_WARNING = "panel-warning";
 const MESSAGE_ERROR = "panel-danger";
 
 function message($message, $titre, $lien = null, $type_message = MESSAGE_ERROR) {
-    global $lang;
+    global $lang,$langimg;
         
     $parse = $lang;
-        
+    $parse['langimg'] = $langimg;   
     $parse['message'] = $message;
     $parse['titre'] = $titre;
     $parse['type_message'] = $type_message;

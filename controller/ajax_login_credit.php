@@ -1,8 +1,7 @@
 <?php
 
 require_once dirname(__DIR__) . "/tools/includes.php";
-
-$parse = $lang;
-
+require_once dirname(__DIR__) . "/json/langue.php";
+$parse['langimg'] = $langimg;
 echo Page::construirePagePartielle('part_login_credit', $parse);
 ?>

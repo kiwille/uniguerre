@@ -14,4 +14,4 @@ function ExeRqt(url, querystring, nameid)
 	.fail(function( jqXHR, textStatus) {
 		alert("Erreur critique d'exécution ajax: " + textStatus);
 	});
-}
+};

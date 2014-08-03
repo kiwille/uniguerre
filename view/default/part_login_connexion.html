@@ -4,7 +4,7 @@
         <input type="hidden" name="page" value="connexion" /> <!-- la redirection -->
         
         <fieldset>
-            <legend>{title_conn}</legend>
+            <legend>{title_conn} {title_game}</legend>
             <div class="form-group">
                 <label for="ididentifiant" class="col-lg-4 control-label">{username}: </label>
                 <div class="col-lg-8">
@@ -25,3 +25,4 @@
     </form>
 </div>
 <div class="col-lg-4"></div>
+<input type="hidden" id="ajaxpage" value="ajax_login_connexion" />

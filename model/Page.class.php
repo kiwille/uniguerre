@@ -6,7 +6,7 @@ class Page {
     const NAME_CSSPAGE = "head_csspage";
     const NAME_FINALPAGE = "finalpage";
     const EXT_TEMPLATES = ".html";
-    const DEFAULT_LANG = "fr";
+    const DEFAULT_LANG = "en";
     const TITLE_PAGE = "Uniguerre";
     const DIR_THEME = "view/default/"; //A remplacer par la valeur utilisateur en BDD
 
