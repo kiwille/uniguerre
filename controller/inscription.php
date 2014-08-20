@@ -2,7 +2,7 @@
 
 require_once dirname(__DIR__) . "/tools/includes.php";
 require_once dirname(__DIR__) . "/controller/message.php";
-require_once dirname(__DIR__) . "/tools/secure.php";
+require_once dirname(__DIR__) . "/common.php";
 
 $infos_complete = true;
 
