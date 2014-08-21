@@ -37,7 +37,7 @@ if (isset($_POST["PM"]) && wordLength_respected($_POST["PM"], SIGNE_SUP_EGAL, 3)
 }
 
 //Validation de la langue
-if (isset($_POST["Lang"]) && wordLength_respected($_POST["Lang"], SIGNE_INF_STRICT, 3) && in_array($_POST["Lang"],$TabLangue)) {
+if (isset($_POST["Lang"]) && wordLength_respected($_POST["Lang"], SIGNE_INF_STRICT, 3) && in_array($_POST["Lang"], $TabLangue)) {
     $langue = intval($idLang[$_POST["Lang"]]);
 } else {
     $infos_complete = false;
@@ -49,21 +49,21 @@ if ($infos_complete) {
     if ($verif > 0) {
         message($lang['error_isset_user'], $lang['title_sign'], "" . WOOTOOK_WEB_URL . "", MESSAGE_WARNING);
     } else {
-		var_dump($langue);
+        var_dump($langue);
         //Création planète
         //...
         //Création utilisateur
         $u = new Utilisateur();
-		$u->setId_langue($langue);
+        $u->setId_langue($langue);
         $u->setIdentifiant($identifiant);
         $u->setMotDePasse(EncodePassword($motDePasse));
         $u->setEmail($email);
         UtilisateurDAO::insertUtilisateur($u);
 
-        message($lang['sign_finish'] ."". $identifiant ."" .$lang['return_mail'], $lang['title_sign'] .  $lang['title_game'], null, MESSAGE_SUCCESS);
+        message($lang['sign_finish'] . "" . $identifiant . "" . $lang['return_mail'], $lang['title_sign'] . $lang['title_game'], null, MESSAGE_SUCCESS);
         # voir pour creer la session direct avec redirection!
     }
 } else {
-    message($lang['error_champs_empty'], $lang['title_sign'] . $lang['title_game'] , "" . WOOTOOK_WEB_URL . "", MESSAGE_ERROR);
+    message($lang['error_champs_empty'], $lang['title_sign'] . $lang['title_game'], "" . WOOTOOK_WEB_URL . "", MESSAGE_ERROR);
 }
 ?>
