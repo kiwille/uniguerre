@@ -1,8 +1,7 @@
 <?php
 
-require_once dirname(__DIR__) . "/tools/includes.php";
-require_once dirname(__DIR__) . "/controller/message.php";
 require_once dirname(__DIR__) . "/common.php";
+require_once dirname(__DIR__) . "/controller/message.php";
 
 $infos_complete = true;
 
@@ -37,7 +36,7 @@ if (isset($_POST["PM"]) && wordLength_respected($_POST["PM"], SIGNE_SUP_EGAL, 3)
 }
 
 //Validation de la langue
-if (isset($_POST["Lang"]) && wordLength_respected($_POST["Lang"], SIGNE_INF_STRICT, 3) && in_array($_POST["Lang"], $TabLangue)) {
+if (isset($_POST["Lang"]) && wordLength_respected($_POST["Lang"], SIGNE_INF_STRICT, 3) && in_array($_POST["Lang"], $tabLangue)) {
     $langue = intval($idLang[$_POST["Lang"]]);
 } else {
     $infos_complete = false;

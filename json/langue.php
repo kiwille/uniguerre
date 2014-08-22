@@ -1,13 +1,12 @@
 <?php
-include_once '../common.php';
 
 if (isset($_POST["langue"]) && !isset($_SESSION['language']) && in_array($_POST["langue"], $tabLangue)) {
     $_SESSION['language'] = $_POST["langue"];
 } elseif (isset($_POST["langue"]) && isset($_SESSION['language']) && in_array($_POST["langue"], $tabLangue)) {
-    session_destroy();
+    $_SESSION = array();
     $_SESSION['language'] = $_POST["langue"];
-} elseif (!isset($_POST["langue"]) && !isset($_SESSION['language'])) {
-    session_destroy();
+} else {
+    $_SESSION = array();
     $_SESSION['language'] = "FR"; #faire une langue par default
 }
 

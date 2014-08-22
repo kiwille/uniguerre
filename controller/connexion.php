@@ -1,8 +1,7 @@
 <?php
 
-require_once dirname(__DIR__) . "/tools/includes.php";
-require_once dirname(__DIR__) . "/controller/message.php";
 require_once dirname(__DIR__) . "/common.php";
+require_once dirname(__DIR__) . "/controller/message.php";
 
 $infos_complete = true;
 

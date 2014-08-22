@@ -20,7 +20,7 @@ class Page {
     static function construirePagePartielle($templateName, $parse) {
         $parse["path_design"] = self::DIR_THEME;
         
-        return self::getTemplate($templateName, $parse, self::TITLE_PAGE);
+        return self::getTemplate($templateName, $parse);
     }
 
     /**
@@ -57,6 +57,8 @@ class Page {
 
         $template = self::ReadFromFile($filename);
         
+        //var_dump($parse);
+        
         if (strlen(trim($template)) > 0) {
             $page = preg_replace_callback(
                     "#\{([a-z0-9\-_]*?)\}#Ssi",
@@ -68,30 +70,6 @@ class Page {
         }
 
         return $page;
-    }
-
-    /**
-     * Gestion de la localisation des chaînes pour les langues
-     *
-     * @param string $filename
-     * @param string $extension
-     * @return void
-     */
-    static function includeLang($filename, $extension) {
-        global $lang, $user;
-
-        $pathPattern = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "language/%s/{$filename}%s";
-        if (isset($user['lang']) && !empty($user['lang'])) {
-            if ($fp = @fopen($filename = sprintf($pathPattern, $user['lang'], $extension), 'r', true)) {
-                fclose($fp);
-
-                require_once $filename;
-                return;
-            }
-        } else {
-            require_once sprintf($pathPattern, self::DEFAULT_LANG, $extension);
-            return;
-        }
     }
 
     /**
