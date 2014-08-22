@@ -29,10 +29,10 @@ if ($infos_complete) {
         
         require_once 'overview.php';
     } else {
-        message($lang['error_write_conn'], $lang['title_conn'].  $lang['title_game'] , "" . WOOTOOK_WEB_URL . "", MESSAGE_ERROR);
+        message($lang['error_write_conn'], $lang['title_conn'].  $lang['title_game'] , WOOTOOK_WEB_URL, MESSAGE_ERROR);
     }
 } else {
-    message($lang['error_champs_empty'], $lang['title_conn'] .  $lang['title_game'], "" . WOOTOOK_WEB_URL . "", MESSAGE_WARNING);
+    message($lang['error_champs_empty'], $lang['title_conn'] .  $lang['title_game'], WOOTOOK_WEB_URL, MESSAGE_WARNING);
 }
 
 die();

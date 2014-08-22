@@ -9,5 +9,5 @@ $parse['clock_game'] = Page::construirePagePartielle('part_clock', $parse);
 
 $parse['body_game'] = Page::construirePagePartielle('part_game_vue_planetaire', $parse);
 
-Page::construirePageFinale('part_body_game', $parse);
+Page::construirePageFinale('part_body_game', $parse, "Vue générale");
 ?>

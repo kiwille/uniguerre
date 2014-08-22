@@ -20,5 +20,5 @@ $parse['clock_login'] = Page::construirePagePartielle('part_clock', $parse);
 
 $parse['body_login'] = Page::construirePagePartielle('part_login_accueil', $parse);
 
-Page::construirePageFinale('part_body_login', $parse);
+Page::construirePageFinale('part_body_login', $parse, $parse["title_game"]);
 ?>

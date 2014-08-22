@@ -16,4 +16,3 @@ foreach ($Alltranslation as $translation) {
 }
 
 $parse = $lang;
-$parse['title_game'] = WOOTOOK_NAME;

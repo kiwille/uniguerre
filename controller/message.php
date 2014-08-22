@@ -20,8 +20,6 @@ function message($message, $titre, $lien = null, $type_message = MESSAGE_ERROR) 
     $parse['body_login'] = Page::construirePagePartielle('part_erreur', $parse);
 
     Page::construirePageFinale('part_body_login', $parse);
-    
-    die();
 }
 
 ?>
