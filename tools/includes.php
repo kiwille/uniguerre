@@ -17,6 +17,7 @@ require_once WOOTOOK_DIR_TOOLS . '/secure.php';
 require_once WOOTOOK_DIR_TOOLS . '/wordLength.php';
 require_once WOOTOOK_DIR_TOOLS . '/formule.php';
 require_once WOOTOOK_DIR_TOOLS . '/access_denied.php';
+require_once WOOTOOK_DIR_TOOLS . '/array_sort.php';
 
 
 /** Model */
@@ -29,7 +30,8 @@ require_once WOOTOOK_DIR_MODEL . '/Ressources.class.php';
 /** DAL (Data Access Layer) > DAO (Data Access Object) */
 require_once WOOTOOK_DIR_DAL . '/daos/UtilisateurDAO.php';
 require_once WOOTOOK_DIR_DAL . '/daos/RessourceDAO.php';
-require_once WOOTOOK_DIR_DAL . '/daos/LanguesDAO.php';
+require_once WOOTOOK_DIR_DAL . '/daos/LangueDAO.php';
+require_once WOOTOOK_DIR_DAL . '/daos/MenuDAO.php';
 require_once WOOTOOK_DIR_DAL . '/daos/TranslationDAO.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) */
@@ -42,11 +44,13 @@ require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectLangues.php';
 require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectVerifierIdentiteConnexion.php';
 require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectCompterMemeNomUtilisateur.php';
 require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectTranslationParCode.php';
+require_once WOOTOOK_DIR_DAL . '/requests/SQLSelectMenus.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) > Tables */
 require_once WOOTOOK_DIR_DAL . '/requests/tables/table_planets.php';
 require_once WOOTOOK_DIR_DAL . '/requests/tables/table_resources.php';
 require_once WOOTOOK_DIR_DAL . '/requests/tables/table_users.php';
+require_once WOOTOOK_DIR_DAL . '/requests/tables/table_menus.php';
 require_once WOOTOOK_DIR_DAL . '/requests/tables/table_languages.php';
 require_once WOOTOOK_DIR_DAL . '/requests/tables/table_translations.php';
 

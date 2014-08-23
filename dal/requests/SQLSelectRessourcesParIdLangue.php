@@ -1,8 +1,5 @@
 <?php
 
-/**
- * @author Alves
- */
 class SQLSelectRessourcesParIdLangue extends SqlRead {
     
     private $id_language;

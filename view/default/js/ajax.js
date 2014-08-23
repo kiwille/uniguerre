@@ -1,17 +1,15 @@
 var dir_controller = "controller/";
 
-function ExeRqt(url, querystring, nameid)
+function ExeRqt(url)
 {
-	var entities = encodeURIComponent(querystring);
-
 	$.ajax({
-		url: dir_controller + url + "?" + entities,
+		url: dir_controller + url,
 		cache: true
 	})
-	.done(function( html ) {
-		$( "#"+nameid+"" ).html( html );
+	.done(function() {
+		console.log("Chargement de page " + url + " terminée.");
 	})
 	.fail(function( jqXHR, textStatus) {
-		alert("Erreur critique d'exécution ajax: " + textStatus);
+		console.log("Erreur critique d'exécution ajax: " + textStatus);
 	});
 };

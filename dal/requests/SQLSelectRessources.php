@@ -1,8 +1,5 @@
 <?php
 
-/**
- * @author Alves
- */
 class SQLSelectRessources extends SqlRead {
     
     protected function parametres() {

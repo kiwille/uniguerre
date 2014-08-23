@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Description of SQLGetUtilisateurParId
- *
- * @author Alves
- */
 class SQLSelectUtilisateurParId extends SqlRead {
     
     private $id;

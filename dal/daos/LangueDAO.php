@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Description of UtilisateurDao
- *
- * @author Alves
- */
-class LanguesDAO {
+class LangueDAO {
     
     /**
      * Retourne la liste des joueurs du jeu
@@ -13,7 +8,7 @@ class LanguesDAO {
      * @return Utilisateur
      * @throws Exception
      */
-    public static function selectLangue() {
+    public static function selectLangues() {
         try {
             $SQLSelectLangues = new SQLSelectLangues();
             return $SQLSelectLangues->read();

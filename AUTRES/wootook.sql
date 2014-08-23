@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 30 Juillet 2014 à 23:13
+-- Généré le :  Sam 23 Août 2014 à 02:51
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -45,6 +45,35 @@ INSERT INTO `game_languages` (`id`, `code`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `game_menus`
+--
+
+CREATE TABLE IF NOT EXISTS `game_menus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_menu_parent` int(11) DEFAULT NULL,
+  `name_menu` varchar(50) NOT NULL,
+  `accessibility` int(11) NOT NULL,
+  `type_url` enum('ajax','ext') DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `isInGame` tinyint(1) NOT NULL DEFAULT '0',
+  `order` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `game_menus`
+--
+
+INSERT INTO `game_menus` (`id`, `id_menu_parent`, `name_menu`, `accessibility`, `type_url`, `url`, `isInGame`, `order`) VALUES
+(1, NULL, 'menu_home', 0, 'ajax', 'ajax_login_accueil.php', 0, 1),
+(2, NULL, 'menu_connect', 0, 'ajax', 'ajax_login_connexion.php', 0, 2),
+(3, NULL, 'menu_register', 0, 'ajax', 'ajax_login_inscription.php', 0, 3),
+(4, NULL, 'menu_credit', 0, 'ajax', 'ajax_login_credit.php', 0, 4),
+(5, NULL, 'menu_board', 0, 'ext', 'http://www.wootook.org', 0, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `game_planets`
 --
 
@@ -74,8 +103,8 @@ CREATE TABLE IF NOT EXISTS `game_resources` (
 --
 
 INSERT INTO `game_resources` (`id`, `name`, `coef_prod`) VALUES
-(1, 'metal', 2),
-(2, 'cristal', 1);
+(1, 'res_metal', 2),
+(2, 'res_cristal', 1);
 
 -- --------------------------------------------------------
 
@@ -86,8 +115,8 @@ INSERT INTO `game_resources` (`id`, `name`, `coef_prod`) VALUES
 CREATE TABLE IF NOT EXISTS `game_translations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_language` int(11) NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `value` text CHARACTER SET utf8 NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `value` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=79 ;
 
@@ -98,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `game_translations` (
 INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (1, 1, 'res_metal', 'Métal'),
 (2, 1, 'res_cristal', 'Cristal'),
-(3, 2, 'res_metal', 'Métal'),
+(3, 2, 'res_metal', 'Metal'),
 (4, 2, 'res_cristal', 'Crystal'),
 (17, 1, 'title_game', 'wootook'),
 (18, 1, 'username', 'Identifiant'),
@@ -107,11 +136,11 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (21, 1, 'return_mail', ' , vous allez recevoir par mail un rappel de votre pseudo et mot de passe.'),
 (22, 1, 'error_champs_empty', 'Veuillez saisir les champs!'),
 (23, 1, 'menu', 'menu'),
-(24, 1, 'home', 'Accueil'),
-(25, 1, 'connect', 'Se connecter'),
-(26, 1, 'register', 'S''inscrire'),
-(27, 1, 'credit', 'Crédits'),
-(28, 1, 'board', 'Forum'),
+(24, 1, 'menu_home', 'Accueil'),
+(25, 1, 'menu_connect', 'Se connecter'),
+(26, 1, 'menu_register', 'S''inscrire'),
+(27, 1, 'menu_credit', 'Crédits'),
+(28, 1, 'menu_board', 'Forum'),
 (29, 1, 'title_login', 'Bienvenue sur '),
 (30, 1, 'title_dec_1', ' est un jeu de stratégie en ligne gratuit, jouable par navigateur. \r\n            Partez à la conquête de l''univers en développant votre empire. \r\n            Imposez-vous et dominez en combattant les autres joueurs. '),
 (31, 1, 'title_dec_2', 'Rejoingnez-nous!'),
@@ -121,8 +150,8 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (35, 1, 'sign_name_lang', 'Langue'),
 (36, 1, 'sign_valide', 'Inscription'),
 (37, 1, 'sign_reset', 'Réinitialiser'),
-(38, 1, 'sign_finish', 'Inscription terminée  , '),
-(39, 1, 'error_isset_user', 'Attention ,se pseudo ou cette email sont déja enregistré(e)s!'),
+(38, 1, 'sign_finish', 'Inscription terminée, '),
+(39, 1, 'error_isset_user', 'Attention, ce pseudo ou cet email est déjà utilisée dans le jeu.'),
 (40, 1, 'title_conn', 'Connexion sur '),
 (41, 1, 'btn_connect', 'Connexion'),
 (42, 1, 'welcome', 'Bienvenue'),
@@ -131,18 +160,18 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (45, 1, 'credit_fnd', 'Fondateur'),
 (46, 1, 'credit_dev', 'Développeurs'),
 (47, 1, 'credit_des', 'Designer'),
-(48, 2, 'title_game', 'wootook'),
-(49, 2, 'username', 'login'),
-(50, 2, 'password', 'password'),
+(48, 2, 'title_game', 'Uniguerre'),
+(49, 2, 'username', 'Login'),
+(50, 2, 'password', 'Password'),
 (51, 2, 'return', 'return'),
-(52, 2, 'return_mail', ' ,you will receive by email a reminder of your username and password.'),
+(52, 2, 'return_mail', ' , you will receive by email a reminder of your username and password. '),
 (53, 2, 'error_champs_empty', 'Please enter the fields!'),
 (54, 2, 'menu', 'menu'),
-(55, 2, 'home', 'Home'),
-(56, 2, 'connect', 'Sign in'),
-(57, 2, 'register', 'register'),
-(58, 2, 'credit', 'Crédits'),
-(59, 2, 'board', 'board'),
+(55, 2, 'menu_home', 'Home'),
+(56, 2, 'menu_connect', 'Sign in'),
+(57, 2, 'menu_register', 'Register'),
+(58, 2, 'menu_credit', 'Crédits'),
+(59, 2, 'menu_board', 'Board'),
 (60, 2, 'title_login', 'Welcome On '),
 (61, 2, 'title_dec_1', 'is a strategy game online free, playable browser.\r\n             Conquer the universe expanding your empire.\r\n             Establish yourself and dominate fighting other players.'),
 (62, 2, 'title_dec_2', 'Join us now!'),

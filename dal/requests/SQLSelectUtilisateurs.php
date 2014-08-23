@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Description of SQLGetUtilisateurs
- *
- * @author Alves
- */
 class SQLSelectUtilisateurs extends SqlRead {
     
     protected function parametres() {

@@ -1,8 +1,5 @@
 <?php
 
-/**
- * @author Alves
- */
 class SQLSelectVerifierIdentiteConnexion extends SqlRead {
     
     private $identifiant;
