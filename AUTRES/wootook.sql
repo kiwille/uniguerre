@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 23 Août 2014 à 02:51
+-- Généré le :  Sam 23 Août 2014 à 15:53
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `game_translations` (
   `name` varchar(50) NOT NULL,
   `value` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=79 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=81 ;
 
 --
 -- Contenu de la table `game_translations`
@@ -190,7 +190,9 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (75, 2, 'credit_link', 'Links'),
 (76, 2, 'credit_fnd', 'founder'),
 (77, 2, 'credit_dev', 'Developers'),
-(78, 2, 'credit_des', 'Designer');
+(78, 2, 'credit_des', 'Designer'),
+(79, 1, 'btn_register', 'S''enregistrer'),
+(80, 2, 'btn_register', 'Register');
 
 -- --------------------------------------------------------
 
