@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 23 Août 2014 à 15:53
+-- Généré le :  Lun 25 Août 2014 à 23:17
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -135,15 +135,15 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (20, 1, 'return', 'retour'),
 (21, 1, 'return_mail', ' , vous allez recevoir par mail un rappel de votre pseudo et mot de passe.'),
 (22, 1, 'error_champs_empty', 'Veuillez saisir les champs!'),
-(23, 1, 'menu', 'menu'),
+(23, 1, 'menu', 'Menu'),
 (24, 1, 'menu_home', 'Accueil'),
 (25, 1, 'menu_connect', 'Se connecter'),
 (26, 1, 'menu_register', 'S''inscrire'),
 (27, 1, 'menu_credit', 'Crédits'),
 (28, 1, 'menu_board', 'Forum'),
 (29, 1, 'title_login', 'Bienvenue sur '),
-(30, 1, 'title_dec_1', ' est un jeu de stratégie en ligne gratuit, jouable par navigateur. \r\n            Partez à la conquête de l''univers en développant votre empire. \r\n            Imposez-vous et dominez en combattant les autres joueurs. '),
-(31, 1, 'title_dec_2', 'Rejoingnez-nous!'),
+(30, 1, 'title_dec_1', ' est un jeu de stratégie en ligne gratuit, jouable par navigateur. Partez à la conquête de l''univers en développant votre empire. Imposez-vous et dominez en combattant les autres joueurs. '),
+(31, 1, 'title_dec_2', 'Rejoignez-nous!'),
 (32, 1, 'title_sign', 'Inscription sur '),
 (33, 1, 'sign_email', 'Email'),
 (34, 1, 'sign_name_pla', 'Nom de planète'),
@@ -163,20 +163,20 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (48, 2, 'title_game', 'Uniguerre'),
 (49, 2, 'username', 'Login'),
 (50, 2, 'password', 'Password'),
-(51, 2, 'return', 'return'),
+(51, 2, 'return', 'Return'),
 (52, 2, 'return_mail', ' , you will receive by email a reminder of your username and password. '),
 (53, 2, 'error_champs_empty', 'Please enter the fields!'),
-(54, 2, 'menu', 'menu'),
+(54, 2, 'menu', 'Menu'),
 (55, 2, 'menu_home', 'Home'),
 (56, 2, 'menu_connect', 'Sign in'),
 (57, 2, 'menu_register', 'Register'),
-(58, 2, 'menu_credit', 'Crédits'),
+(58, 2, 'menu_credit', 'Credits'),
 (59, 2, 'menu_board', 'Board'),
 (60, 2, 'title_login', 'Welcome On '),
 (61, 2, 'title_dec_1', 'is a strategy game online free, playable browser.\r\n             Conquer the universe expanding your empire.\r\n             Establish yourself and dominate fighting other players.'),
 (62, 2, 'title_dec_2', 'Join us now!'),
-(63, 2, 'title_sign', 'registration on '),
-(64, 2, 'sign_email', 'e-mail'),
+(63, 2, 'title_sign', 'Registration on '),
+(64, 2, 'sign_email', 'E-mail'),
 (65, 2, 'sign_name_pla', 'Planet name'),
 (66, 2, 'sign_name_lang', 'language'),
 (67, 2, 'sign_valide', 'registration'),
@@ -188,7 +188,7 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (73, 2, 'welcome', 'Welcome'),
 (74, 2, 'error_write_conn', 'Username or password incorrect'),
 (75, 2, 'credit_link', 'Links'),
-(76, 2, 'credit_fnd', 'founder'),
+(76, 2, 'credit_fnd', 'Founder'),
 (77, 2, 'credit_dev', 'Developers'),
 (78, 2, 'credit_des', 'Designer'),
 (79, 1, 'btn_register', 'S''enregistrer'),
