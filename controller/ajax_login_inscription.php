@@ -3,7 +3,7 @@
 require_once dirname(__DIR__) . "/common.php";
 
 $option = "";
-$AllLanguages = LanguesDAO::selectLangue();
+$AllLanguages = LangueDAO::selectLangues();
 foreach ($AllLanguages as $UnLanguage) {
     $option .="<option value='" . $UnLanguage['code'] . "'>" . utf8_encode($UnLanguage['name']) . "</option>";
 }

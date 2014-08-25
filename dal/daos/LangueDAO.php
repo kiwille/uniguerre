@@ -3,9 +3,9 @@
 class LangueDAO {
     
     /**
-     * Retourne la liste des joueurs du jeu
+     * Retourne la liste des langues du jeu
      * 
-     * @return Utilisateur
+     * @return Langues
      * @throws Exception
      */
     public static function selectLangues() {
