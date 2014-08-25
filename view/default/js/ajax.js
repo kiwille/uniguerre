@@ -6,7 +6,8 @@ function ExeRqt(url)
 		url: dir_controller + url,
 		cache: true
 	})
-	.done(function() {
+	.done(function( html ) {
+-		$( "#page" ).html( html );
 		console.log("Chargement de page " + url + " terminée.");
 	})
 	.fail(function( jqXHR, textStatus) {
