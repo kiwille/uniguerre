@@ -12,17 +12,14 @@ $(".language").each(function(index)
                     type: "POST",
                     data: "langue=" + lang[index],
                     async: false,
-                    url: dir_controller + "" + $("#ajaxpage").val() + ".php",
-                    success: function(infos)
-                    {
-                        $("#pageLogin").html(infos);
-                    }
+                    url: dir_controller + "" + $("#ajaxpage").val() + ".php"
                 })    
-                .done(function() {
-                        console.log("Traduction page en " + lang[index] );
+                .done(function( html ) {
+-                   $( "#page" ).html( html );
+                    console.log("Traduction page en " + lang[index] );
                 })
                 .fail(function( jqXHR, textStatus) {
-                        alert("Erreur critique d'exécution ajax: " + textStatus);
+                    alert("Erreur critique d'exécution ajax: " + textStatus);
                 });
     });
 });
