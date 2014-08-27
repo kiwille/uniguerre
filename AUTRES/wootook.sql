@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 25 Août 2014 à 23:17
+-- Généré le :  Jeu 28 Août 2014 à 00:09
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -65,10 +65,10 @@ CREATE TABLE IF NOT EXISTS `game_menus` (
 --
 
 INSERT INTO `game_menus` (`id`, `id_menu_parent`, `name_menu`, `accessibility`, `type_url`, `url`, `isInGame`, `order`) VALUES
-(1, NULL, 'menu_home', 0, 'ajax', 'ajax_login_accueil.php', 0, 1),
-(2, NULL, 'menu_connect', 0, 'ajax', 'ajax_login_connexion.php', 0, 2),
-(3, NULL, 'menu_register', 0, 'ajax', 'ajax_login_inscription.php', 0, 3),
-(4, NULL, 'menu_credit', 0, 'ajax', 'ajax_login_credit.php', 0, 4),
+(1, NULL, 'menu_home', 0, 'ajax', 'ajax_login_accueil', 0, 1),
+(2, NULL, 'menu_connect', 0, 'ajax', 'ajax_login_connexion', 0, 2),
+(3, NULL, 'menu_register', 0, 'ajax', 'ajax_login_inscription', 0, 3),
+(4, NULL, 'menu_credit', 0, 'ajax', 'ajax_login_credit', 0, 4),
 (5, NULL, 'menu_board', 0, 'ext', 'http://www.wootook.org', 0, 5);
 
 -- --------------------------------------------------------

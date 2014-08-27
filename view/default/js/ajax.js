@@ -1,14 +1,14 @@
-var dir_controller = "controller/";
-
-function ExeRqt(url)
+function ExeRqt(page)
 {
 	$.ajax({
-		url: dir_controller + url,
-		cache: true
+		url: "",
+		cache: true,
+                type : 'POST',
+                data : "page="+page
 	})
 	.done(function( html ) {
 -		$( "#page" ).html( html );
-		console.log("Chargement de page " + url + " terminée.");
+		console.log("Chargement de page " + page + " terminée.");
 	})
 	.fail(function( jqXHR, textStatus) {
 		console.log("Erreur critique d'exécution ajax: " + textStatus);

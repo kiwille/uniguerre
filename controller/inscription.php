@@ -1,6 +1,5 @@
 <?php
 
-require_once dirname(__DIR__) . "/common.php";
 require_once dirname(__DIR__) . "/controller/message.php";
 
 $infos_complete = true;
@@ -59,7 +58,6 @@ if ($infos_complete) {
         UtilisateurDAO::insertUtilisateur($u);
 
         message($lang['sign_finish'] . "" . $identifiant . "" . $lang['return_mail'], $lang['title_sign'] . $lang['title_game'], null, MESSAGE_SUCCESS);
-        # voir pour creer la session direct avec redirection!
     }
 } else {
     message($lang['error_champs_empty'], $lang['title_sign'] . $lang['title_game'], WOOTOOK_WEB_URL, MESSAGE_ERROR);

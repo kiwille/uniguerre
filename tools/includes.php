@@ -6,7 +6,6 @@ require_once dirname(__DIR__) . "/" . WOOTOOK_FILE_CONFIG;
 /** Tools */
 /** -- specials tools DAL -- */
 require_once WOOTOOK_DIR_TOOLS . '/DALFramework/Parameters.php';
-//require_once WOOTOOK_DIR_TOOLS . '/DALFramework/SqlBase.php';
 require_once WOOTOOK_DIR_TOOLS . '/DALFramework/SqlRead.php';
 require_once WOOTOOK_DIR_TOOLS . '/DALFramework/SqlWrite.php';
 /** ------------------------ * */
@@ -16,7 +15,6 @@ require_once WOOTOOK_DIR_TOOLS . '/iif.php';
 require_once WOOTOOK_DIR_TOOLS . '/secure.php';
 require_once WOOTOOK_DIR_TOOLS . '/wordLength.php';
 require_once WOOTOOK_DIR_TOOLS . '/formule.php';
-require_once WOOTOOK_DIR_TOOLS . '/access_denied.php';
 require_once WOOTOOK_DIR_TOOLS . '/array_sort.php';
 
 
