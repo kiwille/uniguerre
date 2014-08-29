@@ -20,5 +20,19 @@ $(".language").each(function(index)
         .fail(function(jqXHR, textStatus) {
             alert("Erreur critique d'exécution ajax: " + textStatus);
         });
+        
+        $.ajax({
+            type: "POST",
+            data: "page=ajax_login_menu&langue=" + lang[index],
+            async: false,
+            url: ""
+        })
+        .done(function(html) {
+            $("#navbarLogin").html(html);
+            console.log("Traduction menu en " + lang[index]);
+        })
+        .fail(function(jqXHR, textStatus) {
+            alert("Erreur critique d'exécution ajax: " + textStatus);
+        });
     });
 });

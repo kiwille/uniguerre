@@ -1,5 +1,6 @@
 <?php
 
+defined("EXEC") or die();
 require_once "navbar_ressources.php";
 
 $parse['navbar_game'] = Page::construirePagePartielle('part_navbar_game', $parse);

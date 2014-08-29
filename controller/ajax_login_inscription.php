@@ -1,5 +1,7 @@
 <?php
 
+defined("EXEC") or die();
+
 $option = "";
 $AllLanguages = LangueDAO::selectLangues();
 foreach ($AllLanguages as $UnLanguage) {

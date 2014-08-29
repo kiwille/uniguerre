@@ -9,9 +9,6 @@ if (session_status() != PHP_SESSION_ACTIVE)
     session_start();
 
 $page = (isset($_POST["page"])) ? $_POST["page"] : ((isset($_SESSION['id'])) ? "overview" : "login");
-var_dump($page);
-var_dump($_SESSION);
-var_dump(isset($_SESSION['id']));
 
 //Récupération de la langue choisie
 $tabLangue = array();
