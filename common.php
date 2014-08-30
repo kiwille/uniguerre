@@ -51,12 +51,12 @@ if (isset($_SESSION["id"])) {
         if ($_SESSION['language'] == $value['code']) {
             switch ($value['type_url']) {
                 case "ajax":
-                    $bloc["menuName"] = $value['value'];
+                    $bloc["menuName"] = utf8_encode($value['value']);
                     $bloc["menuAjax"] = $value['url'];
                     $menu .= Page::construirePagePartielle("part_navbar_login_menu_ingame", $bloc);
                     break;
                 case "ext":
-                    $bloc["menuName"] = $value['value'];
+                    $bloc["menuName"] = utf8_encode($value['value']);
                     $bloc["menuUrl"] = $value['url'];
                     $menu .= Page::construirePagePartielle("part_navbar_login_menu_simpleurl", $bloc);
                     break;
