@@ -23,10 +23,12 @@ if (isset($_POST["motdepasse"]) && wordLength_respected($_POST["motdepasse"], SI
 if ($infos_complete) {
     $id = UtilisateurDAO::selectVerifierIdentiteConnexion($identifiant, $motDePasse);
     //Si les données sont exactes, on va alors tenté la redirection
+
     if ($id > 0) {
+        $_SESSION = array();
         $_SESSION["id"] = $id;
 
-        require_once 'index.php';
+        require_once 'overview.php';
     } else {
         message($lang['error_write_conn'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MESSAGE_ERROR);
     }
