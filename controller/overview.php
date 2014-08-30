@@ -1,6 +1,6 @@
 <?php
 
-defined("EXEC") or die();
+(defined("EXEC") && $_SESSION["id"] > 0) or die(); //Mesure de protection
 require_once "navbar_ressources.php";
 
 $parse['navbar_game'] = Page::construirePagePartielle('part_navbar_game', $parse);
