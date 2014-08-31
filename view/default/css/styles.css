@@ -1,0 +1,16 @@
+/* 
+    Document   : styles.css
+    Created on : 30 août 2014, 21:41:50
+    Author     : Alves
+    Description:
+        Style CSS par défaut
+*/
+
+body {
+    cursor: url(../cur/cur01.cur), progress !important;
+}
+
+.language {
+    cursor:pointer;
+}
+
