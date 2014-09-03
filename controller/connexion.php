@@ -1,5 +1,6 @@
 <?php
 
+ob_start();
 require_once dirname(__DIR__) . "/controller/message.php";
 
 $infos_complete = true;
@@ -28,7 +29,8 @@ if ($infos_complete) {
         $_SESSION = array();
         $_SESSION["id"] = $id;
 
-        require_once 'overview.php';
+        header("Location: ". $_SERVER['HTTP_REFERER']); //TODO A voir si cela fonctionne...
+        exit;
     } else {
         message($lang['error_write_conn'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MESSAGE_ERROR);
     }
@@ -36,5 +38,5 @@ if ($infos_complete) {
     message($lang['error_champs_empty'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MESSAGE_WARNING);
 }
 
-die();
+ob_end_flush();
 ?>
