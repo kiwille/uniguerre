@@ -7,7 +7,7 @@ function ExeRqt(page)
                 data : "page="+page
 	})
 	.done(function( html ) {
--		$( "#page" ).html( html );
+		$( "#page" ).html( html );
 		console.log("Chargement de page " + page + " terminée.");
 	})
 	.fail(function( jqXHR, textStatus) {
