@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 28 Août 2014 à 00:09
+-- Généré le :  Jeu 04 Septembre 2014 à 21:34
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -93,10 +93,10 @@ CREATE TABLE IF NOT EXISTS `game_planets` (
 CREATE TABLE IF NOT EXISTS `game_resources` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(75) NOT NULL,
-  `coef_prod` int(11) NOT NULL,
+  `coef_prod` double NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `game_resources`
@@ -104,7 +104,8 @@ CREATE TABLE IF NOT EXISTS `game_resources` (
 
 INSERT INTO `game_resources` (`id`, `name`, `coef_prod`) VALUES
 (1, 'res_metal', 2),
-(2, 'res_cristal', 1);
+(2, 'res_crystal', 1),
+(3, 'res_deuterium', 0.5);
 
 -- --------------------------------------------------------
 
@@ -126,9 +127,11 @@ CREATE TABLE IF NOT EXISTS `game_translations` (
 
 INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (1, 1, 'res_metal', 'Métal'),
-(2, 1, 'res_cristal', 'Cristal'),
+(2, 1, 'res_crystal', 'Cristal'),
 (3, 2, 'res_metal', 'Metal'),
-(4, 2, 'res_cristal', 'Crystal'),
+(4, 2, 'res_crystal', 'Crystal'),
+(5, 1, 'res_deuterium', 'Deutérium'),
+(6, 2, 'res_deuterium', 'Deuterium'),
 (17, 1, 'title_game', 'wootook'),
 (18, 1, 'username', 'Identifiant'),
 (19, 1, 'password', 'Mot de passe'),
