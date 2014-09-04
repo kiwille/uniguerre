@@ -9,11 +9,14 @@ foreach ($Allressources as $thisressource) {
     $batimentlevel = 2;
     $prod = array();
     $prod[$ressName] = Formuleressource($thisressource['coef_prod'], $batimentlevel);
-    $ressource .= "<td>" . $ressValue . " : " . $prod[$ressName] . "</td>";
+    
+    $bloc["nameress"] = $ressName;
+    $bloc["prodress"] = $prod[$ressName];
+    $bloc["textress"] = $ressValue;
+     
+    $ressource .= Page::construirePagePartielle('part_game_barre_ressources', $bloc);
 }
 
-$parse['ressource'] = $ressource;
-
-$parse['ressource_game'] = Page::construirePagePartielle('part_game_barre_ressources', $parse);
+$parse['ressource_game'] = $ressource;
 
 ?>
