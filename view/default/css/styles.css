@@ -14,3 +14,7 @@ body {
     cursor:pointer;
 }
 
+#container canvas {
+    position: absolute;
+}
+

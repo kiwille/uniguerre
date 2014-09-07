@@ -1,19 +1,9 @@
 
-var renderer, scene, camera, mesh,taille;
+var renderer, scene, camera, mesh;
 
-init();
-animate();
+var rotX, rotY;
 
-function init(){
-	
-	if(mobile() == true)
-	{
-		taille = 150;
-	}
-	else
-	{
-		taille = 200;
-	}
+function init(posX, posY, posZ, taille, img_texture){
     // on initialise le moteur de rendu
     renderer = new THREE.WebGLRenderer();
 
@@ -38,9 +28,10 @@ function init(){
 
 	// on ajoute une lumière blanche
 	var lumiere = new THREE.DirectionalLight( 0xffffff, 1.0 );
-	lumiere.position.set( 0, 0,taille);
+	lumiere.position.set( 0, 0, taille);
 	scene.add( lumiere );
 
+       
 }
 
 function animate() {
@@ -48,4 +39,11 @@ function animate() {
     mesh.rotation.x += 0;
     mesh.rotation.y += 0.008;
     renderer.render( scene, camera );
+}
+
+function createPlanet(posX, posY, posZ, taille, img_texture, rotX, rotY) {
+    init(posX, posY, posZ, taille, img_texture);
+    this.rotX = rotX;
+    this.rotY = rotY;
+    animate();
 }
