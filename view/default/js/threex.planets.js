@@ -4,7 +4,7 @@ THREEx.Planets	= {};
 
 THREEx.Planets.createSun	= function(){
 	var geometry	= new THREE.SphereGeometry(0.5, 32, 32);
-	var texture	= THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/sun.jpg');
+	var texture	= THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/sun02.jpg');
 	var material	= new THREE.MeshPhongMaterial({
 		map	: texture,
 		bumpMap	: texture,
@@ -15,12 +15,12 @@ THREEx.Planets.createSun	= function(){
 };
 
 THREEx.Planets.createStarfield	= function(){
-	var texture	= THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/g01.jpg');
+	var texture	= THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/g02.jpg');
 	var material	= new THREE.MeshBasicMaterial({
 		map	: texture,
 		side	: THREE.BackSide
 	});
-	var geometry	= new THREE.SphereGeometry(100, 32, 32);
+	var geometry	= new THREE.SphereGeometry(80, 20, 20);
 	var mesh	= new THREE.Mesh(geometry, material);
 	return mesh;	
 };
@@ -164,7 +164,7 @@ THREEx.Planets.createRing	= function(){
 	var mesh	= new THREE.Mesh(geometry, material);
 	mesh.lookAt(new THREE.Vector3(0.5,-4,1));
 	return mesh;
-}
+};
 
 //////////////////////////////////////////////////////////////////////////////////
 //		comment								//
