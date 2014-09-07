@@ -30,26 +30,23 @@
     var camera = new THREE.PerspectiveCamera(45, tailleX / tailleY, 0.01, 100);
     camera.position.z = 2;
 
-    var light = new THREE.AmbientLight(0x222222);
+    var light = new THREE.AmbientLight(0x888888);
     scene.add(light);
-
+    
     var light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 5, 5);
+    light.position.set(0, 0, -20);
     scene.add(light);
     light.castShadow = true;
     light.shadowCameraNear = 0.01;
-    light.shadowCameraFar = 15;
+    light.shadowCameraFar = 23;
     light.shadowCameraFov = 45;
-
     light.shadowCameraLeft = -1;
     light.shadowCameraRight = 1;
     light.shadowCameraTop = 1;
     light.shadowCameraBottom = -1;
-    // light.shadowCameraVisible	= true
-
+    //light.shadowCameraVisible	= true;
     light.shadowBias = 0.001;
-    light.shadowDarkness = 0.2;
-
+    light.shadowDarkness = 0;
     light.shadowMapWidth = 1024;
     light.shadowMapHeight = 1024;
 
@@ -65,18 +62,16 @@
     //////////////////////////////////////////////////////////////////////////////////
 
     // var datGUI	= new dat.GUI()
-
-
     var sun = THREEx.Planets.createSun();
-    sun.position.set(2, 0.5, 0.5);
+    sun.position.set(0, 0, -110);
     sun.scale.multiplyScalar(100);
-    sun.position.z = -110;
     sun.receiveShadow = true;
     sun.castShadow = true;
     onRenderFcts.push(function(delta, now) {
         sun.rotation.y -= 1 / 64 * delta;
     });
     scene.add(sun);
+    
 
     var containerEarth = new THREE.Object3D();
     containerEarth.rotateZ(-23.4 * Math.PI / 180);
