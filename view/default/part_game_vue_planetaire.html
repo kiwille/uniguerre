@@ -36,10 +36,10 @@
     camera.position.set(0, 0, 3); //positionnement initial X Y Z
     camera.lookAt(scene.position); //orientation vers le centre de la scène
 
-    var lightFond = new THREE.AmbientLight(0x888888);
+    var lightFond = new THREE.AmbientLight(0x666666);
     scene.add(lightFond);
     
-    var light = new THREE.DirectionalLight(0xffffff, 4, 1000);
+    var light = new THREE.DirectionalLight(0xffffff, 4);
     light.position.set(0, 0, -20);
     light.castShadow = true;
     light.shadowCameraNear = 0.01;
@@ -81,7 +81,7 @@
 
     //----- Soleil
     var sun = THREEx.Planets.createSun();
-    sun.position.set(0, 0, -110);
+    sun.position.set(0, 0, -115);
     sun.scale.multiplyScalar(100);
     sun.receiveShadow = true;
     sun.castShadow = true;
