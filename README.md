@@ -1,4 +1,4 @@
-Uniguerre_v6 - Version en développement (open source)
+Uniguerre
 ============
 
 
