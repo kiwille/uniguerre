@@ -81,13 +81,31 @@
 
     //----- Soleil
     var sun = THREEx.Planets.createSun();
-    sun.position.set(0, 0, -115);
-    sun.scale.multiplyScalar(100);
+    sun.position.set(0, 0, -20);
+    sun.scale.multiplyScalar(15);
     sun.receiveShadow = true;
     sun.castShadow = true;
     scene.add(sun);
     onRenderFcts.push(function(delta, now) {
-        sun.rotation.y -= 1 / 64 * delta;
+        sun.rotation.y += 1 / 64 * delta;
+    });
+	
+	var geometry_Sun = new THREE.SphereGeometry(0.5, 32, 32);
+    var material_Sun = THREEx.createAtmosphereMaterial();
+    material_Sun.side = THREE.BackSide;
+    material_Sun.uniforms.glowColor.value.set(0xFF9900);
+    material_Sun.uniforms.coeficient.value = 0.5;
+    material_Sun.uniforms.power.value = 4.0;
+    var mesh_Sun = new THREE.Mesh(geometry_Sun, material_Sun);
+    mesh_Sun.scale.multiplyScalar(1.15);
+    sun.add(mesh_Sun);
+	
+	var sunCloud = THREEx.Planets.createSunDynamics();
+    sunCloud.receiveShadow = true;
+    sunCloud.castShadow = true;
+    sun.add(sunCloud);
+    onRenderFcts.push(function(delta, now) {
+        sunCloud.rotation.y += 1 / 15 * delta;
     });
     
     //----- Planete
