@@ -5,7 +5,7 @@ THREEx.Planets	= {};
 THREEx.Planets.createSun	= function(){
 	var geometry	= new THREE.SphereGeometry(0.5, 32, 32);
 	var material	= new THREE.MeshPhongMaterial({
-		map		: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/sun01.jpg'),
+		map		: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/sun03.jpg'),
 		bumpScale	: 0.05
 	});
 	var mesh	= new THREE.Mesh(geometry, material);
