@@ -56,7 +56,7 @@
     light.shadowMapHeight = 1024;
     scene.add(light);
     
-    var spotLight = new THREE.SpotLight( 0xffffff, 3);
+    var spotLight = new THREE.SpotLight( 0xffffff, 2);
     spotLight.position.set( 0, 0, 0.01 );
     spotLight.castShadow = true;
     spotLight.shadowMapWidth = 1024;
@@ -122,6 +122,11 @@
     onRenderFcts.push(function(delta, now) {
         earthMesh.rotation.y += 1 / 16 * delta;
     });
+    
+    /*var ring = THREEx.Planets.createRing();
+    ring.receiveShadow = true;
+    ring.castShadow = true;
+    earthMesh.add(ring);*/
 
     var geometry = new THREE.SphereGeometry(0.5, 32, 32);
     var material = THREEx.createAtmosphereMaterial();
@@ -140,6 +145,7 @@
     onRenderFcts.push(function(delta, now) {
         earthCloud.rotation.y += 1 / 8 * delta;
     });
+    
     
     //----- Lune
     var moonMesh = THREEx.Planets.createMoon();

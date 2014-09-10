@@ -6,10 +6,7 @@ THREEx.Planets.createSun	= function(){
 	var geometry	= new THREE.SphereGeometry(0.5, 32, 32);
 	var material	= new THREE.MeshPhongMaterial({
 		map		: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/sun01.jpg'),
-		//bumpMap		: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/p02.jpg'),
-		bumpScale	: 0.05,
-		//specularMap	: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/earthspec1k.jpg'),
-		//specular	: new THREE.Color('grey'),
+		bumpScale	: 0.05
 	});
 	var mesh	= new THREE.Mesh(geometry, material);
 	return mesh;	
@@ -30,10 +27,7 @@ THREEx.Planets.createPlanet	= function(){
 	var geometry	= new THREE.SphereGeometry(0.5, 32, 32);
 	var material	= new THREE.MeshPhongMaterial({
 		map		: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/p01.jpg'),
-		//bumpMap		: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/earthbump1k.jpg'),
-		bumpScale	: 0.05,
-		//specularMap	: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+'/earthspec1k.jpg'),
-		//specular	: new THREE.Color('grey'),
+		bumpScale	: 0.05
 	});
 	var mesh	= new THREE.Mesh(geometry, material);
 	return mesh;	
@@ -84,14 +78,14 @@ THREEx.Planets.createSunDynamics	= function(){
 		});
 		imageTrans.src	= THREEx.Planets.baseURL+'/cloudmaptrans.jpg';
 	}, false);
-	imageMap.src	= THREEx.Planets.baseURL+'/sun09.jpg';
+	imageMap.src	= THREEx.Planets.baseURL+'/cloudmap.jpg';
 
 	var geometry	= new THREE.SphereGeometry(0.51, 32, 32);
 	var material	= new THREE.MeshPhongMaterial({
 		map		: new THREE.Texture(canvasResult),
 		side		: THREE.DoubleSide,
 		transparent	: true,
-		opacity		: 0.8
+		opacity		: 0.3
 	});
 	var mesh	= new THREE.Mesh(geometry, material);
 	return mesh;	
@@ -210,7 +204,7 @@ THREEx.Planets.createRing	= function(){
 			material.map.needsUpdate = true;
 		});
 	}, false);
-	imageMap.src	= THREEx.Planets.baseURL+'/ring01.jpg';
+	imageMap.src	= THREEx.Planets.baseURL+'/ring03.jpg';
 	
 	var geometry	= new THREEx.Planets._RingGeometry(0.55, 0.75, 64);
 	var material	= new THREE.MeshPhongMaterial({
