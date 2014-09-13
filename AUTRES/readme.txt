@@ -1,1 +1,3 @@
 Le cahier des charges est en cours de rédaction...
+
+Vous pouvez donner vos idées à Kiwille.
