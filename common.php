@@ -8,7 +8,8 @@ require_once "tools/includes.php";
 if (session_status() != PHP_SESSION_ACTIVE)
     session_start();
 
-$page = (isset($_POST["page"])) ? $_POST["page"] : ((isset($_SESSION['id'])) ? "overview" : "login");
+$pageDefaut = iif(isset($_SESSION['id']), "overview", "login");
+$pageVisite = isset($_POST["page"]) ? $_POST["page"] : $pageDefaut;
 
 //Récupération de la langue choisie
 $tabLangue = array();
@@ -32,42 +33,34 @@ foreach ($Alltranslation as $translation) {
 
 $parse = $lang;
 
-//-------------------------------------------------------------------------------
-if (isset($_SESSION["id"])) {
-    $id = intval($_SESSION["id"]);
 
-    $currentPlayer = UtilisateurDAO::selectUtilisateurParId($id);
-    //$currentPlanet = PlaneteDAO::selectPlaneteParId(...);
-    $parse['player'] = $currentPlayer->getIdentifiant();
-    $idLang = $currentPlayer->getId_Langue();
+try {
+    //-------------------------------------------------------------------------------
+    if (isset($_SESSION["id"])) {
+        $id = intval($_SESSION["id"]);
 
-    $parse["board"] = 'Forum'; //temporaire
-} else {
-    //Gestion des menus
-    $menusLogin = MenuDAO::selectMenus(false);
-    $menusTriesLogin = array_sort($menusLogin, 'order');
-    $menu = "";
-    foreach ($menusTriesLogin as $value) {
-        if ($_SESSION['language'] == $value['code']) {
-            switch ($value['type_url']) {
-                case "ajax":
-                    $bloc["menuName"] = utf8_encode($value['value']);
-                    $bloc["menuAjax"] = $value['url'];
-                    $menu .= Page::construirePagePartielle("part_navbar_login_menu_ingame", $bloc);
-                    break;
-                case "ext":
-                    $bloc["menuName"] = utf8_encode($value['value']);
-                    $bloc["menuUrl"] = $value['url'];
-                    $menu .= Page::construirePagePartielle("part_navbar_login_menu_simpleurl", $bloc);
-                    break;
-                default:
-                    break;
-            }
-        }
+        $currentPlayer = UtilisateurDAO::selectUtilisateurParId($id);
+        //$currentPlanet = PlaneteDAO::selectPlaneteParId(...);
+        $parse['player'] = $currentPlayer->getIdentifiant();
+        $idLang = $currentPlayer->getId_Langue();
+
+        $parse["board"] = 'Forum'; //temporaire
+    } else {
+        //Gestion des menus
+        $menu = new Menu();
+        $menu->setTemplateAjax("part_navbar_login_menu_ingame");
+        $menu->setTemplateSimpleUrl("part_navbar_login_menu_simpleurl");
+        $menu->setTemplateParentMenu("");
+        $menu->setSortColumnName("order");
+        $menu->setLangage($_SESSION["language"]);
+
+        $parse['menuLogin'] = $menu->getMenu(MenuDAO::selectMenus(false));
     }
-
-    $parse['menuLogin'] = $menu;
+    //-------------------------------------------------------------------------------
+}catch(Exception $ex) {
+    echo $ex->getMessage();
 }
+
 
 //Gestion des langues
 $langimg = "";
@@ -80,9 +73,9 @@ foreach ($ToutesLangues as $value => $langue) {
     $langimg .= Page::construirePagePartielle("part_navbar_login_langue", $bloc);
 }
 
-require_once "controller/" . $page . ".php";
+require_once "controller/" . $pageVisite . ".php";
 
-unset($page);
+unset($pageVisite);
 
 
 

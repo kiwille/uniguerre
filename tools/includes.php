@@ -4,10 +4,12 @@ require_once "constant.php";
 require_once dirname(__DIR__) . "/" . WOOTOOK_FILE_CONFIG;
 
 /** Tools */
-/** -- specials tools DAL -- */
+/** -- specials tools DALFramework -- */
 require_once WOOTOOK_DIR_TOOLS . '/DALFramework/Parameters.php';
 require_once WOOTOOK_DIR_TOOLS . '/DALFramework/SqlRead.php';
 require_once WOOTOOK_DIR_TOOLS . '/DALFramework/SqlWrite.php';
+/** -- specials tools Menu -- */
+require_once WOOTOOK_DIR_TOOLS . '/Menu/Menu.php';
 /** ------------------------ * */
 require_once WOOTOOK_DIR_TOOLS . '/getAsUrl.php';
 require_once WOOTOOK_DIR_TOOLS . '/guid.php';

@@ -1,12 +1,11 @@
 <?php
 
-// === PARAMETRES DE CONNEXION
+// paramètres de connexion BDD
 /*define("HOSTNAME", "localhost");
 define("USERNAME", "root");
 define("PASSWORD", "");
 define("DATABASE", "db_wootooktest");
 define("PREFIXTB", "");*/
-
 
 
 //-----------------------------------
@@ -16,5 +15,6 @@ define("USERNAME", "root");
 define("PASSWORD", "");
 define("DATABASE", "wootook");
 define("PREFIXTB", "game_");
+
 
 ?>
