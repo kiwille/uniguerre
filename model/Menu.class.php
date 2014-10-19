@@ -49,8 +49,6 @@ class Menu {
         $this->langage = $langage;
     }
 
-    
-    
     private function buildUrlMenu($values, $template) {
         $bloc["menuValue"] = utf8_encode($values['value']);
         $bloc["menuUrl"] = $values['url'];

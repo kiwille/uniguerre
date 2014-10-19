@@ -1,7 +1,6 @@
 <?php
 
 ob_start();
-require_once dirname(__DIR__) . "/controller/functions/message.php";
 
 $infos_complete = true;
 
@@ -32,10 +31,10 @@ if ($infos_complete) {
         header("Location: ". $_SERVER['HTTP_REFERER']); //TODO A voir si cela fonctionne...
         exit;
     } else {
-        message($lang['error_write_conn'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MESSAGE_ERROR);
+        MessageSIWE::show($lang['error_write_conn'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MessageSIWE::MESSAGE_ERROR);
     }
 } else {
-    message($lang['error_champs_empty'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MESSAGE_WARNING);
+    MessageSIWE::show($lang['error_champs_empty'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MessageSIWE::MESSAGE_WARNING);
 }
 
 ob_end_flush();

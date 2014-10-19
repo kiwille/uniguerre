@@ -1,7 +1,6 @@
 <?php
 
-require_once dirname(__DIR__) . "/common.php";
-require_once dirname(__DIR__) . "/controller/functions/message.php";
+//require_once dirname(__DIR__) . "/common.php";
 
 $infos_complete = true;
 
@@ -47,7 +46,7 @@ if (isset($_POST["Lang"]) && wordLength_respected($_POST["Lang"], SIGNE_INF_STRI
 if ($infos_complete) {
     $verif = UtilisateurDAO::selectCompterMemeNomUtilisateur($identifiant, $email);
     if ($verif > 0) {
-        message($lang['error_isset_user'], $lang['title_sign'], WOOTOOK_WEB_URL, MESSAGE_WARNING);
+        MessageSIWE::show($lang['error_isset_user'], $lang['title_sign'], WOOTOOK_WEB_URL, MessageSIWE::MESSAGE_WARNING);
     } else {
         //Création planète
         //...
@@ -59,9 +58,10 @@ if ($infos_complete) {
         $u->setEmail($email);
         UtilisateurDAO::insertUtilisateur($u);
 
-        message($lang['sign_finish'] . "" . $identifiant . "" . $lang['return_mail'], $lang['title_sign'] . $lang['title_game'], null, MESSAGE_SUCCESS);
+        $message = $lang['sign_finish'] . "" . $identifiant . "" . $lang['return_mail'];
+        MessageSIWE::show($message, $lang['title_sign'] . $lang['title_game'], null, MessageSIWE::MESSAGE_SUCCESS);
     }
 } else {
-    message($lang['error_champs_empty'], $lang['title_sign'] . $lang['title_game'], WOOTOOK_WEB_URL, MESSAGE_ERROR);
+    MessageSIWE::show($lang['error_champs_empty'], $lang['title_sign'] . $lang['title_game'], WOOTOOK_WEB_URL, MessageSIWE::MESSAGE_ERROR);
 }
 ?>
