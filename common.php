@@ -42,16 +42,25 @@ try {
         $currentPlayer = UtilisateurDAO::selectUtilisateurParId($id);
         //$currentPlanet = PlaneteDAO::selectPlaneteParId(...);
         $parse['player'] = $currentPlayer->getIdentifiant();
-        $idLang = $currentPlayer->getId_Langue();
-
-        $parse["board"] = 'Forum'; //temporaire
+        $langage = $currentPlayer->getLangage();
+        $idLang = $langage->getId();
+        
+        //Gestion des menus
+        $menu = new Menu();
+        $menu->setTemplateAjax("part_navbar_menu_ingame");
+        $menu->setTemplateSimpleUrl("part_navbar_menu_simpleurl");
+        $menu->setTemplateParentMenu("part_navbar_menu_parentmenu");
+        $menu->setSortColumnName(table_menus::numberSort);
+        $menu->setLangage($langage->getCode());
+        
+        $parse['menuGame'] = $menu->getMenu(MenuDAO::selectMenus(true));
     } else {
         //Gestion des menus
         $menu = new Menu();
-        $menu->setTemplateAjax("part_navbar_login_menu_ingame");
-        $menu->setTemplateSimpleUrl("part_navbar_login_menu_simpleurl");
-        $menu->setTemplateParentMenu("");
-        $menu->setSortColumnName("order");
+        $menu->setTemplateAjax("part_navbar_menu_ingame");
+        $menu->setTemplateSimpleUrl("part_navbar_menu_simpleurl");
+        $menu->setTemplateParentMenu("part_navbar_menu_parentmenu");
+        $menu->setSortColumnName(table_menus::numberSort);
         $menu->setLangage($_SESSION["language"]);
 
         $parse['menuLogin'] = $menu->getMenu(MenuDAO::selectMenus(false));

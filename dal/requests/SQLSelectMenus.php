@@ -20,10 +20,10 @@ class SQLSelectMenus extends SqlRead {
         $requete .= " * ";
         $requete .= " FROM {table1} t1 ";
         $requete .= " INNER JOIN {table2} t2 ON t1." . table_menus::name_menu . "  = t2." . table_translations::name . " ";
-        $requete .= " INNER JOIN {table3} t3 ON t2." . table_translations::id_language . "  = t3." . table_languages::id . " ";
+        $requete .= " INNER JOIN {table3} t3 ON t2." . table_translations::id_language . "  = t3." . table_languages::idlanguage . " ";
         $requete .= " WHERE ";
-        $requete .= table_menus::isInGame . " = :isInGame ";
-        
+        $requete .= table_menus::isInGame . " = :" . table_menus::isInGame . " ";
+
         return $requete;
     }
 

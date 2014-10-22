@@ -5,7 +5,7 @@ class table_languages {
     const NAME_TABLE = "languages";
     
     //Champs de la table
-    const id = "id";
+    const idlanguage = "idlanguage";
     const code = "code";
     const name = "name";
 }

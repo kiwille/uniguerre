@@ -20,7 +20,7 @@ class MessageSIWE {
      * @return Array Tableau des niveaux d'importance
      */
     private static function getValideLevels() {
-         return $levels_message = array( self::MESSAGE_SUCCESS, self::MESSAGE_INFORMATION, self::MESSAGE_WARNING, self::MESSAGE_ERROR);
+        return $levels_message = array(self::MESSAGE_SUCCESS, self::MESSAGE_INFORMATION, self::MESSAGE_WARNING, self::MESSAGE_ERROR);
     }
 
     /**
@@ -32,12 +32,11 @@ class MessageSIWE {
      * @param type $level_message Niveau d'importance du message, par défaut à "Erreur"
      * @throws Exception
      */
-    
     static function show($message, $title, $url = null, $level_message = self::MESSAGE_ERROR) {
         global $lang, $langimg;
-        
+
         if (!in_array($level_message, self::getValideLevels()))
-                throw new Exception ("Erreur: Type de message non défini.");
+            throw new Exception("Erreur: Type de message non défini.");
 
         $parse = $lang;
         $parse["langimg"] = $langimg;

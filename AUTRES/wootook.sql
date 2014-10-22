@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 04 Septembre 2014 à 21:34
+-- Généré le :  Mer 22 Octobre 2014 à 23:34
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -27,10 +27,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `game_languages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idlanguage` int(11) NOT NULL AUTO_INCREMENT,
   `code` char(2) NOT NULL,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`idlanguage`),
   UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `game_languages` (
 -- Contenu de la table `game_languages`
 --
 
-INSERT INTO `game_languages` (`id`, `code`, `name`) VALUES
+INSERT INTO `game_languages` (`idlanguage`, `code`, `name`) VALUES
 (1, 'FR', 'Français'),
 (2, 'EN', 'Anglais');
 
@@ -49,27 +49,52 @@ INSERT INTO `game_languages` (`id`, `code`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `game_menus` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_menu_parent` int(11) DEFAULT NULL,
+  `idmenu` int(11) NOT NULL AUTO_INCREMENT,
+  `id_parentmenu` int(11) DEFAULT NULL,
   `name_menu` varchar(50) NOT NULL,
   `accessibility` int(11) NOT NULL,
-  `type_url` enum('ajax','ext') DEFAULT NULL,
+  `type_url` enum('ajax','extr') DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `isInGame` tinyint(1) NOT NULL DEFAULT '0',
-  `order` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `numberSort` int(11) NOT NULL,
+  PRIMARY KEY (`idmenu`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `game_menus`
 --
 
-INSERT INTO `game_menus` (`id`, `id_menu_parent`, `name_menu`, `accessibility`, `type_url`, `url`, `isInGame`, `order`) VALUES
+INSERT INTO `game_menus` (`idmenu`, `id_parentmenu`, `name_menu`, `accessibility`, `type_url`, `url`, `isInGame`, `numberSort`) VALUES
 (1, NULL, 'menu_home', 0, 'ajax', 'ajax_login_accueil', 0, 1),
 (2, NULL, 'menu_connect', 0, 'ajax', 'ajax_login_connexion', 0, 2),
 (3, NULL, 'menu_register', 0, 'ajax', 'ajax_login_inscription', 0, 3),
 (4, NULL, 'menu_credit', 0, 'ajax', 'ajax_login_credit', 0, 4),
-(5, NULL, 'menu_board', 0, 'ext', 'http://www.wootook.org', 0, 5);
+(5, NULL, 'menu_board', 0, 'extr', 'http://www.wootook.org', 0, 5),
+(6, NULL, 'menu_development', 0, NULL, NULL, 1, 1),
+(7, NULL, 'menu_navigation', 0, NULL, NULL, 1, 2),
+(8, NULL, 'menu_productivity', 0, NULL, NULL, 1, 3),
+(9, NULL, 'menu_community', 0, NULL, NULL, 1, 4),
+(10, NULL, 'menu_tools', 0, NULL, NULL, 1, 5),
+(11, NULL, 'menu_board', 0, 'extr', 'http://www.wootook.org', 1, 6),
+(12, 6, 'menu_building', 0, 'ajax', 'ajax_game_batiment', 1, 1),
+(13, 6, 'menu_research', 0, 'ajax', 'ajax_game_recherche', 1, 2),
+(14, 6, 'menu_spaceship', 0, 'ajax', 'ajax_game_flotte', 1, 3),
+(15, 6, 'menu_defense', 0, 'ajax', 'ajax_game_defense', 1, 4),
+(16, 7, 'menu_planetview', 0, 'ajax', 'ajax_game_vueplanete', 1, 1),
+(17, 7, 'menu_universeview', 0, 'ajax', 'ajax_game_vueunivers', 1, 2),
+(18, 7, 'menu_starport', 0, 'ajax', 'ajax_game_spatioport', 1, 3),
+(19, 7, 'menu_empireview', 0, 'ajax', 'ajax_game_vueempire', 1, 4),
+(20, 8, 'menu_techtree', 0, 'ajax', 'ajax_game_arbretech', 1, 1),
+(21, 8, 'menu_statsress', 0, 'ajax', 'ajax_game_statsress', 1, 2),
+(22, 8, 'menu_ranking', 0, 'ajax', 'ajax_game_classement', 1, 3),
+(23, 9, 'menu_messages', 0, 'ajax', 'ajax_game_messages', 1, 1),
+(24, 9, 'menu_chat', 0, 'ajax', 'ajax_game_chat', 1, 2),
+(25, 9, 'menu_relationship', 0, 'ajax', 'ajax_game_relations', 1, 3),
+(26, 9, 'menu_contacts', 0, 'ajax', 'ajax_game_contacts', 1, 4),
+(27, 10, 'menu_notes', 0, 'ajax', 'ajax_game_notes', 1, 1),
+(28, 10, 'menu_rules', 0, 'ajax', 'ajax_game_regles', 1, 2),
+(29, 10, 'menu_options', 0, 'ajax', 'ajax_game_options', 1, 3),
+(30, 10, 'menu_changelog', 0, 'ajax', 'ajax_menu_changelog', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -91,10 +116,10 @@ CREATE TABLE IF NOT EXISTS `game_planets` (
 --
 
 CREATE TABLE IF NOT EXISTS `game_resources` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idresource` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(75) NOT NULL,
   `coef_prod` double NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`idresource`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -102,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `game_resources` (
 -- Contenu de la table `game_resources`
 --
 
-INSERT INTO `game_resources` (`id`, `name`, `coef_prod`) VALUES
+INSERT INTO `game_resources` (`idresource`, `name`, `coef_prod`) VALUES
 (1, 'res_metal', 2),
 (2, 'res_crystal', 1),
 (3, 'res_deuterium', 0.5);
@@ -114,18 +139,18 @@ INSERT INTO `game_resources` (`id`, `name`, `coef_prod`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `game_translations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idtranslation` int(11) NOT NULL AUTO_INCREMENT,
   `id_language` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `value` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=81 ;
+  PRIMARY KEY (`idtranslation`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=129 ;
 
 --
 -- Contenu de la table `game_translations`
 --
 
-INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
+INSERT INTO `game_translations` (`idtranslation`, `id_language`, `name`, `value`) VALUES
 (1, 1, 'res_metal', 'Métal'),
 (2, 1, 'res_crystal', 'Cristal'),
 (3, 2, 'res_metal', 'Metal'),
@@ -195,7 +220,55 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 (77, 2, 'credit_dev', 'Developers'),
 (78, 2, 'credit_des', 'Designer'),
 (79, 1, 'btn_register', 'S''enregistrer'),
-(80, 2, 'btn_register', 'Register');
+(80, 2, 'btn_register', 'Register'),
+(81, 1, 'menu_development', 'Développement'),
+(82, 2, 'menu_development', 'Development'),
+(83, 1, 'menu_building', 'Bâtiments'),
+(84, 2, 'menu_building', 'Buildings'),
+(85, 1, 'menu_research', 'Recherches'),
+(86, 2, 'menu_research', 'Research'),
+(87, 1, 'menu_spaceship', 'Vaisseaux'),
+(88, 2, 'menu_spaceship', 'Spaceship'),
+(89, 1, 'menu_defense', 'Défenses'),
+(90, 2, 'menu_defense', 'Defense'),
+(91, 1, 'menu_navigation', 'Navigation'),
+(92, 2, 'menu_navigation', 'Navigation'),
+(93, 1, 'menu_planetview', 'Vue planétaire'),
+(94, 2, 'menu_planetview', 'Overview'),
+(95, 1, 'menu_universeview', 'Vue de l''univers'),
+(96, 2, 'menu_universeview', 'Universe'),
+(97, 1, 'menu_starport', 'Spatioport'),
+(98, 2, 'menu_starport', 'Starport'),
+(99, 1, 'menu_empireview', 'Vue de l''empire'),
+(100, 2, 'menu_empireview', 'Empire'),
+(101, 1, 'menu_productivity', 'Productivité'),
+(102, 2, 'menu_productivity', 'Productivity'),
+(103, 1, 'menu_techtree', 'Arbre technologique'),
+(104, 2, 'menu_techtree', 'Tech tree'),
+(105, 1, 'menu_statsress', 'Statistiques ressources'),
+(106, 2, 'menu_statsress', 'Resource statistics'),
+(107, 1, 'menu_ranking', 'Classement'),
+(108, 2, 'menu_ranking', 'Ranking'),
+(109, 1, 'menu_community', 'Communauté'),
+(110, 2, 'menu_community', 'Community'),
+(111, 1, 'menu_messages', 'Messagerie'),
+(112, 2, 'menu_messages', 'Messages'),
+(113, 1, 'menu_chat', 'Chat'),
+(114, 2, 'menu_chat', 'Chat'),
+(115, 1, 'menu_relationship', 'Relations'),
+(116, 2, 'menu_relationship', 'Relationship'),
+(117, 1, 'menu_contacts', 'Contacts'),
+(118, 2, 'menu_contacts', 'Contacts'),
+(119, 1, 'menu_tools', 'Autres outils'),
+(120, 2, 'menu_tools', 'Other tools'),
+(121, 1, 'menu_notes', 'Notes'),
+(122, 2, 'menu_notes', 'Notes'),
+(123, 1, 'menu_rules', 'Règles'),
+(124, 2, 'menu_rules', 'Rules'),
+(125, 1, 'menu_options', 'Options'),
+(126, 2, 'menu_options', 'Options'),
+(127, 1, 'menu_changelog', 'Changelog'),
+(128, 2, 'menu_changelog', 'Chnagelog');
 
 -- --------------------------------------------------------
 
@@ -204,22 +277,23 @@ INSERT INTO `game_translations` (`id`, `id_language`, `name`, `value`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `game_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iduser` int(11) NOT NULL AUTO_INCREMENT,
   `id_language` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`iduser`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `game_users`
 --
 
-INSERT INTO `game_users` (`id`, `id_language`, `username`, `password`, `email`) VALUES
-(1, 1, 'Kiwille', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test@test.fr');
+INSERT INTO `game_users` (`iduser`, `id_language`, `username`, `password`, `email`) VALUES
+(1, 1, 'Kiwille', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test@test.fr'),
+(2, 0, 'demo', '$2a$10$ASkYBa9iDdzjpiMpdAqRv.Dt4QfIAyrSGYaaO1TfXSgGbC.fXCK4q', 'demo@demo.demo');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

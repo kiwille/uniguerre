@@ -35,10 +35,10 @@ class SQLInsertUtilisateur extends SqlWrite {
         $requete .= table_users::email;
         //...
         $requete .= " ) VALUES (";
-        $requete .= "   :id_language, ";
-        $requete .= "   :username, ";
-        $requete .= "   :password, ";
-        $requete .= "   :email ";
+        $requete .= "   :" . table_users::id_language . ", ";
+        $requete .= "   :" . table_users::username . ", ";
+        $requete .= "   :" . table_users::password . ", ";
+        $requete .= "   :" . table_users::email . " ";
         //...
         $requete .= " );";
 

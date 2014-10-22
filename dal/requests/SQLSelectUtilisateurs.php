@@ -22,7 +22,6 @@ class SQLSelectUtilisateurs extends SqlRead {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
 }
 
 ?>

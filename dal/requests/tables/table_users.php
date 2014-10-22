@@ -6,7 +6,7 @@ class table_users {
     const NAME_TABLE = "users";
     
     //Champs de la table
-    const id = "id";
+    const iduser = "iduser";
     const id_language = "id_language";
     const username = "username";
     const password = "password";

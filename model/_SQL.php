@@ -108,6 +108,7 @@ class _SQL {
     public function execute($req) {
         $success = $req->execute();
         if (!$success) {
+            var_dump($req);
             throw new Exception("Erreur sur la requete: " . $req->errorInfo()[2] , E_ERROR);
         }
     }

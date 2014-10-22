@@ -1,7 +1,7 @@
 <?php
 
 class SQLSelectLangues extends SqlRead {
-    
+
     protected function parametres() {
         return null;
     }
@@ -10,7 +10,7 @@ class SQLSelectLangues extends SqlRead {
         $requete = " SELECT ";
         $requete .= " * ";
         $requete .= " FROM {table1}";
-        
+
         return $requete;
     }
 
@@ -22,6 +22,7 @@ class SQLSelectLangues extends SqlRead {
     protected function tables() {
         return array(table_languages::NAME_TABLE);
     }
+
 }
 
 ?>

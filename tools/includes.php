@@ -25,6 +25,8 @@ require_once WOOTOOK_DIR_MODEL . '/MessageSIWE.class.php';
 /** ------------ */
 require_once WOOTOOK_DIR_MODEL . '/_SQL.php';
 require_once WOOTOOK_DIR_MODEL . '/BddSave.class.php';
+/** ------------ */
+require_once WOOTOOK_DIR_MODEL . '/Langage.class.php';
 require_once WOOTOOK_DIR_MODEL . '/Page.class.php';
 require_once WOOTOOK_DIR_MODEL . '/Utilisateur.class.php';
 require_once WOOTOOK_DIR_MODEL . '/Ressources.class.php';

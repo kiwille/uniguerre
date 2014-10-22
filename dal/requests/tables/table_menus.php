@@ -5,13 +5,14 @@ class table_menus {
     const NAME_TABLE = "menus";
     
     //Champs de la table
-    const id = "id";
-    const id_menu_parent = "id_menu_parent";
+    const idmenu = "idmenu";
+    const id_parentmenu = "id_parentmenu";
     const name_menu = "name_menu";
     const accessibility = "accessibility";
     const type_url = "type_url";
     const url = "url";
     const isInGame = "isInGame";
+    const numberSort = "numberSort";
     
 }
 

@@ -3,28 +3,44 @@
 class Utilisateur {
 
     private $id;
-    private $id_langue;
+    private $langage;
     private $identifiant;
     private $motDePasse;
     private $email;
     private $idPlaneteMere;
     
+    /**
+     * 
+     * @return  Integer
+     */
     public function getId() {
         return $this->id;
     }
 
+    /**
+     * 
+     * @param \Integer $id
+     */
     public function setId($id) {
         $this->id = $id;
     }
-
-    public function getId_langue() {
-        return $this->id_langue;
+    
+    /**
+     * 
+     * @return \Langage
+     */
+    public function getLangage() {
+        return $this->langage;
     }
 
-    public function setId_langue($id_langue) {
-        $this->id_langue = $id_langue;
+    /**
+     * 
+     * @param \Langage $langage
+     */
+    public function setLangage(\Langage $langage) {
+        $this->langage = $langage;
     }
-
+    
     public function getIdentifiant() {
         return $this->identifiant;
     }

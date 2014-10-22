@@ -5,7 +5,7 @@ class table_resources {
     const NAME_TABLE = "resources";
     
     //Champs de la table
-    const id = "id";
+    const idresource = "idresource";
     const name = "name";
     const coef_prod = "coef_prod";
 }

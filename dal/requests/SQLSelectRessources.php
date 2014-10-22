@@ -1,7 +1,7 @@
 <?php
 
 class SQLSelectRessources extends SqlRead {
-    
+
     protected function parametres() {
         return null;
     }
