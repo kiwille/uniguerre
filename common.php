@@ -53,7 +53,7 @@ try {
         $menu->setSortColumnName(table_menus::numberSort);
         $menu->setLangage($langage->getCode());
         
-        $parse['menuGame'] = $menu->getMenu(MenuDAO::selectMenus(true));
+        $parse['navbar_menus'] = $menu->getMenu(MenuDAO::selectMenus(true));
     } else {
         //Gestion des menus
         $menu = new Menu();
@@ -63,7 +63,7 @@ try {
         $menu->setSortColumnName(table_menus::numberSort);
         $menu->setLangage($_SESSION["language"]);
 
-        $parse['menuLogin'] = $menu->getMenu(MenuDAO::selectMenus(false));
+        $parse['navbar_menus'] = $menu->getMenu(MenuDAO::selectMenus(false));
     }
     //-------------------------------------------------------------------------------
 }catch(Exception $ex) {
@@ -82,7 +82,11 @@ foreach ($ToutesLangues as $value => $langue) {
     $langimg .= Page::construirePagePartielle("part_navbar_login_langue", $bloc);
 }
 
-require_once "controller/" . $pageVisite . ".php";
+if (file_exists("controller/" . $pageVisite . ".php")) {
+    require_once "controller/" . $pageVisite . ".php";
+}else{
+    require_once "controller/ajax_erreur.php";
+}
 
 unset($pageVisite);
 

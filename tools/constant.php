@@ -8,7 +8,7 @@ ini_set('max_execution_time', 15);
 ini_set('date.timezone','Europe/Paris');
 
 // === PARAMETRES DE URL
-define("WOOTOOK_WEB_URL", ( (isset($_SERVER['HTTPS'])) ? "https://" : "http://") . $_SERVER['SERVER_NAME']);
+define("WOOTOOK_WEB_URL", $_SERVER['HTTP_REFERER']);
 
 // === PARAMETRES DE CHEMINS DU JEU
 define("WOOTOOK_DIR_ROOT", dirname(__DIR__));

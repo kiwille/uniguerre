@@ -30,7 +30,8 @@ class SQLSelectVerifierIdentiteConnexion extends SqlRead {
 
         $row = $req->fetch();
         if ($row) {
-            $id = iif(crypt($this->motdepasse, $row["password"]) === $row["password"], $row["id"], -1);
+            $str_hashing = crypt($this->motdepasse, $row[table_users::password]);
+            $id = iif($str_hashing === $row[table_users::password], intval($row[table_users::iduser]), -1);
         }
 
         return $id;

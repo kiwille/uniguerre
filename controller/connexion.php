@@ -30,11 +30,11 @@ if ($infos_complete) {
 
         header("Location: ". $_SERVER['HTTP_REFERER']); //TODO A voir si cela fonctionne...
         exit;
-    } else {
-        MessageSIWE::show($lang['error_write_conn'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MessageSIWE::MESSAGE_ERROR);
+    } else {        
+        MessageSIWE::showSimpleMessage($lang['error_write_conn'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MessageSIWE::MESSAGE_ERROR);
     }
 } else {
-    MessageSIWE::show($lang['error_champs_empty'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MessageSIWE::MESSAGE_WARNING);
+    MessageSIWE::showSimpleMessage($lang['error_champs_empty'], $lang['title_conn'] . $lang['title_game'], WOOTOOK_WEB_URL, MessageSIWE::MESSAGE_WARNING);
 }
 
 ob_end_flush();
