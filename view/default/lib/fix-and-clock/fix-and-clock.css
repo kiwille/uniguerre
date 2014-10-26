@@ -1,6 +1,6 @@
 ol, ul { list-style: none; }
 
-#headlogin {
+#general-clock {    
     background:transparent;
     width:100%;
     height:21px;
@@ -9,24 +9,22 @@ ol, ul { list-style: none; }
     -moz-user-select:none;
     user-select:none;
     font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-}
-#headlogin nav#menu-dx-login {
     position:absolute;
     right:10px;
     top:0;
 }
-#headlogin nav#menu-dx-login ul { 
+#general-clock ul { 
     margin:0; 
     padding:0;
 }
-#headlogin nav#menu-dx-login ul li {
+#general-clock ul li {
     float:left;
     height:21px;
     line-height:25px;
     position:relative;
 }
-#headlogin nav#menu-dx-login ul li.time { 
+/*#general-clock ul li.time { 
     font-size:14px; 
     color:#969696;
     padding:0 10px;
-}
+}*/

@@ -4,6 +4,7 @@
  * Version 1.0
  */
 
+/* General: cadre + onglet */
 body {
     cursor: url(../cur/cur01.cur), progress !important;
     background-image:url('../img/fond2.jpg');
@@ -17,7 +18,6 @@ body {
     position: absolute;
 }
 
-/* General: cadre + onglet */
 .ug-cadre-page, .ug-cadre-ress {
     -moz-background-clip: padding;     /* Firefox 3.6 */
     -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
@@ -101,4 +101,8 @@ body {
     -webkit-opacity: 0;
     -o-opacity: 0;
     opacity: 0;
+}
+
+#ug-contents-ress {
+    padding: 10px;
 }
