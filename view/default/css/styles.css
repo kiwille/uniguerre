@@ -1,13 +1,12 @@
-/* 
-    Document   : styles.css
-    Created on : 30 août 2014, 21:41:50
-    Author     : Alves
-    Description:
-        Style CSS par défaut
-*/
+/**
+ * styles.css
+ * --------------
+ * Version 1.0
+ */
 
 body {
     cursor: url(../cur/cur01.cur), progress !important;
+    background-image:url('../img/fond2.jpg');
 }
 
 .language {
@@ -18,5 +17,88 @@ body {
     position: absolute;
 }
 
+/* General: cadre + onglet */
+.ug-cadre-page, .ug-cadre-ress {
+    -moz-background-clip: padding;     /* Firefox 3.6 */
+    -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+    background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */						 
+    border: 6px solid #0f192d;
+    background: rgba(9,19,38,0.9);
+    padding: 5px;
+    color: #fff;
+    -webkit-box-shadow: inset 0px 0px 10px 3px #000000;
+    -moz-box-shadow: inset 0px 0px 10px 3px #000000;
+    box-shadow: inset 0px 0px 10px 3px #000000; 
+    font: 12px "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+    border-radius: 0px 0px 10px 10px;
+    margin: 0 auto;
+}
 
+.ug-cadre-page {
+    width: 922px;
+    height: 622px;
+}
 
+.ug-cadre-ress {
+    width: 300px;
+    height: 622px;
+}
+
+.ug-onglets {
+    margin-left:25px;
+    font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+    text-decoration: none;
+}
+
+.ug-onglet-text {
+    text-align: center;
+    width:125px;
+    margin-left:18px;
+    display:inline-block;
+    font-size: 11px;
+    padding: 6px;
+    border: 1px solid #006cff;
+    border-bottom:none;
+    -moz-border-radius : 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+    background: rgb(15,51,93); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(15,51,93,1) 0%, rgba(20,82,132,1) 50%, rgba(16,73,122,1) 51%, rgba(27,117,185,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(15,51,93,1)), color-stop(50%,rgba(20,82,132,1)), color-stop(51%,rgba(16,73,122,1)), color-stop(100%,rgba(27,117,185,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(15,51,93,1) 0%,rgba(20,82,132,1) 50%,rgba(16,73,122,1) 51%,rgba(27,117,185,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(15,51,93,1) 0%,rgba(20,82,132,1) 50%,rgba(16,73,122,1) 51%,rgba(27,117,185,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(15,51,93,1) 0%,rgba(20,82,132,1) 50%,rgba(16,73,122,1) 51%,rgba(27,117,185,1) 100%); /* IE10+ */
+    background: linear-gradient(top,  rgba(15,51,93,1) 0%,rgba(20,82,132,1) 50%,rgba(16,73,122,1) 51%,rgba(27,117,185,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f335d', endColorstr='#1b75b9',GradientType=0 ); /* IE6-9 */
+}
+
+.ug-onglet-text:hover {
+    background: rgb(27,117,185); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(27,117,185,1) 0%, rgba(16,73,122,1) 49%, rgba(20,82,132,1) 50%, rgba(15,51,93,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(27,117,185,1)), color-stop(49%,rgba(16,73,122,1)), color-stop(50%,rgba(20,82,132,1)), color-stop(100%,rgba(15,51,93,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(27,117,185,1) 0%,rgba(16,73,122,1) 49%,rgba(20,82,132,1) 50%,rgba(15,51,93,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(27,117,185,1) 0%,rgba(16,73,122,1) 49%,rgba(20,82,132,1) 50%,rgba(15,51,93,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(27,117,185,1) 0%,rgba(16,73,122,1) 49%,rgba(20,82,132,1) 50%,rgba(15,51,93,1) 100%); /* IE10+ */
+    background: linear-gradient(top,  rgba(27,117,185,1) 0%,rgba(16,73,122,1) 49%,rgba(20,82,132,1) 50%,rgba(15,51,93,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b75b9', endColorstr='#0f335d',GradientType=0 ); /* IE6-9 */
+    color: #00c0ff;
+    text-decoration: none;
+} 
+
+.ug-onglet-space{
+    float:left;
+    width:125px;
+    margin-left:18px;
+    display:inline-block;
+    font-size: 11px;
+    font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+    padding: 6px;
+    border-bottom:none;
+    -moz-opacity: 0;
+    -webkit-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+}

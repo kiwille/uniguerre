@@ -2,9 +2,8 @@
 
 class Page {
 
-    const NAME_SCRIPTPAGE = "head_scriptpage";
-    const NAME_CSSPAGE = "head_csspage";
-    const NAME_FINALPAGE = "finalpage";
+    const NAME_HEADPAGE = "header_page";
+    const NAME_FINALPAGE = "final_page";
     const EXT_TEMPLATES = ".html";
     const DEFAULT_LANG = "en";
     const TITLE_PAGE = "Uniguerre";
@@ -35,9 +34,8 @@ class Page {
         $parse["titrePage"] = $titre;
         $parse["path_design"] = self::DIR_THEME;
 
-        $parse["scriptPage"] = self::construirePagePartielle(self::NAME_SCRIPTPAGE, $parse);
-        $parse["stylesheetPage"] = self::construirePagePartielle(self::NAME_CSSPAGE, $parse);
-        $parse['bodyPage'] = self::construirePagePartielle($templateName, $parse);
+        $parse["headPage"] = self::construirePagePartielle(self::NAME_HEADPAGE, $parse);
+        $parse["bodyPage"] = self::construirePagePartielle($templateName, $parse);
 
         //Construire la page avec les morceaux.
         echo self::getTemplate(self::NAME_FINALPAGE, $parse);
