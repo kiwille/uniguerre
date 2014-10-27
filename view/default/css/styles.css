@@ -45,12 +45,13 @@ body {
 }
 
 .ug-onglets {
-    margin-left:25px;
+    margin-left: -12px;
     font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
     color: #fff;
     font-weight: bold;
     text-shadow: 1px 1px #000;
     text-decoration: none;
+    text-align: center;
 }
 
 .ug-onglet-text {

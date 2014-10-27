@@ -51,7 +51,7 @@ class Page {
      * @return string
      */
     static private function getTemplate($templateName, $parse) {
-        $filename = WOOTOOK_DIR_ROOT. DIRECTORY_SEPARATOR . self::DIR_THEME . $templateName . self::EXT_TEMPLATES;
+        $filename = UNIGUERRE_DIR_ROOT. DIRECTORY_SEPARATOR . self::DIR_THEME . $templateName . self::EXT_TEMPLATES;
 
         $template = self::ReadFromFile($filename);
         

@@ -1,6 +1,7 @@
 ol, ul { list-style: none; }
 
-#general-clock {    
+#general-clock { 
+    text-align: right;
     background:transparent;
     width:100%;
     height:21px;
