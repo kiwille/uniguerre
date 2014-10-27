@@ -1,9 +1,11 @@
 <script src='{path_design}js/three.min.js'></script>
 <script src='{path_design}js/threex.planets.js'></script>
 <script src='{path_design}js/threex.atmospherematerial.js'></script>
-<!-- include for threex.glowdatgui -->
 <script src='{path_design}js/dat.gui.min.js'></script>
 <script src="{path_design}js/threex.atmospheredatgui.js"></script>
+
+
+
 
 <div class="col-lg-12">
     <div class="ug-onglets">
@@ -78,7 +80,7 @@
         //		added starfield							//
         //////////////////////////////////////////////////////////////////////////////////
 
-        var starSphere = THREEx.Planets.createStarfield();
+        var starSphere = THREEx.Planets.createStarfield("g01.jpg");
         scene.add(starSphere);
 
         //////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +88,7 @@
         //////////////////////////////////////////////////////////////////////////////////
 
         //----- Soleil
-        var sun = THREEx.Planets.createSun();
+        var sun = THREEx.Planets.createSun("sun03.jpg");
         sun.position.set(0, 0, -20);
         sun.scale.multiplyScalar(15);
         sun.receiveShadow = true;
@@ -106,7 +108,7 @@
         mesh_Sun.scale.multiplyScalar(1.15);
         sun.add(mesh_Sun);
 
-        var sunCloud = THREEx.Planets.createSunDynamics();
+        var sunCloud = THREEx.Planets.createSunDynamics("cloudmaptrans.jpg", "cloudmap.jpg");
         sunCloud.receiveShadow = true;
         sunCloud.castShadow = true;
         sun.add(sunCloud);
@@ -121,7 +123,7 @@
         containerEarth.position.z = 0.5;
         scene.add(containerEarth);
 
-        var earthMesh = THREEx.Planets.createPlanet();
+        var earthMesh = THREEx.Planets.createPlanet("p01.jpg");
         earthMesh.receiveShadow = true;
         earthMesh.castShadow = true;
         containerEarth.add(earthMesh);
@@ -129,10 +131,10 @@
             earthMesh.rotation.y += 1 / 16 * delta;
         });
 
-        /*var ring = THREEx.Planets.createRing();
-         ring.receiveShadow = true;
-         ring.castShadow = true;
-         earthMesh.add(ring);*/
+        var ring = THREEx.Planets.createRing("ring01.jpg");
+        ring.receiveShadow = true;
+        ring.castShadow = true;
+        earthMesh.add(ring);
 
         var geometry = new THREE.SphereGeometry(0.5, 32, 32);
         var material = THREEx.createAtmosphereMaterial();
@@ -144,7 +146,7 @@
         mesh.scale.multiplyScalar(1.15);
         containerEarth.add(mesh);
 
-        var earthCloud = THREEx.Planets.createCloud();
+        var earthCloud = THREEx.Planets.createCloud("cloudmaptrans.jpg", "cloudmap.jpg");
         earthCloud.receiveShadow = true;
         earthCloud.castShadow = true;
         containerEarth.add(earthCloud);
@@ -154,7 +156,7 @@
 
 
         //----- Lune
-        var moonMesh = THREEx.Planets.createMoon();
+        var moonMesh = THREEx.Planets.createMoon("lune02.jpg");
         moonMesh.position.set(0.5, 0.5, 0.5);
         moonMesh.scale.multiplyScalar(1 / 5);
         moonMesh.receiveShadow = true;
