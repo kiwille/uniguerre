@@ -1,6 +1,6 @@
 <?php
 
-//require_once dirname(__DIR__) . "/common.php";
+require_once dirname(__DIR__) . "/common.php";
 
 $infos_complete = true;
 
@@ -37,10 +37,11 @@ if (isset($_POST["PM"]) && wordLength_respected($_POST["PM"], SIGNE_SUP_EGAL, 3)
 //Validation de la langue
 if (isset($_POST["Lang"]) && wordLength_respected($_POST["Lang"], SIGNE_INF_STRICT, 3) && in_array($_POST["Lang"], $tabLangue)) {
    # revoir obselete
-   //$langue = intval($idLang[$_POST["Lang"]]);
+   $langue = intval($veriflangueinscription[$_POST["Lang"]]);
 } else {
     $infos_complete = false;
 }
+var_dump($langue);
 
 //Toutes les informations sont complètes...
 if ($infos_complete) {
@@ -52,7 +53,7 @@ if ($infos_complete) {
         //...
         //Création utilisateur
         $u = new Utilisateur();
-        $u->setId_langue($langue);
+        $u->setLangage($langue);
         $u->setIdentifiant($identifiant);
         $u->setMotDePasse(EncodePassword($motDePasse));
         $u->setEmail($email);

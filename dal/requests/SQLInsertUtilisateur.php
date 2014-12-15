@@ -9,7 +9,7 @@ class SQLInsertUtilisateur extends SqlWrite {
     //...
 
     public function __construct(\Utilisateur $utilisateur) {
-        $this->language = $utilisateur->getId_langue();
+        $this->language = $utilisateur->getLangage();
         $this->username = $utilisateur->getIdentifiant();
         $this->password = $utilisateur->getMotDePasse();
         $this->email = $utilisateur->getEmail();

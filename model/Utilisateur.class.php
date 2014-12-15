@@ -37,7 +37,7 @@ class Utilisateur {
      * 
      * @param \Langage $langage
      */
-    public function setLangage(\Langage $langage) {
+    public function setLangage($langage) {
         $this->langage = $langage;
     }
     

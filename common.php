@@ -16,6 +16,7 @@ $tabLangue = array();
 $ToutesLangues = LangueDAO::selectLangues();
 foreach ($ToutesLangues as $langue) {
     $tabLangue[] = $langue['code'];
+	$veriflangueinscription[$langue['code']] = $langue['idlanguage'];
 }
 
 if (isset($_POST["langue"]) && !isset($_SESSION['language']) && in_array($_POST["langue"], $tabLangue)) {
