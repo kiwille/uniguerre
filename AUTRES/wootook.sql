@@ -96,6 +96,29 @@ INSERT INTO `game_menus` (`idmenu`, `id_parentmenu`, `name_menu`, `accessibility
 (29, 10, 'menu_options', 0, 'ajax', 'ajax_game_options', 1, 3),
 (30, 10, 'menu_changelog', 0, 'ajax', 'ajax_menu_changelog', 1, 4);
 
+--
+-- Structure de la table `game_users`
+--
+
+CREATE TABLE IF NOT EXISTS `game_users` (
+  `iduser` int(11) NOT NULL AUTO_INCREMENT,
+  `id_language` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`iduser`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `game_users`
+--
+
+INSERT INTO `game_users` (`iduser`, `id_language`, `username`, `password`, `email`) VALUES
+(1, 1, 'Kiwille', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test@test.fr'),
+(2, 0, 'demo', '$2a$10$ASkYBa9iDdzjpiMpdAqRv.Dt4QfIAyrSGYaaO1TfXSgGbC.fXCK4q', 'demo@demo.demo');
+
 -- --------------------------------------------------------
 
 --
@@ -106,7 +129,8 @@ CREATE TABLE IF NOT EXISTS `game_planets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_users` int(11) NOT NULL,
   `name` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY `game_planets`(`id_users`) REFERENCES `game_users`(`iduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -143,7 +167,8 @@ CREATE TABLE IF NOT EXISTS `game_translations` (
   `id_language` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `value` text NOT NULL,
-  PRIMARY KEY (`idtranslation`)
+  PRIMARY KEY (`idtranslation`),
+  FOREIGN KEY `game_translations`(`id_language`) REFERENCES `game_languages`(`idlanguage`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=129 ;
 
 --
@@ -271,29 +296,6 @@ INSERT INTO `game_translations` (`idtranslation`, `id_language`, `name`, `value`
 (128, 2, 'menu_changelog', 'Chnagelog');
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `game_users`
---
-
-CREATE TABLE IF NOT EXISTS `game_users` (
-  `iduser` int(11) NOT NULL AUTO_INCREMENT,
-  `id_language` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`iduser`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `game_users`
---
-
-INSERT INTO `game_users` (`iduser`, `id_language`, `username`, `password`, `email`) VALUES
-(1, 1, 'Kiwille', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test@test.fr'),
-(2, 0, 'demo', '$2a$10$ASkYBa9iDdzjpiMpdAqRv.Dt4QfIAyrSGYaaO1TfXSgGbC.fXCK4q', 'demo@demo.demo');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
