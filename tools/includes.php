@@ -30,6 +30,7 @@ require_once UNIGUERRE_DIR_MODEL . '/Langage.class.php';
 require_once UNIGUERRE_DIR_MODEL . '/Page.class.php';
 require_once UNIGUERRE_DIR_MODEL . '/Utilisateur.class.php';
 require_once UNIGUERRE_DIR_MODEL . '/Ressources.class.php';
+require_once UNIGUERRE_DIR_MODEL . '/Chat.class.php';
 
 /** DAL (Data Access Layer) > DAO (Data Access Object) */
 require_once UNIGUERRE_DIR_DAL . '/daos/UtilisateurDAO.php';
@@ -37,6 +38,7 @@ require_once UNIGUERRE_DIR_DAL . '/daos/RessourceDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/LangueDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/MenuDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/TranslationDAO.php';
+require_once UNIGUERRE_DIR_DAL . '/daos/ChatDAO.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) */
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectRessources.php';
@@ -49,6 +51,7 @@ require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectVerifierIdentiteConnexion.p
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectCompterMemeNomUtilisateur.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectTranslationParCode.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectMenus.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectChat.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) > Tables */
 require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_planets.php';
@@ -57,5 +60,6 @@ require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_users.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_menus.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_languages.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_translations.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_chat.php';
 
 ?>
