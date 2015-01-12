@@ -44,15 +44,15 @@ A noter qu'avant de modifier le code, il est fortement recommandé de récupére
 
 Les commentaires laissés lors d'un commit sont les suivantes:
 - Le message commit doit commencé par le mot clé "fix", "doc", "add" et "refactor":
-      "fix" pour les corrections de bugs
-      "doc" pour la documentation
-      "add" pour l'ajout de nouvelles fonctionnalités
-      "refactor" si cela n'entre dans le cadre d'aucune de ces catégories précédentes (par ex., retrait de sauts de lignes)
+     - "fix" pour les corrections de bugs
+     - "doc" pour la documentation
+     - "add" pour l'ajout de nouvelles fonctionnalités
+     - "refactor" si cela n'entre dans le cadre d'aucune de ces catégories précédentes (par ex., retrait de sauts de lignes)
 - Le message commit doit être écrit en intégralité en minuscule
 - Le message commit doit posséder un verbe conjugué à l'impératif
 - Le message commit ne doit pas finir pas un point
 
 Exemple à suivre:
-"fix: corrige l'affichage des planètes en 3D"
-"add: ajoute la maquette de la page principale des batiments"
-"doc: documente la classe Planete.class.php"
+- "fix: corrige l'affichage des planètes en 3D"
+- "add: ajoute la maquette de la page principale des batiments"
+- "doc: documente la classe Planete.class.php"
