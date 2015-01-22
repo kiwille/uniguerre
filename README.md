@@ -56,3 +56,7 @@ Exemple à suivre:
 - "fix: corrige l'affichage des planètes en 3D"
 - "add: ajoute la maquette de la page principale des batiments"
 - "doc: documente la classe Planete.class.php"
+
+###### Branches
+
+Pour voir l'évolution du projet par commit: https://github.com/kiwille/uniguerre_v6/network
