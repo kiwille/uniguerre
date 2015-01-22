@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Classe chat
+ */
 Class Chat
 {
 	private $_msgid;
