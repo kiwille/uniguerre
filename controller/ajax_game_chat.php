@@ -20,7 +20,6 @@ foreach ($Allmsgs as $UnMsgs)
 }
 $json['list'] = $recup; 
 echo json_encode($json);
-var_dump($json);
 // $parse['msg'] = $msgs;
 echo Page::construirePagePartielle('part_game_vuechat', $parse);
 
