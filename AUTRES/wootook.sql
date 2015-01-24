@@ -297,6 +297,33 @@ INSERT INTO `game_translations` (`idtranslation`, `id_language`, `name`, `value`
 
 -- --------------------------------------------------------
 
+--
+-- Structure de la table `game_chat`
+--
+
+CREATE TABLE IF NOT EXISTS `game_chat` (
+  `msg_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_sender` int(11) NOT NULL,
+  `id_recipients` text NOT NULL,-- type text pour pouvoir mettre plusieurs destinataire si il un chat privée ....
+  `msg` text NOT NULL,
+  `time_msg` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`msg_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+-- voir pour les clés étrangere ! 
+
+--
+-- Contenu de la table `game_chat`
+--
+
+INSERT INTO `game_chat` (`msg_id`, `id_sender`, `id_recipients`, `msg`, `time_msg`) VALUES
+(1, 1, '3', 'kiwille envoi à manda', 1123234322),
+(2, 2, '1', 'manda repond a kiwille', 1123234322),
+(3, 1, '0', 'kiwille envoi à tous le monde', 1123234322),
+(4, 1, '2,3', 'kiwille envoi à manda et demo', 0),
+(5, 2, '1,3', 'demo repond à kwille et à manda', 0);
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
