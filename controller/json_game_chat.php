@@ -83,4 +83,5 @@ $tabMessagesChat = array();
 
 //Le tableau est terminé, on encode en JSON.
 echo json_encode($tabMessagesChat);
+
 ?>
