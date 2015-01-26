@@ -12,8 +12,14 @@ Class Chat
 	private $_timemsg;
 	
 	/* pour l'instant on met rien mais on c'est jamais */
-	public function __construct()
+	public function __construct($msgid,$idsender,$idrecipients,$msg,$timemsg)
 	{
+		$this->_msgid = $msgid;
+		$this->_idsender = $idsender;
+		$this->_idrecipients = $idrecipients;
+		$this->_msg = $msg;
+		$this->_timemsg = $timemsg;
+		
     }
 	
 	public function GetMsgid()
