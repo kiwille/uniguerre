@@ -28,11 +28,6 @@ class SQLSelectChat extends SqlRead {
 				$result[table_chat::id_recipients],
 				$result[table_chat::msg],
 				$result[table_chat::time_msg]);
-				$c->GetMsgid();
-				$c->getIdSender();
-				$c->GetIdrecipients();
-				$c->GetMsg();
-				$c->GetTimemsg();
 				$tab[$key] = $c;
 			}
 		}
