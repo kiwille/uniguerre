@@ -18,10 +18,21 @@ class SQLSelectChat extends SqlRead {
         return array(table_chat::NAME_TABLE);
     }
 
-    protected function retours(PDOStatement $req) {
-        return $req->fetchAll(PDO::FETCH_ASSOC);
+	protected function retours(\PDOStatement $req) {
+        $row = $req->fetchAll(PDO::FETCH_ASSOC);
+		foreach($row as $key => $result)
+		{
+			if ($row) {
+				$c = new Chat($result[table_chat::msg_id],
+				$result[table_chat::id_sender],
+				$result[table_chat::id_recipients],
+				$result[table_chat::msg],
+				$result[table_chat::time_msg]);
+				$tab[$key] = $c;
+			}
+		}
+		return $tab;
     }
-
 }
 
 ?>
