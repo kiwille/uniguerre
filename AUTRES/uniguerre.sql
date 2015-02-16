@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `wootook`
+-- Base de données :  `uniguerre`
 --
 
 -- --------------------------------------------------------
@@ -182,7 +182,7 @@ INSERT INTO `game_translations` (`idtranslation`, `id_language`, `name`, `value`
 (4, 2, 'res_crystal', 'Crystal'),
 (5, 1, 'res_deuterium', 'Deutérium'),
 (6, 2, 'res_deuterium', 'Deuterium'),
-(17, 1, 'title_game', 'wootook'),
+(17, 1, 'title_game', 'Uniguerre'),
 (18, 1, 'username', 'Identifiant'),
 (19, 1, 'password', 'Mot de passe'),
 (20, 1, 'return', 'retour'),
