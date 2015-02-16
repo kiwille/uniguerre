@@ -15,8 +15,8 @@ $pageVisite = isset($_POST["page"]) ? $_POST["page"] : $pageDefaut;
 $tabLangue = array();
 $ToutesLangues = LangueDAO::selectLangues();
 foreach ($ToutesLangues as $langue) {
-    $tabLangue[] = $langue['code'];
-	$veriflangueinscription[$langue['code']] = $langue['idlanguage'];
+    $tabLangue[] = $langue->getCode();
+	$veriflangueinscription[$langue->getCode()] = intval($langue->getId());
 }
 
 if (isset($_POST["langue"]) && !isset($_SESSION['language']) && in_array($_POST["langue"], $tabLangue)) {
@@ -75,8 +75,8 @@ try {
 //Gestion des langues
 $langimg = "";
 foreach ($ToutesLangues as $value => $langue) {
-    $bloc["code"] = $langue['code'];
-    $bloc["name"] = utf8_encode($langue['name']);
+    $bloc["code"] = $langue->getCode();
+    $bloc["name"] = utf8_encode($langue->getName());
     $bloc["theme"] = Page::DIR_THEME;
     $bloc["value"] = $value;
 

@@ -12,32 +12,41 @@
  */
 class Langage {
 
-    private $id;
-    private $code;
-    private $name;
+    private $_id;
+    private $_code;
+    private $_name;
 
+	/* pour l'instant on met rien mais on c'est jamais */
+	public function __construct($id,$code,$name)
+	{
+		$this->_id = $id;
+		$this->_code = $code;
+		$this->_name = $name;
+		
+    }
+	
     public function getId() {
-        return $this->id;
+        return $this->_id;
     }
 
     public function setId($id) {
-        $this->id = $id;
+        $this->_id = $id;
     }
 
     public function getCode() {
-        return $this->code;
+        return $this->_code;
     }
 
     public function setCode($code) {
-        $this->code = $code;
+        $this->_code = $code;
     }
 
     public function getName() {
-        return $this->name;
+        return $this->_name;
     }
 
     public function setName($name) {
-        $this->name = $name;
+        $this->_name = $name;
     }
 
 }
