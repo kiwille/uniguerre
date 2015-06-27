@@ -38,9 +38,10 @@ class MessageSIWE {
     public static function showSimpleMessage($message, $title, $url = null, $level = self::MESSAGE_ERROR) {
         global $parse, $langimg;
         
-        if (!in_array($level, self::getValideLevels()))
+        if (!in_array($level, self::getValideLevels())) {
             throw new Exception("Erreur: Type de message non défini.");
-       
+        }
+
         $parse["langimg"] = $langimg;
         $parse['body'] = self::buildMessage($message, $title, $url, $level);
         $parse['navbar'] = Page::construirePagePartielle('part_navbar', $parse);
@@ -64,9 +65,10 @@ class MessageSIWE {
      */
     public static function showAjaxMessage($message, $title, $url = null, $level = self::MESSAGE_ERROR) {
         
-        if (!in_array($level, self::getValideLevels()))
+        if (!in_array($level, self::getValideLevels())) {
             throw new Exception("Erreur: Type de message non défini.");
-        
+        }
+
         echo self::buildMessage($message, $title, $url, $level);
     }
     
@@ -84,8 +86,9 @@ class MessageSIWE {
     private static function buildMessage($message, $title, $url = null, $level = self::MESSAGE_ERROR ) {
         global $lang;
 
-        if (!in_array($level, self::getValideLevels()))
+        if (!in_array($level, self::getValideLevels())) {
             throw new Exception("Erreur: Type de message non défini.");
+        }
 
         $parse = $lang;
         $parse['message'] = $message;
@@ -98,5 +101,3 @@ class MessageSIWE {
     
 
 }
-
-?>

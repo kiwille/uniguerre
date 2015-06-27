@@ -78,16 +78,17 @@ $langimg = "";
 foreach ($ToutesLangues as $value => $langue) {
     $bloc["code"] = $langue->getCode();
     $bloc["name"] = utf8_encode($langue->getName());
-    $bloc["theme"] = Page::DIR_THEME;
+    $bloc["theme"] = Page::getDirectoryTheme();
     $bloc["value"] = $value;
 
     $langimg .= Page::construirePagePartielle("part_navbar_login_langue", $bloc);
 }
 
-if (file_exists("controller/" . $pageVisite . ".php")) {
-    require_once "controller/" . $pageVisite . ".php";
+$parse['dir_controllers'] = NAME_DIRECTORY_CONTROLLERS;
+if (file_exists(NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . $pageVisite . ".php")) {
+    require_once NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . $pageVisite . ".php";
 }else{
-    require_once "controller/ajax_erreur.php";
+    require_once NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . "ajax_erreur.php";
 }
 
 unset($pageVisite);

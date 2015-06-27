@@ -5,10 +5,19 @@ class Page {
     const NAME_HEADPAGE = "header_page";
     const NAME_FINALPAGE = "final_page";
     const EXT_TEMPLATES = ".html";
-    const DEFAULT_LANG = "en";
-    const TITLE_PAGE = "Uniguerre";
-    const DIR_THEME = "view/default/"; //A remplacer par la valeur utilisateur en BDD
+    
+    /**
+     * Retourne le chemin du thème utilisé dans le jeu
+     * @return string
+     */
+    static function getDirectoryTheme() {
+        //TODO A remplacer par la valeur utilisateur en BDD
+        $theme_name = UNIGUERRE_THEME;
+        //$theme_name = (isset($game_theme)) ? $game_theme : UNIGUERRE_THEME;
 
+        return NAME_DIRECTORY_THEMES . "/" . $theme_name . "/";
+    }
+    
     /**
      * Permet la construction partiel d'une page.
      * 
@@ -17,7 +26,7 @@ class Page {
      * @return string
      */
     static function construirePagePartielle($templateName, $parse) {
-        $parse["path_design"] = self::DIR_THEME;
+        $parse["path_design"] = self::getDirectoryTheme();
         
         return self::getTemplate($templateName, $parse);
     }
@@ -32,7 +41,7 @@ class Page {
     static function construirePageFinale($templateName, $parse, $titre = '') {
         //Construction de la page par morceau.
         $parse["titrePage"] = $titre;
-        $parse["path_design"] = self::DIR_THEME;
+        $parse["path_design"] = self::getDirectoryTheme();
 
         $parse["headPage"] = self::construirePagePartielle(self::NAME_HEADPAGE, $parse);
         $parse["bodyPage"] = self::construirePagePartielle($templateName, $parse);
@@ -51,7 +60,12 @@ class Page {
      * @return string
      */
     static private function getTemplate($templateName, $parse) {
-        $filename = UNIGUERRE_DIR_ROOT. DIRECTORY_SEPARATOR . self::DIR_THEME . $templateName . self::EXT_TEMPLATES;
+        $filename = UNIGUERRE_DIR_ROOT . 
+                    DIRECTORY_SEPARATOR . 
+                    self::getDirectoryTheme() . 
+                    DIRECTORY_SEPARATOR . 
+                    $templateName . 
+                    self::EXT_TEMPLATES;
 
         $template = self::ReadFromFile($filename);
         
@@ -71,25 +85,23 @@ class Page {
     }
 
     /**
-     * Lecture d'un fichier
+     * Lecture d'un fichier.
      * 
      * @param string $filename
      * @return string
      */
     static private function ReadFromFile($filename) {
-        return @file_get_contents($filename);
+        return file_get_contents($filename);
     }
 
     /**
-     * Ecriture d'un fichier
+     * Ecriture dans un fichier
      * 
-     * @param string $filename
-     * @param mixed $content
+     * @param type $filename
+     * @param type $content
      */
     static private function saveToFile($filename, $content) {
-        $content = file_put_contents($filename, $content);
+        return file_put_contents($filename, $content);
     }
 
 }
-
-?>

@@ -16,13 +16,11 @@ class Langage {
     private $_code;
     private $_name;
 
-	/* pour l'instant on met rien mais on c'est jamais */
-	public function __construct($id,$code,$name)
-	{
-		$this->_id = $id;
-		$this->_code = $code;
-		$this->_name = $name;
-		
+    public function __construct($id, $code, $name)
+    {
+        $this->_id = $id;
+        $this->_code = $code;
+        $this->_name = $name;	
     }
 	
     public function getId() {
