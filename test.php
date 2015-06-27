@@ -1,23 +1,19 @@
 <?php
 
 require_once dirname(__FILE__) . "/tools/includes.php";
-require_once dirname(__FILE__) . "/controller/message.php";
 
-//echo guid();
-// message("message", "titre", "http://www.google.fr", MESSAGE_SUCCESS);
+echo getNameReceivers("2,3");
 
-/* voir energie appart */
-$Allressources = RessourceDAO::selectRessources();
-foreach($Allressources as $thisressource)
-{
-	# voir si on met l'id ou le nom ....
-	$rid = $thisressource['rid'];
-	$Ressourcename = $thisressource['name'];
-	$batimentlevel = 2;
-	$prod= array();
-	$prod[$Ressourcename] = Formuleressource($thisressource['coef_prod'],$batimentlevel);
-	var_dump($prod);
+function getNameReceivers($idsReceivers) {
+    $strReceivers = "";
+    
+    $receivers = explode(",",$idsReceivers);
+    foreach ($receivers as $idReceiver) {
+        $receiver = UtilisateurDAO::selectUtilisateurParId($idReceiver);
+        $strReceivers .= $receiver->getIdentifiant() . ", ";
+    }
+    
+    return $strReceivers;
 }
 
-return (new SQLSelectCompterMemeNomUtilisateur("", $email))->read();
 ?>

@@ -3,9 +3,9 @@
 class ChatDAO {
     
     /**
-     * Retourne la liste des langues du jeu
+     * Retourne tous les messages du chat 
      * 
-     * @return Langues
+     * @return Chat
      * @throws Exception
      */
     public static function selectChat() {
