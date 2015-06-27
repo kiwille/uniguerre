@@ -20,17 +20,17 @@ require_once UNIGUERRE_DIR_TOOLS . '/array_sort.php';
 
 /** Model */
 /** -- Classe -- */
-require_once UNIGUERRE_DIR_MODEL . '/Menu.class.php';
-require_once UNIGUERRE_DIR_MODEL . '/MessageSIWE.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/Menu.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/MessageSIWE.class.php';
 /** ------------ */
-require_once UNIGUERRE_DIR_MODEL . '/_SQL.php';
-require_once UNIGUERRE_DIR_MODEL . '/BddSave.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/_SQL.php';
+require_once UNIGUERRE_DIR_MODELS . '/BddSave.class.php';
 /** ------------ */
-require_once UNIGUERRE_DIR_MODEL . '/Langage.class.php';
-require_once UNIGUERRE_DIR_MODEL . '/Page.class.php';
-require_once UNIGUERRE_DIR_MODEL . '/Utilisateur.class.php';
-require_once UNIGUERRE_DIR_MODEL . '/Ressources.class.php';
-require_once UNIGUERRE_DIR_MODEL . '/Chat.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/Langage.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/Page.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/Utilisateur.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/Ressources.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/Chat.class.php';
 
 /** DAL (Data Access Layer) > DAO (Data Access Object) */
 require_once UNIGUERRE_DIR_DAL . '/daos/UtilisateurDAO.php';

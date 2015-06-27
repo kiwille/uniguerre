@@ -12,6 +12,7 @@ foreach($Allmsgs as $UnMsgs)
 }
 print_r($msgs);
 $parse['msg'] = $msgs;*/
+
 echo Page::construirePagePartielle('part_game_vuechat', $parse);
 
 ?>

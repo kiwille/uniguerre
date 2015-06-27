@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 function getMsgs() {
     // On lance la requête ajax
-    $.getJSON('controller/json_game_chat.php', function(data) {
+    $.getJSON($('#dir_controllers').val() + '/json_game_chat.php', function(data) {
         var str = "";
         $.each( data, function( idMess, dataMess ) {
             str += "<div class='well well-sm' style='margin: 0px;'>";

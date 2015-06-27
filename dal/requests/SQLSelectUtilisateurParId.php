@@ -34,10 +34,11 @@ class SQLSelectUtilisateurParId extends SqlRead {
         $row = $req->fetch();
 
         if ($row) {
-            $l = new Langage();
-            $l->setId($row[table_languages::idlanguage]);
-            $l->setCode($row[table_languages::code]);
-            $l->setName($row[table_languages::name]);
+            $l = new Langage(
+                $row[table_languages::idlanguage],
+                $row[table_languages::code],
+                $row[table_languages::name]
+            );
 
             $u = new Utilisateur();
             $u->setId($row[table_users::iduser]);
