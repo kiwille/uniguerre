@@ -10,5 +10,3 @@ class table_translations {
     const name = "name";
     const value = "value";
 }
-
-?>

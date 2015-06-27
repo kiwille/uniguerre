@@ -44,5 +44,3 @@ class SQLSelectCompterMemeNomUtilisateur extends SqlRead {
     }
 
 }
-
-?>

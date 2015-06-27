@@ -12,5 +12,3 @@ class table_users {
     const password = "password";
     const email = "email";
 }
-
-?>

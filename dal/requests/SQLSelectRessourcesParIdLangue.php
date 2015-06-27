@@ -36,5 +36,3 @@ class SQLSelectRessourcesParIdLangue extends SqlRead {
     }
 
 }
-
-?>

@@ -19,23 +19,18 @@ class SQLSelectLangues extends SqlRead {
     }
 	
     protected function retours(\PDOStatement $req) {
-		$row = $req->fetchAll(PDO::FETCH_ASSOC);
-		foreach($row as $key => $result)
-		{
-			if ($row) {
-				$c = new Langage($result[table_languages::idlanguage],
-				$result[table_languages::code],
-				$result[table_languages::name]);
-				$tab[$key] = $c;
-			}
-		}
-		// return $tab;
-		
-        // $row = $req->fetchAll(PDO::FETCH_ASSOC);
-		// var_dump($tab);
-        // return $row;
+        $row = $req->fetchAll(PDO::FETCH_ASSOC);
+        foreach($row as $key => $result)
+        {
+            if ($row) {
+                $c = new Langage(
+                    $result[table_languages::idlanguage],
+                    $result[table_languages::code],
+                    $result[table_languages::name]
+                );
+                $tab[$key] = $c;
+            }
+        }
+        return $tab;
     }
-
 }
-
-?>

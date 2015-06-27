@@ -6,5 +6,3 @@ class table_planets {
     
     //Champs de la table
 }
-
-?>

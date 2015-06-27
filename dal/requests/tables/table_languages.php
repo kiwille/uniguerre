@@ -9,5 +9,3 @@ class table_languages {
     const code = "code";
     const name = "name";
 }
-
-?>

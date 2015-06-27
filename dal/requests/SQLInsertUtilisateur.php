@@ -50,5 +50,3 @@ class SQLInsertUtilisateur extends SqlWrite {
     }
 
 }
-
-?>

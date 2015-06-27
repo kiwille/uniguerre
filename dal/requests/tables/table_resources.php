@@ -9,5 +9,3 @@ class table_resources {
     const name = "name";
     const coef_prod = "coef_prod";
 }
-
-?>

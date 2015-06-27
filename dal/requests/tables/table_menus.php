@@ -15,5 +15,3 @@ class table_menus {
     const numberSort = "numberSort";
     
 }
-
-?>

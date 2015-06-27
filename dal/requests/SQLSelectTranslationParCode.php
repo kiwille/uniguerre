@@ -36,5 +36,3 @@ class SQLSelectTranslationParCode extends SqlRead {
     }
 
 }
-
-?>

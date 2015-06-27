@@ -37,5 +37,3 @@ class SQLSelectMenus extends SqlRead {
     }
 
 }
-
-?>

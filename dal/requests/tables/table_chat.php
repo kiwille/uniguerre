@@ -12,5 +12,3 @@ class table_chat {
     const msg = "msg";
     const time_msg = "time_msg";
 }
-
-?>

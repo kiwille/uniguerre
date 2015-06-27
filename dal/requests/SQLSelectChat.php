@@ -34,5 +34,3 @@ class SQLSelectChat extends SqlRead {
 		return $tab;
     }
 }
-
-?>

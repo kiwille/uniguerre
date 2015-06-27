@@ -42,5 +42,3 @@ class SQLSelectVerifierIdentiteConnexion extends SqlRead {
     }
 
 }
-
-?>

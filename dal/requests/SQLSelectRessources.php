@@ -24,5 +24,3 @@ class SQLSelectRessources extends SqlRead {
     }
 
 }
-
-?>

@@ -5,8 +5,9 @@ require_once "tools/includes.php";
 
 //Liste des pages autorisées à voir
 
-if (session_status() != PHP_SESSION_ACTIVE)
+if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
+}
 
 $pageDefaut = iif(isset($_SESSION['id']), "overview", "login");
 $pageVisite = isset($_POST["page"]) ? $_POST["page"] : $pageDefaut;
