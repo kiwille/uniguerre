@@ -5,8 +5,8 @@ var ASPECT = VIEW_WIDTH / VIEW_HEIGHT; //ratio d'affichage
 var NEAR = 0.1; //distance minimale par rapport à la scène
 var FAR = 2000; //distance maximale par rapport à la scène
 var onRenderFcts = [];
-var path_design = $("#path_design").val();
 
+var path_design = $("#path_design").val();
 var img_starfield = $("#img_starfield").val();
 var img_sun = $("#img_sun").val();
 var img_sun_cloud_trans = $("#img_sun_cloud_trans").val();
@@ -156,74 +156,71 @@ var animation_planet = {
 }; 
  
  $("#planete").ready(function () {
-        THREEx.Planets.baseURL = animation_planet.baseUrl();
+    THREEx.Planets.baseURL = animation_planet.baseUrl();
 
-        var renderer = animation_planet.getRenderer();
-        var scene = new THREE.Scene();
-        var camera = animation_planet.getCamera(scene);
-        
-        //----- Jeu de lumières
-        var lightFond = animation_planet.getLightFond(0x666666);
-        var light = animation_planet.getLight(0xffffff);
-        var spotLight = animation_planet.getSpotLight(0xffffff);
-        scene.add(lightFond);
-        scene.add(light);
-        scene.add(spotLight);
+    var renderer = animation_planet.getRenderer();
+    var scene = new THREE.Scene();
+    var camera = animation_planet.getCamera(scene);
 
-        //----- Fond galaxie
-        var starSphere = animation_planet.getStarfield();
-        scene.add(starSphere);
+    //----- Jeu de lumières
+    var lightFond = animation_planet.getLightFond(0x666666);
+    var light = animation_planet.getLight(0xffffff);
+    var spotLight = animation_planet.getSpotLight(0xffffff);
+    scene.add(lightFond);
+    scene.add(light);
+    scene.add(spotLight);
 
-        //----- Soleil
-        var sun = animation_planet.getSun();
-        scene.add(sun);
+    //----- Fond galaxie
+    var starSphere = animation_planet.getStarfield();
+    scene.add(starSphere);
 
-        //----- Planete
-        var planet = animation_planet.getPlanet();
-        scene.add(planet);
+    //----- Soleil
+    var sun = animation_planet.getSun();
+    scene.add(sun);
 
-        //----- Lune
-        var moon = animation_planet.getMoon();
-        planet.add(moon);
+    //----- Planete
+    var planet = animation_planet.getPlanet();
+    scene.add(planet);
 
+    //----- Lune
+    var moon = animation_planet.getMoon();
+    planet.add(moon);
 
-        //////////////////////////////////////////////////////////////////////////////////
-        //		Camera Controls							//
-        //////////////////////////////////////////////////////////////////////////////////
-        var mouse = {x: 0, y: 0};
-        document.addEventListener('mousemove', function(event) {
-            mouse.x = (event.clientX / window.innerWidth) - 0.5;
-            mouse.y = (event.clientY / window.innerHeight) - 0.5;
-        }, false);
-        onRenderFcts.push(function(delta, now) {
-            camera.position.x += (mouse.x * 5 - camera.position.x) * (delta * 3);
-            camera.position.y += (mouse.y * 5 - camera.position.y) * (delta * 3);
-            camera.lookAt(scene.position);
-        });
-
-
-        //////////////////////////////////////////////////////////////////////////////////
-        //		render the scene						//
-        //////////////////////////////////////////////////////////////////////////////////
-        onRenderFcts.push(function() {
-            renderer.render(scene, camera);
-        });
-
-        //////////////////////////////////////////////////////////////////////////////////
-        //		loop runner							//
-        //////////////////////////////////////////////////////////////////////////////////
-        var lastTimeMsec = null;
-        requestAnimationFrame(function animate(nowMsec) {
-            // keep looping
-            requestAnimationFrame(animate);
-            // measure time
-            lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60;
-            var deltaMsec = Math.min(200, nowMsec - lastTimeMsec);
-            lastTimeMsec = nowMsec;
-            // call each update function
-            onRenderFcts.forEach(function(onRenderFct) {
-                onRenderFct(deltaMsec / 1000, nowMsec / 1000);
-            });
-        });
-
+    //////////////////////////////////////////////////////////////////////////////////
+    //		Camera Controls							//
+    //////////////////////////////////////////////////////////////////////////////////
+    var mouse = {x: 0, y: 0};
+    document.addEventListener('mousemove', function(event) {
+        mouse.x = (event.clientX / window.innerWidth) - 0.5;
+        mouse.y = (event.clientY / window.innerHeight) - 0.5;
+    }, false);
+    onRenderFcts.push(function(delta, now) {
+        camera.position.x += (mouse.x * 5 - camera.position.x) * (delta * 3);
+        camera.position.y += (mouse.y * 5 - camera.position.y) * (delta * 3);
+        camera.lookAt(scene.position);
     });
+
+    //////////////////////////////////////////////////////////////////////////////////
+    //		render the scene						//
+    //////////////////////////////////////////////////////////////////////////////////
+    onRenderFcts.push(function() {
+        renderer.render(scene, camera);
+    });
+
+    //////////////////////////////////////////////////////////////////////////////////
+    //		loop runner							//
+    //////////////////////////////////////////////////////////////////////////////////
+    var lastTimeMsec = null;
+    requestAnimationFrame(function animate(nowMsec) {
+        // keep looping
+        requestAnimationFrame(animate);
+        // measure time
+        lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60;
+        var deltaMsec = Math.min(200, nowMsec - lastTimeMsec);
+        lastTimeMsec = nowMsec;
+        // call each update function
+        onRenderFcts.forEach(function(onRenderFct) {
+            onRenderFct(deltaMsec / 1000, nowMsec / 1000);
+        });
+    });
+});
