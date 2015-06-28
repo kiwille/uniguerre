@@ -2,49 +2,23 @@
     {navbar}
 </div>
 
-<div class="row">
-    <div class="col-lg-11"> {langimg} </div>
-    <div class="col-lg-1"> {clock} </div>
-</div>
-
-<!-- 
-    TODO il doit y avoir moyen de faire des sauts de lignes plus propres avec du CSS 
--->
-<br /><br /> 
-
-<div>
+<div class="container">
     <div class="row">
-        <div class="col-lg-2">&nbsp;</div>
-        <div class="col-lg-4">
+        <div class="col-lg-11"> {langimg} </div>
+        <div class="col-lg-1"> {clock} </div>
+    </div>
+    
+    <br><br>
+    
+    <div class="row">
+        <div class="col-lg-offset-3 col-lg-6">
             <div id="page">
                 {body}
             </div>
         </div>
-        <div class="col-lg-1">&nbsp;</div>
-        <div class="col-lg-3"> 
-            <!-- 
-                TODO A déplacer dans "part_login_update.html" et faire mettre les styles dans le fichier CSS. 
-                Voir également pour les traductions.
-            -->
-            <div class="panel-group panel" style="min-height: 300px; opacity: 0.8; max-height: 350px; overflow-y: auto; ">
-                <div id="update" style="opacity: 1; margin: 20px;">
-                    <h3>Mise à jour</h3>
-                    - je teste le cadre avec du texte...<br />
-                    - je teste pour verifier le bon fonctionnement du cadre<br />
-                    - Ecrire n'importe quoi: fuyegfgu yfrgeu rugfureg fgu <br />
-                    - Kiwille et Mandalorien sont les meilleurs :) <br />
-                    - Tu connais la blague de toto qui va au toilette? <br />
-                    - non, c'est quoi? <br />
-                    - Moi non plus, il ferme toujours la porte!<br />
-                    - Je raconte ma vie: blabla bla bla bla bli perroquet blabla bla bla <br />
-                    - On a bien parlé! <br />
-                    - Il est 2 heures quand j'écris ce texte, je suis crevé!<br />
-                    - Bonsoir tout le monde<br />
-                    <br />
-                    Bon jeu à tous!
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2">&nbsp;</div>
     </div>
+</div>
+
+<div class="footer">
+    <p class="muted credit">&copy; Uniguerre 2015 - Project on <a href="https://github.com/kiwille/uniguerre_v6">Github</a></p>
 </div>

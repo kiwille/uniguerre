@@ -5,7 +5,7 @@
  */
 
 /* General: cadre + onglet */
-body {
+html, body {
     cursor: url(../cur/cur01.cur), progress !important;
     background-image:url('../img/fond2.jpg');
 }
