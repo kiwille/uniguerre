@@ -14,11 +14,15 @@ html, body {
     cursor:pointer;
 }
 
+.container {
+    width: 100%;
+}
+
 #container canvas {
     position: absolute;
 }
 
-.ug-cadre-page, .ug-cadre-ress {
+.ug-cadre-page, .ug-cadre-ress, .ug-cadre-planets {
     -moz-background-clip: padding;     /* Firefox 3.6 */
     -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
     background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */						 
@@ -40,7 +44,12 @@ html, body {
 }
 
 .ug-cadre-ress {
-    width: 300px;
+    width: 250px;
+    height: 622px;
+}
+
+.ug-cadre-planets {
+    width: 200px;
     height: 622px;
 }
 
@@ -56,10 +65,10 @@ html, body {
 
 .ug-onglet-text {
     text-align: center;
-    width:125px;
-    margin-left:18px;
+    width:100px;
+    margin-left:5px;
     display:inline-block;
-    font-size: 11px;
+    font-size: 10px;
     padding: 6px;
     border: 1px solid #006cff;
     border-bottom:none;
