@@ -16,6 +16,8 @@ var img_planet_ring = $("#img_planet_ring").val();
 var img_planet_cloud_trans = $("#img_planet_cloud_trans").val();
 var img_planet_cloud = $("#img_planet_cloud").val();
 var img_moon = $("#img_moon").val();
+
+var idAnimation;
  
 var animation_planet = {
     baseUrl : function() {
@@ -211,16 +213,24 @@ var animation_planet = {
     //		loop runner							//
     //////////////////////////////////////////////////////////////////////////////////
     var lastTimeMsec = null;
-    requestAnimationFrame(function animate(nowMsec) {
-        // keep looping
-        requestAnimationFrame(animate);
-        // measure time
-        lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60;
-        var deltaMsec = Math.min(200, nowMsec - lastTimeMsec);
-        lastTimeMsec = nowMsec;
-        // call each update function
-        onRenderFcts.forEach(function(onRenderFct) {
-            onRenderFct(deltaMsec / 1000, nowMsec / 1000);
-        });
+    idAnimation = requestAnimationFrame(function animate(nowMsec) {
+        if (idAnimation) {
+            // keep looping
+            requestAnimationFrame(animate);
+            // measure time
+            lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60;
+            var deltaMsec = Math.min(200, nowMsec - lastTimeMsec);
+            lastTimeMsec = nowMsec;
+            // call each update function
+            onRenderFcts.forEach(function(onRenderFct) {
+                onRenderFct(deltaMsec / 1000, nowMsec / 1000);
+            });
+        }
+    });
+    
+    //Stopper l'animation
+    $("a.dropdown").click(function() {
+        window.cancelAnimationFrame(idAnimation);
+        idAnimation = null;
     });
 });
