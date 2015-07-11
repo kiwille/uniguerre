@@ -1,24 +1,32 @@
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
---
--- Client :  127.0.0.1
--- Généré le :  Mer 22 Octobre 2014 à 23:34
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
 -- Base de données :  `uniguerre`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `game_chat`
+--
+
+CREATE TABLE IF NOT EXISTS `game_chat` (
+  `id_chat` int(11) NOT NULL AUTO_INCREMENT,
+  `id_sender` int(11) NOT NULL,
+  `id_recipients` text NOT NULL,
+  `msg` text NOT NULL,
+  `time_msg` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_chat`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `game_chat`
+--
+
+INSERT INTO `game_chat` (`id_chat`, `id_sender`, `id_recipients`, `msg`, `time_msg`) VALUES
+(1, 1, '3', 'kiwille envoi à manda', 1123234322),
+(2, 2, '1', 'manda repond a kiwille', 1123234322),
+(3, 1, '0', 'kiwille envoi à tous le monde', 1123234322),
+(4, 1, '2,3', 'kiwille envoi à manda et demo', 0),
+(5, 2, '1,3', 'demo repond à kwille et à manda', 0);
 
 -- --------------------------------------------------------
 
@@ -27,10 +35,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `game_languages` (
-  `idlanguage` int(11) NOT NULL AUTO_INCREMENT,
+  `id_language` int(11) NOT NULL AUTO_INCREMENT,
   `code` char(2) NOT NULL,
   `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`idlanguage`),
+  PRIMARY KEY (`id_language`),
   UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -38,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `game_languages` (
 -- Contenu de la table `game_languages`
 --
 
-INSERT INTO `game_languages` (`idlanguage`, `code`, `name`) VALUES
+INSERT INTO `game_languages` (`id_language`, `code`, `name`) VALUES
 (1, 'FR', 'Français'),
 (2, 'EN', 'Anglais');
 
@@ -49,22 +57,22 @@ INSERT INTO `game_languages` (`idlanguage`, `code`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `game_menus` (
-  `idmenu` int(11) NOT NULL AUTO_INCREMENT,
-  `id_parentmenu` int(11) DEFAULT NULL,
-  `name_menu` varchar(50) NOT NULL,
+  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
+  `id_parent_menu` int(11) DEFAULT NULL,
+  `denomination` varchar(50) NOT NULL,
   `accessibility` int(11) NOT NULL,
   `type_url` enum('ajax','extr') DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
-  `isInGame` tinyint(1) NOT NULL DEFAULT '0',
-  `numberSort` int(11) NOT NULL,
-  PRIMARY KEY (`idmenu`)
+  `is_in_game` tinyint(1) NOT NULL DEFAULT '0',
+  `number_sort` int(11) NOT NULL,
+  PRIMARY KEY (`id_menu`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `game_menus`
 --
 
-INSERT INTO `game_menus` (`idmenu`, `id_parentmenu`, `name_menu`, `accessibility`, `type_url`, `url`, `isInGame`, `numberSort`) VALUES
+INSERT INTO `game_menus` (`id_menu`, `id_parent_menu`, `denomination`, `accessibility`, `type_url`, `url`, `is_in_game`, `number_sort`) VALUES
 (1, NULL, 'menu_home', 0, 'ajax', 'ajax_login_accueil', 0, 1),
 (2, NULL, 'menu_connect', 0, 'ajax', 'ajax_login_connexion', 0, 2),
 (3, NULL, 'menu_register', 0, 'ajax', 'ajax_login_inscription', 0, 3),
@@ -96,29 +104,6 @@ INSERT INTO `game_menus` (`idmenu`, `id_parentmenu`, `name_menu`, `accessibility
 (29, 10, 'menu_options', 0, 'ajax', 'ajax_game_options', 1, 3),
 (30, 10, 'menu_changelog', 0, 'ajax', 'ajax_menu_changelog', 1, 4);
 
---
--- Structure de la table `game_users`
---
-
-CREATE TABLE IF NOT EXISTS `game_users` (
-  `iduser` int(11) NOT NULL AUTO_INCREMENT,
-  `id_language` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`iduser`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `game_users`
---
-
-INSERT INTO `game_users` (`iduser`, `id_language`, `username`, `password`, `email`) VALUES
-(1, 1, 'Kiwille', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test@test.fr'),
-(2, 0, 'demo', '$2a$10$ASkYBa9iDdzjpiMpdAqRv.Dt4QfIAyrSGYaaO1TfXSgGbC.fXCK4q', 'demo@demo.demo');
-
 -- --------------------------------------------------------
 
 --
@@ -126,12 +111,48 @@ INSERT INTO `game_users` (`iduser`, `id_language`, `username`, `password`, `emai
 --
 
 CREATE TABLE IF NOT EXISTS `game_planets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_users` int(11) NOT NULL,
-  `name` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY `game_planets`(`id_users`) REFERENCES `game_users`(`iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_planet` int(11) NOT NULL AUTO_INCREMENT,
+  `id_planet_image` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `is_main_planet` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_planet`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `game_planets`
+--
+
+INSERT INTO `game_planets` (`id_planet`, `id_planet_image`, `id_user`, `name`, `is_main_planet`) VALUES
+(1, 1, 1, 'Kiwi 1', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `game_planets_images`
+--
+
+CREATE TABLE IF NOT EXISTS `game_planets_images` (
+  `id_planet_image` int(11) NOT NULL AUTO_INCREMENT,
+  `img_static_planet` varchar(30) DEFAULT NULL,
+  `img_starfield` varchar(30) DEFAULT NULL,
+  `img_sun` varchar(30) DEFAULT NULL,
+  `img_sun_cloud_trans` varchar(30) DEFAULT NULL,
+  `img_sun_cloud` varchar(30) DEFAULT NULL,
+  `img_planet` varchar(30) DEFAULT NULL,
+  `img_planet_ring` varchar(30) DEFAULT NULL,
+  `img_planet_cloud_trans` varchar(30) DEFAULT NULL,
+  `img_planet_cloud` varchar(30) DEFAULT NULL,
+  `img_moon` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id_planet_image`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `game_planets_images`
+--
+
+INSERT INTO `game_planets_images` (`id_planet_image`, `img_static_planet`, `img_starfield`, `img_sun`, `img_sun_cloud_trans`, `img_sun_cloud`, `img_planet`, `img_planet_ring`, `img_planet_cloud_trans`, `img_planet_cloud`, `img_moon`) VALUES
+(1, NULL, 'g01.jpg', 'sun03.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'p01.jpg', 'ring01.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'lune02.jpg');
 
 -- --------------------------------------------------------
 
@@ -140,10 +161,10 @@ CREATE TABLE IF NOT EXISTS `game_planets` (
 --
 
 CREATE TABLE IF NOT EXISTS `game_resources` (
-  `idresource` int(11) NOT NULL AUTO_INCREMENT,
+  `id_resource` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(75) NOT NULL,
   `coef_prod` double NOT NULL,
-  PRIMARY KEY (`idresource`),
+  PRIMARY KEY (`id_resource`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -151,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `game_resources` (
 -- Contenu de la table `game_resources`
 --
 
-INSERT INTO `game_resources` (`idresource`, `name`, `coef_prod`) VALUES
+INSERT INTO `game_resources` (`id_resource`, `name`, `coef_prod`) VALUES
 (1, 'res_metal', 2),
 (2, 'res_crystal', 1),
 (3, 'res_deuterium', 0.5);
@@ -163,26 +184,25 @@ INSERT INTO `game_resources` (`idresource`, `name`, `coef_prod`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `game_translations` (
-  `idtranslation` int(11) NOT NULL AUTO_INCREMENT,
+  `id_translation` int(11) NOT NULL AUTO_INCREMENT,
   `id_language` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `value` text NOT NULL,
-  PRIMARY KEY (`idtranslation`),
-  FOREIGN KEY `game_translations`(`id_language`) REFERENCES `game_languages`(`idlanguage`)
+  PRIMARY KEY (`id_translation`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=129 ;
 
 --
 -- Contenu de la table `game_translations`
 --
 
-INSERT INTO `game_translations` (`idtranslation`, `id_language`, `name`, `value`) VALUES
+INSERT INTO `game_translations` (`id_translation`, `id_language`, `name`, `value`) VALUES
 (1, 1, 'res_metal', 'Métal'),
 (2, 1, 'res_crystal', 'Cristal'),
 (3, 2, 'res_metal', 'Metal'),
 (4, 2, 'res_crystal', 'Crystal'),
 (5, 1, 'res_deuterium', 'Deutérium'),
 (6, 2, 'res_deuterium', 'Deuterium'),
-(17, 1, 'title_game', 'Uniguerre'),
+(17, 1, 'title_game', 'wootook'),
 (18, 1, 'username', 'Identifiant'),
 (19, 1, 'password', 'Mot de passe'),
 (20, 1, 'return', 'retour'),
@@ -298,32 +318,27 @@ INSERT INTO `game_translations` (`idtranslation`, `id_language`, `name`, `value`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `game_chat`
+-- Structure de la table `game_users`
 --
 
-CREATE TABLE IF NOT EXISTS `game_chat` (
-  `msg_id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_sender` int(11) NOT NULL,
-  `id_recipients` text NOT NULL,-- type text pour pouvoir mettre plusieurs destinataire si il un chat privée ....
-  `msg` text NOT NULL,
-  `time_msg` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`msg_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
--- voir pour les clés étrangere ! 
+CREATE TABLE IF NOT EXISTS `game_users` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `id_language` int(11) NOT NULL,
+  `id_planet` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `hash_password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `game_chat`
+-- Contenu de la table `game_users`
 --
 
-INSERT INTO `game_chat` (`msg_id`, `id_sender`, `id_recipients`, `msg`, `time_msg`) VALUES
-(1, 1, '3', 'kiwille envoi à manda', 1123234322),
-(2, 2, '1', 'manda repond a kiwille', 1123234322),
-(3, 1, '0', 'kiwille envoi à tous le monde', 1123234322),
-(4, 1, '2,3', 'kiwille envoi à manda et demo', 0),
-(5, 2, '1,3', 'demo repond à kwille et à manda', 0);
+INSERT INTO `game_users` (`id_user`, `id_language`, `id_planet`, `username`, `hash_password`, `email`) VALUES
+(1, 1, 0, 'Kiwille', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test@test.fr'),
+(2, 1, 0, 'Manda', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test2@test.fr'),
+(3, 0, 0, 'demo', '$2a$10$ASkYBa9iDdzjpiMpdAqRv.Dt4QfIAyrSGYaaO1TfXSgGbC.fXCK4q', 'demo@demo.demo');
 
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
