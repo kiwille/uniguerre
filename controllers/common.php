@@ -56,10 +56,7 @@ try {
         $isInGame = true;
     } else {
         //Language
-        $langage = new Language();
-        $langage->id_language = $_SESSION['langage']['id'];
-        $langage->code = $_SESSION['langage']['code'];
-        $langage->name = "";
+        $langage = LangueDAO::selectById($tabLangue[$_SESSION['language']]);
         
         //Est dans le jeu (pour le menu)
         $isInGame = false;
