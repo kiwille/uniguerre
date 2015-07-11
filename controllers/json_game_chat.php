@@ -14,8 +14,8 @@ function getNameSender($idSender) {
     $strSender = "";
     
     try {
-        $sender = UtilisateurDAO::selectUtilisateurParId($idSender);
-        $strSender .= $sender->getIdentifiant();
+        $sender = UtilisateurDAO::selectById($idSender);
+        $strSender .= $sender->username;
     } catch (Exception $exc) {
         $strSender = "???";
     }
@@ -38,8 +38,8 @@ function getNameReceivers($idsReceivers) {
             $strReceivers = "TOUS";
         }else{
             foreach ($receivers as $key => $idReceiver) {
-                $receiver = UtilisateurDAO::selectUtilisateurParId($idReceiver);
-                $strReceivers .= $receiver->getIdentifiant();
+                $receiver = UtilisateurDAO::selectById($idReceiver);
+                $strReceivers .= $receiver->username;
                 $strReceivers .= iif( (count($receivers)-1) != $key, ", ", "");
             }  
         }
@@ -59,16 +59,16 @@ $tabMessagesChat = array();
 
 //if ($id > 0) {
     //Récupérons nos messages
-    $messages = ChatDAO::selectChat();
+    $messages = ChatDAO::selectAll();
 
     //Traitons les pour avoir ceux qui nous intéresse
     foreach ($messages as $key => $message) {
         //Les messages qu'il a envoyé...
         //if ($message->GetIdsender() == $id) {
-            $nameSender = getNameSender($message->GetIdsender());
-            $nameReceivers = getNameReceivers($message->GetIdrecipients());
-            $time = $message->GetTimemsg();
-            $mess = $message->GetMsg();
+            $nameSender = getNameSender($message->id_sender);
+            $nameReceivers = getNameReceivers($message->id_recipients);
+            $time = $message->time_msg;
+            $mess = $message->msg;
 
             $tabMessagesChat[$key] = //$message->GetMsgid()
                     array(

@@ -1,20 +1,37 @@
 <?php
 
-class TranslationDAO {
-     
-     /**
-      * Récupère la traduction par code de langue
-      * 
-      * @param type $code code de la langue (ex: FR)
-      * @return type
-      * @throws Exception
-      */
-     public static function SQLSelectTranslationParCode($code) {
-         try {
-            $SQLSelectTranslationParCode = new SQLSelectTranslationParCode($code);
-            return $SQLSelectTranslationParCode->read();
-         } catch (Exception $ex) {
-             throw $ex;
-         }
-     }
+class TranslationDAO extends DataAccessModel {
+    
+ 
+    public static function add($obj) {
+        
+    }
+
+    public static function delete($id) {
+        
+    }
+
+    public static function selectAll() {
+        return (new SQLSelectTranslations())->read();
+    }
+
+    public static function selectById($id) {
+        
+    }
+
+    public static function update($obj, $id) {
+        
+    }
+    
+    public static function translate($id_lang, $name) {
+        $translations = TranslationDAO::selectAll();
+        
+        foreach ($translations as $t) {
+            if ($t->id_language == $id_lang && $t->name == $name) {
+                return $t;
+            }
+        }
+        
+        return null;
+    }
 }

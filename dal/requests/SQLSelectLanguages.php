@@ -1,6 +1,6 @@
 <?php
 
-class SQLSelectChat extends SqlRead {
+class SQLSelectLanguages extends SqlRead {
     
     protected function parametres() {
         return null;
@@ -11,10 +11,11 @@ class SQLSelectChat extends SqlRead {
     }
 
     protected function retours(\PDOStatement $req) {
-        return $req->fetchAll(PDO::FETCH_CLASS, T_Planets::NAME_CLASS);
+        return $req->fetchAll(PDO::FETCH_CLASS, T_Languages::NAME_CLASS);
     }
-    
+
     protected function tables() {
-        return array(T_Chat::NAME_TABLE);
+        return array(T_Languages::NAME_TABLE);
     }
+
 }

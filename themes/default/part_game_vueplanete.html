@@ -4,20 +4,32 @@
         <div class="ug-onglet-text">test 2</div>
     </div>
     <div class="ug-cadre-page">
+        <div id="ug-infos-planete" class="container">
+            <table class="table table-condensed">
+                <thead>
+                    <th colspan="2" class="info">Informations</th>
+                </thead>
+                <tbody>
+                    <tr><td>Nom</td><td>{name}</td></tr>
+                    <tr><td>Température</td><td>10°C</td></tr>
+                    <tr><td>Taille</td><td>187/205</td></tr>
+                </tbody>
+            </table>
+        </div>
         <div id="planete"></div>
     </div>
 </div>
 
 <input type="hidden" id='path_design' value="{path_design}" />
-<input type="hidden" id='img_starfield' value="g01.jpg" />
-<input type="hidden" id='img_sun' value="sun03.jpg" />
-<input type="hidden" id='img_sun_cloud_trans' value="cloudmaptrans.jpg" />
-<input type="hidden" id='img_sun_cloud' value="cloudmap.jpg" />
-<input type="hidden" id='img_planet' value="p01.jpg" />
-<input type="hidden" id='img_planet_ring' value="ring01.jpg" />
-<input type="hidden" id='img_planet_cloud_trans' value="cloudmaptrans.jpg" />
-<input type="hidden" id='img_planet_cloud' value="cloudmap.jpg" />
-<input type="hidden" id='img_moon' value="lune02.jpg" />
+<input type="hidden" id='img_starfield' value="{img_starfield}" />
+<input type="hidden" id='img_sun' value="{img_sun}" />
+<input type="hidden" id='img_sun_cloud_trans' value="{img_sun_cloud_trans}" />
+<input type="hidden" id='img_sun_cloud' value="{img_sun_cloud}" />
+<input type="hidden" id='img_planet' value="{img_planet}" />
+<input type="hidden" id='img_planet_ring' value="{img_planet_ring}" />
+<input type="hidden" id='img_planet_cloud_trans' value="{img_planet_cloud_trans}" />
+<input type="hidden" id='img_planet_cloud' value="{img_planet_cloud}" />
+<input type="hidden" id='img_moon' value="{img_moon}" />
 
 <script src='{path_design}js/three.min.js'></script>
 <script src='{path_design}js/threex.planets.js'></script>

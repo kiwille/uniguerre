@@ -1,7 +1,7 @@
 <?php
 
-class SQLSelectChat extends SqlRead {
-    
+class SQLSelectPlanetsImages extends SQLRead {
+  
     protected function parametres() {
         return null;
     }
@@ -11,10 +11,11 @@ class SQLSelectChat extends SqlRead {
     }
 
     protected function retours(\PDOStatement $req) {
-        return $req->fetchAll(PDO::FETCH_CLASS, T_Planets::NAME_CLASS);
+        return $req->fetchAll(PDO::FETCH_CLASS, T_Planets_Images::NAME_CLASS);
     }
-    
+
     protected function tables() {
-        return array(T_Chat::NAME_TABLE);
+        return array(T_Planets_Images::NAME_TABLE);
     }
+
 }

@@ -1,19 +1,26 @@
 <?php
 
-class ChatDAO {
+class ChatDAO extends DataAccessModel {
     
-    /**
-     * Retourne tous les messages du chat 
-     * 
-     * @return Chat
-     * @throws Exception
-     */
-    public static function selectChat() {
-        try {
-            $SQLSelectChat = new SQLSelectChat();
-            return $SQLSelectChat->read();
-        } catch (Exception $ex) {
-            throw $ex;
-        }
+ 
+    public static function add($obj) {
+        
     }
+
+    public static function delete($id) {
+        
+    }
+
+    public static function selectAll() {
+        return (new SQLSelectChat())->read();
+    }
+
+    public static function selectById($id) {
+        
+    }
+
+    public static function update($obj, $id) {
+        
+    }
+
 }

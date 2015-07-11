@@ -116,3 +116,18 @@ html, body {
 #ug-contents-ress {
     padding: 10px;
 }
+
+#ug-infos-planete {
+    position: absolute;
+    width: 170px;
+    opacity: 0.8;
+    padding: 2px;
+}
+
+#ug-infos-planete>table{
+    opacity: 1px;
+    -moz-border-radius : 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+}

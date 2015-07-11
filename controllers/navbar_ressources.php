@@ -1,14 +1,17 @@
 <?php
 
-$Allressources = RessourceDAO::selectRessourcesParLangue($idLang);
+$ressources = RessourceDAO::selectAll();
 
-$ressource = "";
-foreach ($Allressources as $thisressource) {
-    $ressName  = $thisressource['name'];
-    $ressValue = utf8_encode($thisressource['value']);
+$ressource="";
+foreach ($ressources as $ress) {
+    $ressource_lang = TranslationDAO::translate($langage->id_language, $ress->name);
+    
+    $ressName  = $ressource_lang->name;
+    $ressValue = utf8_encode($ressource_lang->value);
+    
     $batimentlevel = 2;
     $prod = array();
-    $prod[$ressName] = Formuleressource($thisressource['coef_prod'], $batimentlevel);
+    $prod[$ressName] = Formuleressource($ress->coef_prod, $batimentlevel);
     
     $bloc["nameress"] = $ressName;
     $bloc["prodress"] = $prod[$ressName];

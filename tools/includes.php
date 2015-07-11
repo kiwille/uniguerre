@@ -5,6 +5,7 @@ require_once dirname(__DIR__) . "/" . UNIGUERRE_FILE_CONFIG;
 
 /** Tools */
 /** -- specials tools DALFramework -- */
+require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/_SQL.php';
 require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/Parameters.php';
 require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/SqlRead.php';
 require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/SqlWrite.php';
@@ -20,46 +21,46 @@ require_once UNIGUERRE_DIR_TOOLS . '/array_sort.php';
 
 /** Model */
 /** -- Classe -- */
-require_once UNIGUERRE_DIR_MODELS . '/Menu.class.php';
-require_once UNIGUERRE_DIR_MODELS . '/MessageSIWE.class.php';
 /** ------------ */
-require_once UNIGUERRE_DIR_MODELS . '/_SQL.php';
-require_once UNIGUERRE_DIR_MODELS . '/BddSave.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/Language.php';
+require_once UNIGUERRE_DIR_MODELS . '/Planet.php';
+require_once UNIGUERRE_DIR_MODELS . '/User.php';
+require_once UNIGUERRE_DIR_MODELS . '/Resource.php';
+require_once UNIGUERRE_DIR_MODELS . '/Chat.php';
+require_once UNIGUERRE_DIR_MODELS . '/Menu.php';
+require_once UNIGUERRE_DIR_MODELS . '/Translation.php';
 /** ------------ */
-require_once UNIGUERRE_DIR_MODELS . '/Langage.class.php';
-require_once UNIGUERRE_DIR_MODELS . '/Page.class.php';
-require_once UNIGUERRE_DIR_MODELS . '/Utilisateur.class.php';
-require_once UNIGUERRE_DIR_MODELS . '/Ressources.class.php';
-require_once UNIGUERRE_DIR_MODELS . '/Chat.class.php';
+require_once UNIGUERRE_DIR_MODELS . '/core/Page.php';
+require_once UNIGUERRE_DIR_MODELS . '/core/Alert.php';
+require_once UNIGUERRE_DIR_MODELS . '/core/DatabaseBackup.php';
+/** ------------ */
 
 /** DAL (Data Access Layer) > DAO (Data Access Object) */
+require_once UNIGUERRE_DIR_DAL . '/daos/DataAccessModel.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/UtilisateurDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/RessourceDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/LangueDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/MenuDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/TranslationDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/ChatDAO.php';
+require_once UNIGUERRE_DIR_DAL . '/daos/PlaneteDAO.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) */
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectRessources.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectRessourcesParIdLangue.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectUtilisateurs.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectUtilisateurParId.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLInsertUtilisateur.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectLangues.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectVerifierIdentiteConnexion.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectCompterMemeNomUtilisateur.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectTranslationParCode.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectMenus.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectChat.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectLanguages.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectMenus.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectPlanets.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectResources.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectTranslations.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectUsers.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) > Tables */
-require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_planets.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_resources.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_users.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_menus.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_languages.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_translations.php';
-require_once UNIGUERRE_DIR_DAL . '/requests/tables/table_chat.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/T_Planets.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/T_Planets_Images.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/T_Resources.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/T_Users.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/T_Menus.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/T_Languages.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/T_Translations.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/tables/T_Chat.php';
 
-?>

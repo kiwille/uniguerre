@@ -98,6 +98,4 @@ class MessageSIWE {
 
         return Page::construirePagePartielle('part_erreur', $parse);
     }
-    
-
 }

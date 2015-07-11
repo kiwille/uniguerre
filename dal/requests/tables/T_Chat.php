@@ -1,12 +1,12 @@
 <?php
 
-class table_chat {
-    
+class T_Chat {
     //Nom de la table
     const NAME_TABLE = "chat";
+    const NAME_CLASS = "Chat";
     
     //Champs de la table
-    const msg_id = "msg_id";
+    const id_chat = "id_chat";
     const id_sender = "id_sender";
     const id_recipients = "id_recipients";
     const msg = "msg";
