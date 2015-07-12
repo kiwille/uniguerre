@@ -1,5 +1,5 @@
-var VIEW_WIDTH = 900; //largeur de la vue
-var VIEW_HEIGHT = 600; //hauteur de la vue
+var VIEW_WIDTH = $(".ug-cadre-page").width(); //largeur de la vue
+var VIEW_HEIGHT = $(".ug-cadre-page").height(); //hauteur de la vue
 var VIEW_ANGLE = 45; //angle de vue
 var ASPECT = VIEW_WIDTH / VIEW_HEIGHT; //ratio d'affichage
 var NEAR = 0.1; //distance minimale par rapport à la scène

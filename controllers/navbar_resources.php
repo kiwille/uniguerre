@@ -20,6 +20,6 @@ foreach ($ressources as $ress) {
     $ressource .= Page::construirePagePartielle('part_game_barre_ressources', $bloc);
 }
 
-$parse['ressource_game'] = $ressource;
+$parse['resources_game'] = $ressource;
 
 ?>

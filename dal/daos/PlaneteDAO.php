@@ -23,18 +23,28 @@ class PlaneteDAO extends DataAccessModel {
         
     }
     
+    public static function selectPlanetsUser($user) {
+        $planets = PlaneteDAO::selectAll();
+        
+        $mainPlanet = array();
+        foreach ($planets as $planet) {
+            if ($planet->id_user == $user->id_user) {
+                $mainPlanet[] = $planet;
+            }
+        }
+        return $mainPlanet;
+    }
+    
     public static function selectMainPlanet($user) {
         //TODO
-        
         $planets = PlaneteDAO::selectAll();
         
         $mainPlanet = array();
         foreach ($planets as $planet) {
             if ($planet->id_user == $user->id_user && $planet->is_main_planet) {
-                $mainPlanet[]= $planet;
-                break;
+                return $planet;
             }
         }
-        return $mainPlanet;
+        return null;
     }
 }

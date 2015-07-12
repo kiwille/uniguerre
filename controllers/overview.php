@@ -1,10 +1,11 @@
 <?php
 
 (defined("EXEC") && $_SESSION["id"] > 0) or die();
-require_once "navbar_ressources.php";
+require_once "navbar_resources.php";
+require_once "navbar_planets.php";
 
 $currentPlanet = PlaneteDAO::selectMainPlanet($user);
-$parse = array_merge((array)$currentPlanet[0], $parse);
+$parse = array_merge((array)$currentPlanet, $parse);
 
 $parse['navbar'] = Page::construirePagePartielle('part_navbar', $parse);
 $parse['clock'] = Page::construirePagePartielle('part_clock', $parse);
