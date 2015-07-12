@@ -29,4 +29,28 @@ class UtilisateurDAO extends DataAccessModel {
         
     }
     
+    public static function userExistByUsernameAndEmail($username, $email) {
+        //TODO 
+        $us = self::selectAll();
+        foreach ($us as $u) {
+            if (strtolower($u->username) == strtolower($username) || 
+                strtolower($u->email) == strtolower($email)
+               ) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static function getUserByLogins($username, $hashPassword) {
+        $us = self::selectAll();
+        foreach ($us as $u) {
+            if (strtolower($u->username) == strtolower($username) || 
+                strtolower($u->hash_password) == strtolower($hashPassword)
+               ) {
+                return $u;
+            }
+        }
+        return null;
+    }
 }

@@ -14,7 +14,7 @@ require_once UNIGUERRE_DIR_TOOLS . '/getAsUrl.php';
 require_once UNIGUERRE_DIR_TOOLS . '/guid.php';
 require_once UNIGUERRE_DIR_TOOLS . '/iif.php';
 require_once UNIGUERRE_DIR_TOOLS . '/secure.php';
-require_once UNIGUERRE_DIR_TOOLS . '/wordLength.php';
+require_once UNIGUERRE_DIR_TOOLS . '/respectsLengthWord.php';
 require_once UNIGUERRE_DIR_TOOLS . '/formule.php';
 require_once UNIGUERRE_DIR_TOOLS . '/array_sort.php';
 

@@ -1,6 +1,5 @@
 <div class="col-lg-12">
-    <form class="form-horizontal" method="POST">
-        <input type="hidden" name="page" value="inscription" /> <!-- la redirection -->  
+    <div class="form-horizontal"> 
         <fieldset>
             <legend>{title_sign} {title_game}</legend>
             <div class="form-group">
@@ -38,10 +37,10 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" class="btn btn-success" value="{sign_valide}">
+                <input type="button" class="btn btn-success" value="{sign_valide}" onclick="submit('submit_inscription')">
                 <input type="reset" class="btn btn-danger" value="{sign_reset}">
             </div>
         </fieldset>
-    </form>
+    </div>
 </div>
 <input type="hidden" id="ajaxpage" value="ajax_login_inscription" />

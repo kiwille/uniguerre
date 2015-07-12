@@ -196,6 +196,20 @@ var animation_planet = {
         mouse.x = (event.clientX / window.innerWidth) - 0.5;
         mouse.y = (event.clientY / window.innerHeight) - 0.5;
     }, false);
+    
+    document.getElementById("planete").addEventListener("mousewheel", mouseWheelHandler);
+    document.getElementById("planete").addEventListener("DOMMouseScroll", mouseWheelHandler);
+    function mouseWheelHandler(e) {
+        var e = window.event || e;
+        e.preventDefault();
+        var delta = Math.max(-0.5, Math.min(0.5, (e.wheelDelta || -e.detail)));
+        camera.position.z -= delta;
+        if (camera.position.z <= 3) camera.position.z = 3;
+        if (camera.position.z >= 7) camera.position.z = 7;
+        console.log("camera position z: " + camera.position.z + " delta:"+delta);
+        return false;
+    }
+    
     onRenderFcts.push(function(delta, now) {
         camera.position.x += (mouse.x * 5 - camera.position.x) * (delta * 3);
         camera.position.y += (mouse.y * 5 - camera.position.y) * (delta * 3);

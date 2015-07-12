@@ -18,4 +18,7 @@ class Planet {
     public $img_planet_cloud;
     public $img_moon;
 
+    public function assignValueDefault() {
+        
+    }
 }
