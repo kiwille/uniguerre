@@ -31,7 +31,7 @@ $(document).ready(function() {
     });
     
     setStateUserInChat(is_connected);
-    window.setInterval(getMsgs(),5000);// actualisation des messages
+    window.setInterval(getMsgs,5000);// actualisation des messages
 });
 
 function setStateUserInChat(is_connected) {
@@ -79,8 +79,8 @@ function sendMessageChat() {
     
     var data = "";
     data += "page=submit_chat&";
+    data += "is_connected="+((is_connected)?1:0)+"&";
     data += "message="+encodeURIComponent(message)+"&";
-    data += "is_connected="+(is_connected)?1:0;
 
     $.ajax({
         url: "", cache: true, type: "POST", data: data, async: false

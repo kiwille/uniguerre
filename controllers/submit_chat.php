@@ -1,6 +1,6 @@
 <?php
 
-$message = trim($_POST["message"]);
+$message = trim(utf8_decode($_POST["message"]));
 $is_connected = $_POST["is_connected"];
 $id_user = (int)$_SESSION['id'];
 
