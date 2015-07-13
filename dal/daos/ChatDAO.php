@@ -4,7 +4,7 @@ class ChatDAO extends DataAccessModel {
     
  
     public static function add($obj) {
-        
+        (new SQLInsertChat($obj))->write();
     }
 
     public static function delete($id) {

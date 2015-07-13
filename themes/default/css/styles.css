@@ -125,3 +125,8 @@ canvas {
 .table a {
     text-decoration: none;
 }
+
+.panel-body-chat {
+    height: 515px;
+    overflow-y: scroll;
+} 

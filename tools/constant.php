@@ -5,7 +5,8 @@ ini_set('display_errors', true);
 ini_set('max_execution_time', 15);
 
 // === PARAMETRES DE SERVEUR
-ini_set('date.timezone','Europe/Paris');
+define("DATETIME_ZONE", "Europe/Paris");
+ini_set('date.timezone', DATETIME_ZONE);
 
 // ----------------------------------------------------------------------------
 /*

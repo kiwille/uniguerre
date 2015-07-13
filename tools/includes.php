@@ -46,6 +46,7 @@ require_once UNIGUERRE_DIR_DAL . '/daos/ChatDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/PlaneteDAO.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) */
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLInsertChat.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectChat.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectLanguages.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectMenus.php';

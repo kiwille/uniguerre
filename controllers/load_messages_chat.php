@@ -2,8 +2,6 @@
 
 include_once '../tools/includes.php';
 
-
-
 /**
  * Retourne le nom de l'envoyeur du message de chat
  * 
@@ -11,16 +9,12 @@ include_once '../tools/includes.php';
  * @return string
  */
 function getNameSender($idSender) {
-    $strSender = "";
-    
-    try {
+    if ($idSender > 0) {
         $sender = UtilisateurDAO::selectById($idSender);
-        $strSender .= $sender->username;
-    } catch (Exception $exc) {
-        $strSender = "???";
+        return $sender->username;
     }
     
-    return $strSender;
+    return "";
 }
 
 /**
@@ -50,38 +44,30 @@ function getNameReceivers($idsReceivers) {
     return $strReceivers;
 }
 
-
 //Faisons nous un petit tableau qui sera transformé en JSON
 $tabMessagesChat = array();
 
-//id de session
-//$id = intval($_SESSION['id']);
+//Récupérons nos messages
+$messages = ChatDAO::selectAll();
 
-//if ($id > 0) {
-    //Récupérons nos messages
-    $messages = ChatDAO::selectAll();
+//Traitons les pour avoir ceux qui nous intéresse
+foreach ($messages as $key => $message) {
+    //Les messages qu'il a envoyé...
+    $nameSender = getNameSender($message->id_sender);
+    $nameReceivers = getNameReceivers($message->id_recipients);
+    $time = $message->time_msg;
+    $mess = $message->msg;
+    $is_system = ($nameSender == "");
 
-    //Traitons les pour avoir ceux qui nous intéresse
-    foreach ($messages as $key => $message) {
-        //Les messages qu'il a envoyé...
-        //if ($message->GetIdsender() == $id) {
-            $nameSender = getNameSender($message->id_sender);
-            $nameReceivers = getNameReceivers($message->id_recipients);
-            $time = $message->time_msg;
-            $mess = $message->msg;
-
-            $tabMessagesChat[$key] = //$message->GetMsgid()
-                    array(
-                        "sender" => utf8_encode($nameSender), 
-                        "recipients" => utf8_encode($nameReceivers),
-                        "time" => date("d-m-Y H:i:s",$time),
-                        "message" => utf8_encode($mess)
-                    );
-        //}
-    }
-//}
+    $tabMessagesChat[$key] = array(
+        "sender" => utf8_encode($nameSender), 
+        "recipients" => utf8_encode($nameReceivers),
+        "time" => date("d-m-Y H:i:s",$time),
+        "message" => utf8_encode($mess),
+        "is_system" => $is_system
+    );
+}
 
 //Le tableau est terminé, on encode en JSON.
 echo json_encode($tabMessagesChat);
-
-?>
+die;

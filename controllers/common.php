@@ -7,7 +7,7 @@
  * $pageDefaut      : Retourne la page par défaut du jeu
  * $pageVisite      : Retourne la page visite
  * $tabLangue       : Tableau de langues
- * $currentPlayer   : Informations du joueur connecté
+ * $user            : Informations du joueur connecté
  * ...
  */
 define("EXEC", true);
