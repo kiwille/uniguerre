@@ -157,7 +157,7 @@ var animation_planet = {
     }
 }; 
  
- $("#planete").ready(function () {
+$("#planete").ready(function () {
     THREEx.Planets.baseURL = animation_planet.baseUrl();
 
     var renderer = animation_planet.getRenderer();

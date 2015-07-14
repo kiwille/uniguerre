@@ -1,9 +1,4 @@
-<input id="dir_controllers" type="hidden" value="{dir_controllers}" />
-<script type="text/javascript" src="{path_design}js/chat.js"></script>
-
-<script>
-    this.cancelAnimationFrame( idAnimation );
-</script>
+{stop_exec_js}
 
 <div class="col-lg-12">
     <div class="ug-onglets">
@@ -29,10 +24,13 @@
             <div id="msgs"></div>
         </div>
         <div class="panel-footer">
-            <div class="input-group">
-                <input type="text" id="message-chat" class="form-control input-sm" placeholder="Votre message" aria-describedby="sizing-addon2">
+            <div class="input-group input-group-sm">
+                <input type="text" id="message-chat" class="form-control" placeholder="Votre message" aria-describedby="sizing-addon2">
+                <span class="input-group-addon">à</span>
+                <input type="text" id="recipients-chat" class="form-control" 
+                       data-source='{json_available_users}' placeholder='Choisir un destinataire'>
                 <div class="input-group-btn">
-                    <div class="input-group-btn dropup">
+                    <div class="dropup">
                         <button type="button" class="btn btn-sm btn-default" id="send-chat">Envoyer</button>
                         <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
                             <span class="caret"></span>
@@ -40,9 +38,9 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a data-toggle="modal" data-target="#smiley-modal-chat">Smileys</a></li>
                         </ul>
-                    </div> 
-                </div>
-            </div> 
+                    </div>
+                </div><!-- /btn-group -->
+            </div>
         </div>
     </div>
 </div>
@@ -64,3 +62,7 @@
         </div>
     </div>
 </div>
+
+<input id="dir_controllers" type="hidden" value="{dir_controllers}" />
+
+<script type="text/javascript" src="{path_design}js/chat.js"></script>

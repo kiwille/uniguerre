@@ -84,6 +84,8 @@ foreach ($langues as $value => $langue) {
 }
 
 $parse['dir_controllers'] = NAME_DIRECTORY_CONTROLLERS;
+$parse['stop_exec_js'] = Page::construirePagePartielle("common_stop_exec_js", $parse);
+
 if (file_exists(NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . $pageVisite . ".php")) {
     require_once NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . $pageVisite . ".php";
 } else {

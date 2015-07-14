@@ -1,22 +1,23 @@
 var is_connected = true;
+var idChat = null;
 
-$(document).ready(function() {
+ $("#msgs").ready(function () {
     getMsgs();
-    
-    $("#refresh-chat").click(function() {
+
+    $("#refresh-chat").click(function () {
         getMsgs();
     });
-    
-    $("#logout-chat").click(function() {
+
+    $("#logout-chat").click(function () {
         setStateUserInChat(false);
     });
-    
-    $("#login-chat").click(function() {
+
+    $("#login-chat").click(function () {
         setStateUserInChat(true);
         getMsgs();
     });
-    
-    $("#message-chat").keyup(function(touche) {
+
+    $("#message-chat").keyup(function (touche) {
         var appui = touche.which || touche.keyCode;
 
         if (appui === 13) { //13 = Entrée
@@ -24,14 +25,24 @@ $(document).ready(function() {
             getMsgs();
         }
     });
-    
-    $("#send-chat").click(function() {
+
+    $("#send-chat").click(function () {
         sendMessageChat();
         getMsgs();
     });
-    
+
+    $('#recipients-chat').tokenfield({
+        autocomplete: {
+          source: $('#recipients-chat').data("source"),
+          delay: 100,
+          limit: 5,
+          minLength: 2
+        },
+        showAutocompleteOnFocus: true
+    });
+
     setStateUserInChat(is_connected);
-    window.setInterval(getMsgs,5000);// actualisation des messages
+    idChat = window.setInterval(getMsgs, 5000);// actualisation des messages
 });
 
 function setStateUserInChat(is_connected) {
@@ -42,7 +53,7 @@ function setStateUserInChat(is_connected) {
         $("#refresh-chat").removeClass('hidden');
         $("#login-chat").addClass('hidden');
         $("#logout-chat").removeClass('hidden');
-    }else{
+    } else {
         $("#state-chat").text("Déconnecté");
         $("#state-chat").css("color", "red");
         $("#refresh-chat").addClass('hidden');
@@ -53,34 +64,39 @@ function setStateUserInChat(is_connected) {
 
 function getMsgs() {
     // On lance la requête ajax
-    $.getJSON($('#dir_controllers').val() + '/load_messages_chat.php', function(data) {
+    $.getJSON($('#dir_controllers').val() + '/load_messages_chat.php', function (data) {
         console.log("Messages chargés");
         var str = "";
-        $.each( data, function( idMess, dataMess ) {
+        $.each(data, function (idMess, dataMess) {
             str += "<div class='well well-sm' style='margin: 0px;'>";
             if (!dataMess.is_system) {
-                str += dataMess.time + " > " + dataMess.sender + " à " + dataMess.recipients + ": "+dataMess.message;
+                str += dataMess.time + " > " + dataMess.sender + " à " + dataMess.recipients + ": " + dataMess.message;
             } else {
-                str += "<span style='color:red'>"+ dataMess.time + " > SYSTEM : "+ dataMess.message +"</span>";
+                str += "<span style='color:red'>" + dataMess.time + " > SYSTEM : " + dataMess.message + "</span>";
             }
 
             str += "</div>";
         });
         $("#msgs").html(str);
-    })
-    .fail(function(jqXHR, textStatus) {
-        alert("Impossible de récuéperer les données du chat : " + textStatus);
+    }).fail(function (jqXHR, textStatus) {
+        console.log("Impossible de récuéperer les données du chat : " + textStatus);
     });
 }
 
 function sendMessageChat() {
     //Récupérer le message
     var message = $("#message-chat").val();
+    var id_recipients = new Array();
     
+    $.each($("#recipients-chat").tokenfield('getTokens'), function (key, user) {
+        id_recipients.push(user.id);
+    });
+
     var data = "";
     data += "page=submit_chat&";
-    data += "is_connected="+((is_connected)?1:0)+"&";
-    data += "message="+encodeURIComponent(message)+"&";
+    data += "is_connected=" + ((is_connected) ? 1 : 0) + "&";
+    data += "message=" + encodeURIComponent(message) + "&";
+    data += "id_recipients=" + id_recipients.join(",") + "&";
 
     $.ajax({
         url: "", cache: true, type: "POST", data: data, async: false
