@@ -1,5 +1,23 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
 --
--- Base de données :  `uniguerre`
+-- Client :  127.0.0.1
+-- Généré le :  Mer 15 Juillet 2015 à 00:19
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données :  `wootook`
 --
 
 -- --------------------------------------------------------
@@ -15,18 +33,14 @@ CREATE TABLE IF NOT EXISTS `game_chat` (
   `msg` text NOT NULL,
   `time_msg` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_chat`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Contenu de la table `game_chat`
 --
 
 INSERT INTO `game_chat` (`id_chat`, `id_sender`, `id_recipients`, `msg`, `time_msg`) VALUES
-(1, 1, '3', 'kiwille envoi à manda', 1123234322),
-(2, 2, '1', 'manda repond a kiwille', 1123234322),
-(3, 1, '0', 'kiwille envoi à tous le monde', 1123234322),
-(4, 1, '2,3', 'kiwille envoi à manda et demo', 0),
-(5, 2, '1,3', 'demo repond à kwille et à manda', 0);
+(1, 0, '0', 'Bienvenue sur le chat! C''est ici que vous pourrez communiquer avec les joueurs du jeu.', 0);
 
 -- --------------------------------------------------------
 
@@ -117,14 +131,16 @@ CREATE TABLE IF NOT EXISTS `game_planets` (
   `name` varchar(100) NOT NULL,
   `is_main_planet` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_planet`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `game_planets`
 --
 
 INSERT INTO `game_planets` (`id_planet`, `id_planet_image`, `id_user`, `name`, `is_main_planet`) VALUES
-(1, 1, 1, 'Kiwi 1', 1);
+(1, 1, 1, 'Kiwi 1', 1),
+(2, 2, 2, 'Manda planet', 1),
+(3, 3, 3, 'Demo', 1);
 
 -- --------------------------------------------------------
 
@@ -145,14 +161,16 @@ CREATE TABLE IF NOT EXISTS `game_planets_images` (
   `img_planet_cloud` varchar(30) DEFAULT NULL,
   `img_moon` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_planet_image`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `game_planets_images`
 --
 
 INSERT INTO `game_planets_images` (`id_planet_image`, `img_static_planet`, `img_starfield`, `img_sun`, `img_sun_cloud_trans`, `img_sun_cloud`, `img_planet`, `img_planet_ring`, `img_planet_cloud_trans`, `img_planet_cloud`, `img_moon`) VALUES
-(1, NULL, 'g01.jpg', 'sun03.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'p01.jpg', 'ring01.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'lune02.jpg');
+(1, NULL, 'g01.jpg', 'sun03.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'p01.jpg', 'ring01.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'lune02.jpg'),
+(2, NULL, 'g03.jpg', 'sun02.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'p05.jpg', 'ring01.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'lune01.jpg'),
+(3, NULL, 'g01.jpg', 'sun03.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'p01.jpg', 'ring01.jpg', 'cloudmaptrans.jpg', 'cloudmap.jpg', 'lune02.jpg');
 
 -- --------------------------------------------------------
 
@@ -342,3 +360,6 @@ INSERT INTO `game_users` (`id_user`, `id_language`, `id_planet`, `username`, `ha
 (2, 1, 0, 'Manda', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test2@test.fr'),
 (3, 0, 0, 'demo', '$2a$10$ASkYBa9iDdzjpiMpdAqRv.Dt4QfIAyrSGYaaO1TfXSgGbC.fXCK4q', 'demo@demo.demo');
 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
