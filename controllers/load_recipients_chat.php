@@ -9,4 +9,4 @@ foreach ($users as $i => $user) {
 }
 
 echo json_encode($available_users);
-
+die;

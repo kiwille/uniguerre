@@ -11,8 +11,7 @@
  * ...
  */
 define("EXEC", true);
-
-//Liste des pages autorisées à voir
+require_once "/tools/includes.php";
 
 if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();

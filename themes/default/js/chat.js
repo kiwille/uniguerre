@@ -63,8 +63,9 @@ function setStateUserInChat(is_connected) {
 }
 
 function getMsgs() {
-    // On lance la requête ajax
-    $.getJSON($('#dir_controllers').val() + '/load_messages_chat.php', function (data) {
+    $.ajax({
+        url: "", cache: true, type: "POST", data: "page=load_messages_chat", async: false, dataType: 'json'
+    }).done(function (data) {
         console.log("Messages chargés");
         var str = "";
         $.each(data, function (idMess, dataMess) {
@@ -79,7 +80,7 @@ function getMsgs() {
         });
         $("#msgs").html(str);
     }).fail(function (jqXHR, textStatus) {
-        console.log("Impossible de récuéperer les données du chat : " + textStatus);
+        console.log("Impossible de récupérer les données du chat : " + textStatus + " -- "+jqXHR.responseText);
     });
 }
 
