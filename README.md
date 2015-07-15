@@ -18,6 +18,13 @@ Uniguerre est le nom d'un jeu dont l'administrateur est un membre de XNova/Wooto
 - Hoegarden (Développeur)
 - Mandalorien (Designer, Développeur)
 
+###### Accès au jeu
+
+Des comptes ont été créés pour accéder au jeu:
+- id : kiwille , mdp : test 
+- id : Manda , mdp : test
+- id : demo , mdp : demo
+
 ###### Contribuer au projet
 
 Vous pouvez nous aider en installant les outils suivants, dans cette ordre:
