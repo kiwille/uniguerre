@@ -205,7 +205,7 @@ THREEx.Planets.createRing = function(imgRing) {
         });
     }, false);
 
-    var geometry = new THREEx.Planets._RingGeometry(0.55, 0.75, 64);
+    var geometry = new THREEx.Planets._RingGeometry(0.60, 0.80, 64);
     var material = new THREE.MeshPhongMaterial({
         map: THREE.ImageUtils.loadTexture(THREEx.Planets.baseURL+ "/" + imgRing),
         side: THREE.DoubleSide,
