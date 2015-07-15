@@ -6,13 +6,6 @@ Le développement d'une version uniguerre en open source permet de relancer une 
 Uniguerre est le nom d'un jeu dont l'administrateur est un membre de XNova/Wootook.
 
 
-
-###### Version de développement minimum: wampserver 2.2
-
-- Apache 2.4.2
-- PHP 5.4.3
-- MySQL 5.5.24
-
 ###### Version de développement utilisée: wampserver 2.5
 
 - Apache 2.4.9
@@ -25,12 +18,19 @@ Uniguerre est le nom d'un jeu dont l'administrateur est un membre de XNova/Wooto
 - Hoegarden (Développeur)
 - Mandalorien (Designer, Développeur)
 
+###### Accès au jeu
+
+Des comptes ont été créés pour accéder au jeu:
+- id : kiwille , mdp : test 
+- id : Manda , mdp : test
+- id : demo , mdp : demo
+
 ###### Contribuer au projet
 
 Vous pouvez nous aider en installant les outils suivants, dans cette ordre:
 - Visual C++ 2012 (http://www.microsoft.com/fr-fr/download/details.aspx?id=30679 , et prenez uniquement la x86) 
 - WampServer 2.5 (http://sourceforge.net/projects/wampserver/files/WampServer%202/Wampserver%202.5/wampserver2.5-Apache-2.4.9-Mysql-5.6.17-php5.5.12-32b.exe/download)
-- Netbeans IDE 7.3  (https://netbeans.org/downloads/7.4/)
+- Netbeans IDE 8.0  (https://netbeans.org/downloads/8.0.1/)
 - Plugin GIT pour Netbeans
 
 Pensez à redémarrez votre PC une fois les installations terminées.

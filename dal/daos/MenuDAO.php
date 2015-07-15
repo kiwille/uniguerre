@@ -1,22 +1,39 @@
 <?php
 
-class MenuDAO {
+class MenuDAO extends DataAccessModel {
     
-    /**
-     * Récupère les menus. Le paramètre passé détermine si les menus sont celle
-     * de la page d'accueil de jeu ou celle du jeu en lui-même
-     * 
-     * @param type $isInGame indique si le menu est celle d'accueil ou celle 
-     * dans le jeu
-     * @return type
-     * @throws Exception
-     */
-    public static function selectMenus($isInGame) {
-        try {
-            $SQLSelectMenus = new SQLSelectMenus($isInGame);
-            return $SQLSelectMenus->read();
-        } catch (Exception $ex) {
-            throw $ex;
-        }
+ 
+    public static function add($obj) {
+        
     }
+
+    public static function delete($id) {
+        
+    }
+
+    public static function selectAll() {
+        return (new SQLSelectMenus())->read();
+    }
+
+    public static function selectById($id) {
+        
+    }
+
+    public static function update($obj, $id) {
+        
+    }
+    
+    public static function selectAppropriateMenu($is_in_game) {
+        $menus = MenuDAO::selectAll();
+        
+        $appropriateMenu = array(); 
+        foreach ($menus as $menu) {
+            if ($menu->is_in_game == $is_in_game) {
+                $appropriateMenu[] = $menu;
+            }
+        }
+        
+        return $appropriateMenu;
+    }
+
 }

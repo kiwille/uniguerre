@@ -1,19 +1,32 @@
 <?php
 
-class LangueDAO {
+class LangueDAO extends DataAccessModel {
     
-    /**
-     * Retourne la liste des langues du jeu
-     * 
-     * @return Langues
-     * @throws Exception
-     */
-    public static function selectLangues() {
-        try {
-            $SQLSelectLangues = new SQLSelectLangues();
-            return $SQLSelectLangues->read();
-        } catch (Exception $ex) {
-            throw $ex;
+ 
+    public static function add($obj) {
+        
+    }
+
+    public static function delete($id) {
+        
+    }
+
+    public static function selectAll() {
+        return (new SQLSelectLanguages())->read();
+    }
+
+    public static function selectById($id) {
+        //TODO
+        $ls = self::selectAll();
+        foreach ($ls as $l) {
+            if ($l->id_language == $id) {
+                return $l;
+            }
         }
+        return null;
+    }
+
+    public static function update($obj, $id) {
+        
     }
 }

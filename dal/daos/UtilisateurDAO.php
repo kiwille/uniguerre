@@ -1,88 +1,56 @@
 <?php
 
-class UtilisateurDAO {
+class UtilisateurDAO extends DataAccessModel {
     
-    /**
-     * Retourne la liste des joueurs du jeu
-     * 
-     * @return Utilisateur
-     * @throws Exception
-     */
-    public static function selectUtilisateurs() {
-        try {
-            $SQLSelectUtilisateurs = new SQLSelectUtilisateurs();
-            return $SQLSelectUtilisateurs->read();
-        } catch (Exception $ex) {
-            throw $ex;
-        }
+    public static function add($obj) {
+        
     }
 
-    /**
-     * Retourne un joueur à partir de son id
-     * 
-     * @param Integer $id
-     * @return Utilisateur
-     * @throws Exception
-     */
-    public static function selectUtilisateurParId($id) {
-        try {
-            $SQLSelectUtilisateurParId = new SQLSelectUtilisateurParId($id);
-            return $SQLSelectUtilisateurParId->read();
-        } catch (Exception $ex) {
-            throw $ex;
-        }
+    public static function delete($id) {
+        
     }
 
-    /**
-     * Insère un utilisateur
-     * 
-     * @param \Utilisateur $utilisateur Données utilisateur
-     * @return type
-     * @throws Exception
-     */
-    public static function insertUtilisateur(\Utilisateur $utilisateur) {
-        try {
-            $SQLInsertUtilisateur = new SQLInsertUtilisateur($utilisateur);
-            return $SQLInsertUtilisateur->write();
-        } catch (Exception $ex) {
-            throw $ex;
-        }
+    public static function selectAll() {
+        return (new SQLSelectUsers())->read();
     }
 
-    /**
-     * Permet de vérifier que les données de connexion (identifiant et mot de  
-     * passe) sont correctes.
-     * 
-     * @param type $identifiant Pseudo du joueur dans le jeu 
-     * @param type $motdepasse Mot de passe du joueur dans le jeu 
-     * @return type
-     * @throws Exception
-     */
-    public static function selectVerifierIdentiteConnexion($identifiant, $motdepasse) {
-        try {
-            $SQLSelectVerifierIdentiteConnexion = new SQLSelectVerifierIdentiteConnexion($identifiant, $motdepasse);
-            return $SQLSelectVerifierIdentiteConnexion->read();
-        } catch (Exception $ex) {
-            throw $ex;
+    public static function selectById($id) {
+        //TODO 
+        $us = self::selectAll();
+        foreach ($us as $u) {
+            if ($u->id_user == $id) {
+                return $u;
+            }
         }
+        return null;
     }
 
-    /**
-     * Permet de vérifier que l'une des données (pseudo ou email) n'a pas été 
-     * déjà utilisé
-     * 
-     * @param type $identifiant Pseudo du joueur dans le jeu 
-     * @param type $email Email du joueur dans le jeu 
-     * @return type
-     * @throws Exception
-     */
-    public static function selectCompterMemeNomUtilisateur($identifiant, $email) {
-        try {
-            $SQLSelectCompterMemeNomUtilisateur = new SQLSelectCompterMemeNomUtilisateur($identifiant, $email);
-            return $SQLSelectCompterMemeNomUtilisateur->read();
-        } catch (Exception $ex) {
-            throw $ex;
-        }
+    public static function update($obj, $id) {
+        
     }
-
+    
+    public static function userExistByUsernameAndEmail($username, $email) {
+        //TODO 
+        $us = self::selectAll();
+        foreach ($us as $u) {
+            if (strtolower($u->username) == strtolower($username) || 
+                strtolower($u->email) == strtolower($email)
+               ) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static function getUserByLogins($username, $hashPassword) {
+        $us = self::selectAll();
+        foreach ($us as $u) {
+            if (strtolower($u->username) == strtolower($username) || 
+                strtolower($u->hash_password) == strtolower($hashPassword)
+               ) {
+                return $u;
+            }
+        }
+        return null;
+    }
 }

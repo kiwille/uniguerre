@@ -3,9 +3,8 @@
 defined("EXEC") or die();
 
 $option = "";
-$AllLanguages = LangueDAO::selectLangues();
-foreach ($AllLanguages as $UnLanguage) {
-    $option .="<option value='" . $UnLanguage['code'] . "'>" . utf8_encode($UnLanguage['name']) . "</option>";
+foreach ($langues as $l) {
+    $option .="<option value='" . $l->code . "'>" . utf8_encode($l->name) . "</option>";
 }
 
 $parse['option_langage'] = $option;

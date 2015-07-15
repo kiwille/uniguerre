@@ -2,7 +2,15 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-2">
+            <div class="ug-onglets">
+                <div class="ug-onglet-text">Planètes</div>
+            </div>
+
+            <div class="ug-cadre-planets">{planets_game}</div>
+        </div>
+        <div class="col-lg-8">
+            <div id="alert"></div>
             <div id="page">
                 {body}
             </div>
@@ -10,10 +18,9 @@
         <div class="col-lg-2">
             <div class="ug-onglets">
                 <div class="ug-onglet-text">Minerais</div>
-                <!--<div class="ug-onglet-text">Items</div>-->
             </div>
 
-            <div class="ug-cadre-ress">{ressource_game}</div>
+            <div class="ug-cadre-ress">{resources_game}</div>
         </div>
     </div>
 </div>

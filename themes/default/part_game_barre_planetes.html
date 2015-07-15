@@ -1,0 +1,32 @@
+<div class='row'>
+    <div class='col-lg-12'>
+        <div id="ug-liste-planetes">
+            <table class="table table-condensed text-center">
+                <thead>
+                    <tr>
+                        <th class="success" colspan="2">
+                            <div class="col-lg-9">{name}</div>
+                            <div class="col-lg-3">
+                                <!-- Split button -->
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" class="dropdown" onclick="getPage('ajax_game_vueplanete');" title="Visiter">Visiter</a></li>
+                                        <li><a href="#">Renommer</a></li>
+                                        <li><a href="#">Supprimer</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="col-lg-6">ID</td><td class="col-lg-6">{id}</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

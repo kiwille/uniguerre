@@ -1,18 +1,19 @@
 <?php
 
-defined("EXEC") or die();
+(defined("EXEC") && (int)$_SESSION["id"] > 0) or die();
 
-/*$msgs ="";
-$json['error'] = '0';
+$users = UtilisateurDAO::selectAll();
 
-$Allmsgs = ChatDAO::selectChat();
-foreach($Allmsgs as $UnMsgs)
-{
-	$msgs .="<div class=\"well well-sm\">". $UnMsgs->GetMsgid() ." - ".$UnMsgs->GetIdsender() ." - ". $UnMsgs->GetIdrecipients() ." - ". $UnMsgs->GetMsg() ." -". $UnMsgs->GetTimemsg() ."</div>";
+$available_users = array();
+$i = 0;
+foreach ($users as $u) {
+    if ($user->id_user != $u->id_user) {
+        $available_users[$i]["id"] = $u->id_user;
+        $available_users[$i]["value"] = $u->username;
+        $i++;
+    }
 }
-print_r($msgs);
-$parse['msg'] = $msgs;*/
+
+$parse['json_available_users'] = json_encode($available_users);
 
 echo Page::construirePagePartielle('part_game_vuechat', $parse);
-
-?>

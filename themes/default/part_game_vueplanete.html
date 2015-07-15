@@ -1,8 +1,4 @@
-<script src='{path_design}js/three.min.js'></script>
-<script src='{path_design}js/threex.planets.js'></script>
-<script src='{path_design}js/threex.atmospherematerial.js'></script>
-<script src='{path_design}js/dat.gui.min.js'></script>
-<script src="{path_design}js/threex.atmospheredatgui.js"></script>
+{stop_exec_js}
 
 <div class="col-lg-12">
     <div class="ug-onglets">
@@ -10,197 +6,36 @@
         <div class="ug-onglet-text">test 2</div>
     </div>
     <div class="ug-cadre-page">
+        <div id="ug-infos-planete" class="container">
+            <table class="table table-condensed">
+                <thead>
+                    <tr><th colspan="2" class="info">Informations</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nom</td><td>{name}</td></tr>
+                    <tr><td>Température</td><td>10°C</td></tr>
+                    <tr><td>Taille</td><td>187/205</td></tr>
+                </tbody>
+            </table>
+        </div>
         <div id="planete"></div>
     </div>
 </div>
 
-<script>
-    $("#planete").ready(function () {
-        THREEx.Planets.baseURL = '{path_design}img/texture/';
+<input type="hidden" id='path_design' value="{path_design}" />
+<input type="hidden" id='img_starfield' value="{img_starfield}" />
+<input type="hidden" id='img_sun' value="{img_sun}" />
+<input type="hidden" id='img_sun_cloud_trans' value="{img_sun_cloud_trans}" />
+<input type="hidden" id='img_sun_cloud' value="{img_sun_cloud}" />
+<input type="hidden" id='img_planet' value="{img_planet}" />
+<input type="hidden" id='img_planet_ring' value="{img_planet_ring}" />
+<input type="hidden" id='img_planet_cloud_trans' value="{img_planet_cloud_trans}" />
+<input type="hidden" id='img_planet_cloud' value="{img_planet_cloud}" />
+<input type="hidden" id='img_moon' value="{img_moon}" />
 
-        var VIEW_WIDTH = 900; //largeur de la vue
-        var VIEW_HEIGHT = 600; //hauteur de la vue
-        var VIEW_ANGLE = 45; //angle de vue
-        var ASPECT = VIEW_WIDTH / VIEW_HEIGHT; //ratio d'affichage
-        var NEAR = 0.1; //distance minimale par rapport à la scène
-        var FAR = 2000; //distance maximale par rapport à la scène
-
-        //------
-
-        var renderer = new THREE.WebGLRenderer({
-            antialias: true
-        });
-        renderer.setSize(VIEW_WIDTH, VIEW_HEIGHT);
-        document.getElementById('planete').appendChild(renderer.domElement);
-        renderer.shadowMapEnabled = true;
-
-        var onRenderFcts = [];
-        var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
-        camera.position.set(0, 0, 3); //positionnement initial X Y Z
-        camera.lookAt(scene.position); //orientation vers le centre de la scène
-
-        var lightFond = new THREE.AmbientLight(0x666666);
-        scene.add(lightFond);
-
-        var light = new THREE.DirectionalLight(0xffffff, 4);
-        light.position.set(0, 0, -20);
-        light.castShadow = true;
-        light.shadowCameraNear = 0.01;
-        light.shadowCameraFar = 23;
-        light.shadowCameraFov = 45;
-        light.shadowCameraLeft = -1;
-        light.shadowCameraRight = 1;
-        light.shadowCameraTop = 1;
-        light.shadowCameraBottom = -1;
-        //light.shadowCameraVisible	= true;
-        light.shadowBias = 0.001;
-        light.shadowDarkness = 0;
-        light.shadowMapWidth = 1024;
-        light.shadowMapHeight = 1024;
-        scene.add(light);
-
-        var spotLight = new THREE.SpotLight(0xffffff, 2);
-        spotLight.position.set(0, 0, 0.01);
-        spotLight.castShadow = true;
-        spotLight.shadowMapWidth = 1024;
-        spotLight.shadowMapHeight = 1024;
-        spotLight.shadowCameraNear = 500;
-        spotLight.shadowCameraFar = 4000;
-        spotLight.shadowCameraFov = 30;
-
-        scene.add(spotLight);
-
-
-        //////////////////////////////////////////////////////////////////////////////////
-        //		added starfield							//
-        //////////////////////////////////////////////////////////////////////////////////
-
-        var starSphere = THREEx.Planets.createStarfield("g01.jpg");
-        scene.add(starSphere);
-
-        //////////////////////////////////////////////////////////////////////////////////
-        //		add an object and make it move					//
-        //////////////////////////////////////////////////////////////////////////////////
-
-        //----- Soleil
-        var sun = THREEx.Planets.createSun("sun03.jpg");
-        sun.position.set(0, 0, -20);
-        sun.scale.multiplyScalar(15);
-        sun.receiveShadow = true;
-        sun.castShadow = true;
-        scene.add(sun);
-        onRenderFcts.push(function(delta, now) {
-            sun.rotation.y += 1 / 64 * delta;
-        });
-
-        var geometry_Sun = new THREE.SphereGeometry(0.5, 32, 32);
-        var material_Sun = THREEx.createAtmosphereMaterial();
-        material_Sun.side = THREE.BackSide;
-        material_Sun.uniforms.glowColor.value.set(0xFF9900);
-        material_Sun.uniforms.coeficient.value = 0.5;
-        material_Sun.uniforms.power.value = 4.0;
-        var mesh_Sun = new THREE.Mesh(geometry_Sun, material_Sun);
-        mesh_Sun.scale.multiplyScalar(1.15);
-        sun.add(mesh_Sun);
-
-        var sunCloud = THREEx.Planets.createSunDynamics("cloudmaptrans.jpg", "cloudmap.jpg");
-        sunCloud.receiveShadow = true;
-        sunCloud.castShadow = true;
-        sun.add(sunCloud);
-        onRenderFcts.push(function(delta, now) {
-            sunCloud.rotation.y += 1 / 15 * delta;
-        });
-
-        //----- Planete
-        //La planète
-        var containerEarth = new THREE.Object3D();
-        containerEarth.rotateZ(-23.4 * Math.PI / 180);
-        containerEarth.position.z = 0.5;
-        scene.add(containerEarth);
-
-        var earthMesh = THREEx.Planets.createPlanet("p01.jpg");
-        earthMesh.receiveShadow = true;
-        earthMesh.castShadow = true;
-        containerEarth.add(earthMesh);
-        onRenderFcts.push(function(delta, now) {
-            earthMesh.rotation.y += 1 / 16 * delta;
-        });
-
-        var ring = THREEx.Planets.createRing("ring01.jpg");
-        ring.receiveShadow = true;
-        ring.castShadow = true;
-        earthMesh.add(ring);
-
-        var geometry = new THREE.SphereGeometry(0.5, 32, 32);
-        var material = THREEx.createAtmosphereMaterial();
-        material.side = THREE.BackSide;
-        material.uniforms.glowColor.value.set(0x00b3ff);
-        material.uniforms.coeficient.value = 0.5;
-        material.uniforms.power.value = 4.0;
-        var mesh = new THREE.Mesh(geometry, material);
-        mesh.scale.multiplyScalar(1.15);
-        containerEarth.add(mesh);
-
-        var earthCloud = THREEx.Planets.createCloud("cloudmaptrans.jpg", "cloudmap.jpg");
-        earthCloud.receiveShadow = true;
-        earthCloud.castShadow = true;
-        containerEarth.add(earthCloud);
-        onRenderFcts.push(function(delta, now) {
-            earthCloud.rotation.y += 1 / 8 * delta;
-        });
-
-
-        //----- Lune
-        var moonMesh = THREEx.Planets.createMoon("lune02.jpg");
-        moonMesh.position.set(0.5, 0.5, 0.5);
-        moonMesh.scale.multiplyScalar(1 / 5);
-        moonMesh.receiveShadow = true;
-        moonMesh.castShadow = true;
-        containerEarth.add(moonMesh);
-        onRenderFcts.push(function(delta, now) {
-            moonMesh.rotation.y += 1 / 16 * delta;
-        });
-
-
-        //////////////////////////////////////////////////////////////////////////////////
-        //		Camera Controls							//
-        //////////////////////////////////////////////////////////////////////////////////
-        var mouse = {x: 0, y: 0};
-        document.addEventListener('mousemove', function(event) {
-            mouse.x = (event.clientX / window.innerWidth) - 0.5;
-            mouse.y = (event.clientY / window.innerHeight) - 0.5;
-        }, false);
-        onRenderFcts.push(function(delta, now) {
-            camera.position.x += (mouse.x * 5 - camera.position.x) * (delta * 3);
-            camera.position.y += (mouse.y * 5 - camera.position.y) * (delta * 3);
-            camera.lookAt(scene.position);
-        });
-
-
-        //////////////////////////////////////////////////////////////////////////////////
-        //		render the scene						//
-        //////////////////////////////////////////////////////////////////////////////////
-        onRenderFcts.push(function() {
-            renderer.render(scene, camera);
-        });
-
-        //////////////////////////////////////////////////////////////////////////////////
-        //		loop runner							//
-        //////////////////////////////////////////////////////////////////////////////////
-        var lastTimeMsec = null;
-        requestAnimationFrame(function animate(nowMsec) {
-            // keep looping
-            requestAnimationFrame(animate);
-            // measure time
-            lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60;
-            var deltaMsec = Math.min(200, nowMsec - lastTimeMsec);
-            lastTimeMsec = nowMsec;
-            // call each update function
-            onRenderFcts.forEach(function(onRenderFct) {
-                onRenderFct(deltaMsec / 1000, nowMsec / 1000);
-            });
-        });
-
-    });
-</script>
+<script src='{path_design}js/three.min.js'></script>
+<script src='{path_design}js/threex.planets.js'></script>
+<script src='{path_design}js/threex.atmospherematerial.js'></script>
+<script src='{path_design}js/dat.gui.min.js'></script>
+<script src="{path_design}js/threex.atmospheredatgui.js"></script>
+<script src="{path_design}js/animation_planet.js"></script>
