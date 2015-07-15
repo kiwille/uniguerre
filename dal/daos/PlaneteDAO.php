@@ -42,6 +42,8 @@ class PlaneteDAO extends DataAccessModel {
         $mainPlanet = array();
         foreach ($planets as $planet) {
             if ($planet->id_user == $user->id_user && $planet->is_main_planet) {
+                $planetImage = PlaneteImageDAO::selectById($planet->id_planet_image);
+                $planet->setPlanetImage($planetImage);
                 return $planet;
             }
         }

@@ -24,6 +24,7 @@ require_once UNIGUERRE_DIR_TOOLS . '/array_sort.php';
 /** ------------ */
 require_once UNIGUERRE_DIR_MODELS . '/Language.php';
 require_once UNIGUERRE_DIR_MODELS . '/Planet.php';
+require_once UNIGUERRE_DIR_MODELS . '/PlanetImage.php';
 require_once UNIGUERRE_DIR_MODELS . '/User.php';
 require_once UNIGUERRE_DIR_MODELS . '/Resource.php';
 require_once UNIGUERRE_DIR_MODELS . '/Chat.php';
@@ -44,6 +45,7 @@ require_once UNIGUERRE_DIR_DAL . '/daos/MenuDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/TranslationDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/ChatDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/PlaneteDAO.php';
+require_once UNIGUERRE_DIR_DAL . '/daos/PlaneteImageDAO.php';
 
 /** DAL (Data Access Layer) > REQUESTS (requêtes SQL) */
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLInsertChat.php';
@@ -51,6 +53,7 @@ require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectChat.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectLanguages.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectMenus.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectPlanets.php';
+require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectPlanetsImages.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectResources.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectTranslations.php';
 require_once UNIGUERRE_DIR_DAL . '/requests/SQLSelectUsers.php';

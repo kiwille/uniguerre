@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Détermine si l'utilisateur est autorisé à voir les messages ou non
+ * 
+ * @param Chat $message
+ * @param User $user
+ * @return Boolean
+ */
 function canSeeMessage($message, $user) {
     return $message->id_sender == '0' ||
         $message->id_sender == $user->id_user ||
