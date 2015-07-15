@@ -68,7 +68,7 @@ foreach ($messages as $key => $message) {
         $tabMessagesChat[$key] = array(
             "sender" => utf8_encode($nameSender),
             "recipients" => utf8_encode($nameReceivers),
-            "time" => date("d-m-Y H:i:s", $time),
+            "time" => date("d/m/Y H:i:s", $time),
             "message" => utf8_encode($mess),
             "is_system" => $is_system
         );

@@ -1,7 +1,8 @@
-var is_connected = true;
-var idChat = null;
+var is_connected = true; //Détermine si le joueur est connecté ou non.
+var idChat = null; //Mémorisation de l'id de rafraichissement pour le stopper.
+var refreshTime = 5; //Rafraichissement toutes les x secondes.
 
- $("#msgs").ready(function () {
+$("#msgs").ready(function () {
     getMsgs();
 
     $("#refresh-chat").click(function () {
@@ -33,16 +34,15 @@ var idChat = null;
 
     $('#recipients-chat').tokenfield({
         autocomplete: {
-          source: $('#recipients-chat').data("source"),
-          delay: 100,
-          limit: 5,
-          minLength: 2
+            source: $('#recipients-chat').data("source"),
+            delay: 100,
+            limit: 5,
+            minLength: 2
         },
         showAutocompleteOnFocus: true
     });
 
     setStateUserInChat(is_connected);
-    idChat = window.setInterval(getMsgs, 5000);// actualisation des messages
 });
 
 function setStateUserInChat(is_connected) {
@@ -53,12 +53,16 @@ function setStateUserInChat(is_connected) {
         $("#refresh-chat").removeClass('hidden');
         $("#login-chat").addClass('hidden');
         $("#logout-chat").removeClass('hidden');
+
+        idChat = window.setInterval(getMsgs, refreshTime * 1000);// actualisation des messages
     } else {
         $("#state-chat").text("Déconnecté");
         $("#state-chat").css("color", "red");
         $("#refresh-chat").addClass('hidden');
         $("#login-chat").removeClass('hidden');
         $("#logout-chat").addClass('hidden');
+
+        clearInterval(idChat);
     }
 }
 
@@ -80,7 +84,7 @@ function getMsgs() {
         });
         $("#msgs").html(str);
     }).fail(function (jqXHR, textStatus) {
-        console.log("Impossible de récupérer les données du chat : " + textStatus + " -- "+jqXHR.responseText);
+        console.log("Impossible de récupérer les données du chat : " + textStatus + " -- " + jqXHR.responseText);
     });
 }
 
@@ -88,7 +92,7 @@ function sendMessageChat() {
     //Récupérer le message
     var message = $("#message-chat").val();
     var id_recipients = new Array();
-    
+
     $.each($("#recipients-chat").tokenfield('getTokens'), function (key, user) {
         id_recipients.push(user.id);
     });
