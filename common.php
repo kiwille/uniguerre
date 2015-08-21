@@ -22,7 +22,18 @@ $pageVisite = isset($_POST["page"]) ? $_POST["page"] : $pageDefaut;
 
 //Récupération de la langue choisie
 if (!isset($_SESSION['language'])) {
-    $_SESSION['language'] = (isset($_POST["langue"])) ? $_POST["langue"] : "FR";
+	$_SESSION['language'] = UNIGUERRE_LANG;
+}
+else
+{
+	if(isset($_POST['langue']) && !empty($_POST["langue"]))
+	{
+		$_SESSION['language'] = $_POST["langue"];
+	}
+	else
+	{
+		$_SESSION['language'] = UNIGUERRE_LANG;
+	}
 }
 
 $tabLangue = array();

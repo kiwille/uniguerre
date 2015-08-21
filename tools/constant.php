@@ -42,7 +42,7 @@ define("UNIGUERRE_FILE_CONFIG", "config.php");
 
 // == Constantes par défaut du jeu
 define("UNIGUERRE_NAME", "Uniguerre");
-define("UNIGUERRE_LANG", "en");
+define("UNIGUERRE_LANG", "FR");
 define("UNIGUERRE_THEME", "default");
 
 ?>
