@@ -42,11 +42,15 @@ class MessageSIWE {
             throw new Exception("Erreur: Type de message non défini.");
         }
 
+        $parse['title_game'] = (isset($parse['title_game'])) ? $parse['title_game'] : "";
+        $parse['menu'] = (isset($parse['menu'])) ? $parse['menu'] : "";
+        $parse['navbar_menus'] = (isset($parse['navbar_menus'])) ? $parse['navbar_menus'] : "";
+        
         $parse["langimg"] = $langimg;
         $parse['body'] = self::buildMessage($message, $title, $url, $level);
         $parse['navbar'] = Page::construirePagePartielle('part_navbar', $parse);
         $parse['clock'] = Page::construirePagePartielle('part_clock', $parse);
-
+        
         if (isset($_SESSION["id"])) {
             Page::construirePageFinale('part_body_game', $parse);
         }else{
