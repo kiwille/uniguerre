@@ -23,15 +23,4 @@ class TranslationDAO extends DataAccessModel {
         
     }
     
-    public static function translate($id_lang, $name) {
-        $translations = TranslationDAO::selectAll();
-        
-        foreach ($translations as $t) {
-            if ($t->id_language == $id_lang && $t->name == $name) {
-                return $t;
-            }
-        }
-        
-        return null;
-    }
 }

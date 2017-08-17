@@ -2,9 +2,7 @@
 
 class PlanetImage {
     
-    public $id_planet;
     public $id_planet_image;
-    public $is_main_planet;
     public $img_static_planet;
     public $img_starfield;
     public $img_sun;

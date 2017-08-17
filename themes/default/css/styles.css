@@ -122,6 +122,12 @@ canvas {
     text-align: center;
 }
 
+.ug-batiments-ligne>table {
+    -moz-border-radius : 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
 .table a {
     text-decoration: none;
 }

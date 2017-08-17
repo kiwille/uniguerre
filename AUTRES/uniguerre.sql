@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 15 Juillet 2015 à 00:19
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Généré le :  Jeu 17 Août 2017 à 21:53
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `wootook`
+-- Base de données :  `uniguerre`
 --
 
 -- --------------------------------------------------------
@@ -26,21 +26,58 @@ SET time_zone = "+00:00";
 -- Structure de la table `game_chat`
 --
 
-CREATE TABLE IF NOT EXISTS `game_chat` (
-  `id_chat` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `game_chat` (
+  `id_chat` int(11) NOT NULL,
   `id_sender` int(11) NOT NULL,
   `id_recipients` text NOT NULL,
   `msg` text NOT NULL,
-  `time_msg` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_chat`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `time_msg` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `game_chat`
 --
 
 INSERT INTO `game_chat` (`id_chat`, `id_sender`, `id_recipients`, `msg`, `time_msg`) VALUES
-(1, 0, '0', 'Bienvenue sur le chat! C''est ici que vous pourrez communiquer avec les joueurs du jeu.', 0);
+(1, 0, '0', 'Bienvenue sur le chat! Ici, vous pourrez communiquer avec les autres joueurs du jeu.', 0),
+(17, 1, '', 'Bonjour', 1502275674),
+(18, 1, '2', 'Salut', 1502275693),
+(19, 1, '2,3', 'Hello', 1502462733);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `game_configurations`
+--
+
+CREATE TABLE `game_configurations` (
+  `name` varchar(100) NOT NULL,
+  `value` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `game_configurations`
+--
+
+INSERT INTO `game_configurations` (`name`, `value`) VALUES
+('prefix_img_starfield', 'g'),
+('number_img_starfield', '10'),
+('prefix_img_sun', 'sun'),
+('number_img_sun', '3'),
+('prefix_img_sun_cloud_trans', 'cloudmaptrans'),
+('number_img_sun_cloud_trans', '0'),
+('prefix_img_sun_cloud', 'cloudmap'),
+('number_img_sun_cloud', '0'),
+('prefix_img_planet', 'p'),
+('number_img_planet', '16'),
+('prefix_img_planet_ring', 'ring'),
+('number_img_planet_ring', '4'),
+('prefix_img_planet_cloud_trans', 'cloudmaptrans'),
+('number_img_planet_cloud_trans', '0'),
+('prefix_img_planet_cloud', 'cloudmap'),
+('number_img_planet_cloud', '0'),
+('prefix_img_moon', 'lune'),
+('number_img_moon', '2');
 
 -- --------------------------------------------------------
 
@@ -48,13 +85,11 @@ INSERT INTO `game_chat` (`id_chat`, `id_sender`, `id_recipients`, `msg`, `time_m
 -- Structure de la table `game_languages`
 --
 
-CREATE TABLE IF NOT EXISTS `game_languages` (
-  `id_language` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `game_languages` (
+  `id_language` int(11) NOT NULL,
   `code` char(2) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_language`),
-  UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `game_languages`
@@ -70,17 +105,16 @@ INSERT INTO `game_languages` (`id_language`, `code`, `name`) VALUES
 -- Structure de la table `game_menus`
 --
 
-CREATE TABLE IF NOT EXISTS `game_menus` (
-  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `game_menus` (
+  `id_menu` int(11) NOT NULL,
   `id_parent_menu` int(11) DEFAULT NULL,
   `denomination` varchar(50) NOT NULL,
   `accessibility` int(11) NOT NULL,
   `type_url` enum('ajax','extr') DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `is_in_game` tinyint(1) NOT NULL DEFAULT '0',
-  `number_sort` int(11) NOT NULL,
-  PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+  `number_sort` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `game_menus`
@@ -124,23 +158,26 @@ INSERT INTO `game_menus` (`id_menu`, `id_parent_menu`, `denomination`, `accessib
 -- Structure de la table `game_planets`
 --
 
-CREATE TABLE IF NOT EXISTS `game_planets` (
-  `id_planet` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `game_planets` (
+  `id_planet` int(11) NOT NULL,
   `id_planet_image` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `is_main_planet` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_planet`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `current_size` int(11) DEFAULT '0',
+  `max_size` int(11) NOT NULL DEFAULT '0',
+  `min_temperature` int(11) NOT NULL,
+  `max_temperature` int(11) NOT NULL,
+  `is_main_planet` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `game_planets`
 --
 
-INSERT INTO `game_planets` (`id_planet`, `id_planet_image`, `id_user`, `name`, `is_main_planet`) VALUES
-(1, 1, 1, 'Kiwi 1', 1),
-(2, 2, 2, 'Manda planet', 1),
-(3, 3, 3, 'Demo', 1);
+INSERT INTO `game_planets` (`id_planet`, `id_planet_image`, `id_user`, `name`, `current_size`, `max_size`, `min_temperature`, `max_temperature`, `is_main_planet`) VALUES
+(1, 1, 1, 'Kiwi 1', 0, 200, -2, 12, 1),
+(2, 2, 2, 'Manda planet', 0, 200, 5, 21, 1),
+(3, 3, 3, 'Demo', 0, 200, 17, 36, 1);
 
 -- --------------------------------------------------------
 
@@ -148,8 +185,8 @@ INSERT INTO `game_planets` (`id_planet`, `id_planet_image`, `id_user`, `name`, `
 -- Structure de la table `game_planets_images`
 --
 
-CREATE TABLE IF NOT EXISTS `game_planets_images` (
-  `id_planet_image` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `game_planets_images` (
+  `id_planet_image` int(11) NOT NULL,
   `img_static_planet` varchar(30) DEFAULT NULL,
   `img_starfield` varchar(30) DEFAULT NULL,
   `img_sun` varchar(30) DEFAULT NULL,
@@ -159,9 +196,8 @@ CREATE TABLE IF NOT EXISTS `game_planets_images` (
   `img_planet_ring` varchar(30) DEFAULT NULL,
   `img_planet_cloud_trans` varchar(30) DEFAULT NULL,
   `img_planet_cloud` varchar(30) DEFAULT NULL,
-  `img_moon` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id_planet_image`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `img_moon` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `game_planets_images`
@@ -178,13 +214,11 @@ INSERT INTO `game_planets_images` (`id_planet_image`, `img_static_planet`, `img_
 -- Structure de la table `game_resources`
 --
 
-CREATE TABLE IF NOT EXISTS `game_resources` (
-  `id_resource` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `game_resources` (
+  `id_resource` int(11) NOT NULL,
   `name` varchar(75) NOT NULL,
-  `coef_prod` double NOT NULL,
-  PRIMARY KEY (`id_resource`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `coef_prod` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `game_resources`
@@ -203,7 +237,7 @@ INSERT INTO `game_resources` (`id_resource`, `name`, `coef_prod`) VALUES
 
 CREATE TABLE `game_structures` (
   `id_structure` int(11) NOT NULL,
-  `structure_type` int(11) DEFAULT NULL,
+  `id_structure_type` int(11) NOT NULL,
   `name_label` varchar(50) NOT NULL,
   `name_description` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -212,9 +246,31 @@ CREATE TABLE `game_structures` (
 -- Contenu de la table `game_structures`
 --
 
-INSERT INTO `game_structures` (`id_structure`, `structure_type`, `name_label`, `name_description`) VALUES
+INSERT INTO `game_structures` (`id_structure`, `id_structure_type`, `name_label`, `name_description`) VALUES
 (1, 1, 'buildings_mine_metal_name', 'buildings_mine_metal_description'),
 (2, 1, 'buildings_mine_crystal_name', 'buildings_mine_crystal_description');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `game_structures_types`
+--
+
+CREATE TABLE `game_structures_types` (
+  `id_structure_type` int(11) NOT NULL,
+  `id_menu` int(11) DEFAULT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `game_structures_types`
+--
+
+INSERT INTO `game_structures_types` (`id_structure_type`, `id_menu`, `name`) VALUES
+(1, 12, 'Buildings'),
+(2, 13, 'Researches'),
+(3, 14, 'Spaceships'),
+(4, 15, 'Defenses');
 
 -- --------------------------------------------------------
 
@@ -222,13 +278,12 @@ INSERT INTO `game_structures` (`id_structure`, `structure_type`, `name_label`, `
 -- Structure de la table `game_translations`
 --
 
-CREATE TABLE IF NOT EXISTS `game_translations` (
-  `id_translation` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `game_translations` (
+  `id_translation` int(11) NOT NULL,
   `id_language` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `value` text NOT NULL,
-  PRIMARY KEY (`id_translation`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=129 ;
+  `value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `game_translations`
@@ -250,11 +305,11 @@ INSERT INTO `game_translations` (`id_translation`, `id_language`, `name`, `value
 (23, 1, 'menu', 'Menu'),
 (24, 1, 'menu_home', 'Accueil'),
 (25, 1, 'menu_connect', 'Se connecter'),
-(26, 1, 'menu_register', 'S''inscrire'),
+(26, 1, 'menu_register', 'S\'inscrire'),
 (27, 1, 'menu_credit', 'Crédits'),
 (28, 1, 'menu_board', 'Forum'),
 (29, 1, 'title_login', 'Bienvenue sur '),
-(30, 1, 'title_dec_1', ' est un jeu de stratégie en ligne gratuit, jouable par navigateur. Partez à la conquête de l''univers en développant votre empire. Imposez-vous et dominez en combattant les autres joueurs. '),
+(30, 1, 'title_dec_1', ' est un jeu de stratégie en ligne gratuit, jouable par navigateur. Partez à la conquête de l\'univers en développant votre empire. Imposez-vous et dominez en combattant les autres joueurs. '),
 (31, 1, 'title_dec_2', 'Rejoignez-nous!'),
 (32, 1, 'title_sign', 'Inscription sur '),
 (33, 1, 'sign_email', 'Email'),
@@ -303,7 +358,7 @@ INSERT INTO `game_translations` (`id_translation`, `id_language`, `name`, `value
 (76, 2, 'credit_fnd', 'Founder'),
 (77, 2, 'credit_dev', 'Developers'),
 (78, 2, 'credit_des', 'Designer'),
-(79, 1, 'btn_register', 'S''enregistrer'),
+(79, 1, 'btn_register', 'S\'enregistrer'),
 (80, 2, 'btn_register', 'Register'),
 (81, 1, 'menu_development', 'Développement'),
 (82, 2, 'menu_development', 'Development'),
@@ -319,11 +374,11 @@ INSERT INTO `game_translations` (`id_translation`, `id_language`, `name`, `value
 (92, 2, 'menu_navigation', 'Navigation'),
 (93, 1, 'menu_planetview', 'Vue planétaire'),
 (94, 2, 'menu_planetview', 'Overview'),
-(95, 1, 'menu_universeview', 'Vue de l''univers'),
+(95, 1, 'menu_universeview', 'Vue de l\'univers'),
 (96, 2, 'menu_universeview', 'Universe'),
 (97, 1, 'menu_starport', 'Spatioport'),
 (98, 2, 'menu_starport', 'Starport'),
-(99, 1, 'menu_empireview', 'Vue de l''empire'),
+(99, 1, 'menu_empireview', 'Vue de l\'empire'),
 (100, 2, 'menu_empireview', 'Empire'),
 (101, 1, 'menu_productivity', 'Productivité'),
 (102, 2, 'menu_productivity', 'Productivity'),
@@ -352,7 +407,11 @@ INSERT INTO `game_translations` (`id_translation`, `id_language`, `name`, `value
 (125, 1, 'menu_options', 'Options'),
 (126, 2, 'menu_options', 'Options'),
 (127, 1, 'menu_changelog', 'Changelog'),
-(128, 2, 'menu_changelog', 'Chnagelog');
+(128, 2, 'menu_changelog', 'Chnagelog'),
+(129, 1, 'buildings_mine_metal_name', 'Mine de métal'),
+(130, 2, 'buildings_mine_metal_name', 'Metal mine'),
+(131, 1, 'buildings_mine_crystal_name', 'Mine de cristal'),
+(132, 2, 'buildings_mine_crystal_name', 'Crystal mine');
 
 -- --------------------------------------------------------
 
@@ -360,17 +419,14 @@ INSERT INTO `game_translations` (`id_translation`, `id_language`, `name`, `value
 -- Structure de la table `game_users`
 --
 
-CREATE TABLE IF NOT EXISTS `game_users` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `game_users` (
+  `id_user` int(11) NOT NULL,
   `id_language` int(11) NOT NULL,
   `id_planet` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `hash_password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_user`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `game_users`
@@ -381,6 +437,129 @@ INSERT INTO `game_users` (`id_user`, `id_language`, `id_planet`, `username`, `ha
 (2, 1, 0, 'Manda', '$2a$10$NlW3CW6Z1PKCgAtUuqHXOeH965T064ImfVL6Fw4m8VtIj7v5cw5oW', 'test2@test.fr'),
 (3, 0, 0, 'demo', '$2a$10$ASkYBa9iDdzjpiMpdAqRv.Dt4QfIAyrSGYaaO1TfXSgGbC.fXCK4q', 'demo@demo.demo');
 
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `game_chat`
+--
+ALTER TABLE `game_chat`
+  ADD PRIMARY KEY (`id_chat`);
+
+--
+-- Index pour la table `game_configurations`
+--
+ALTER TABLE `game_configurations`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Index pour la table `game_languages`
+--
+ALTER TABLE `game_languages`
+  ADD PRIMARY KEY (`id_language`),
+  ADD UNIQUE KEY `code` (`code`);
+
+--
+-- Index pour la table `game_menus`
+--
+ALTER TABLE `game_menus`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
+-- Index pour la table `game_planets`
+--
+ALTER TABLE `game_planets`
+  ADD PRIMARY KEY (`id_planet`);
+
+--
+-- Index pour la table `game_planets_images`
+--
+ALTER TABLE `game_planets_images`
+  ADD PRIMARY KEY (`id_planet_image`);
+
+--
+-- Index pour la table `game_resources`
+--
+ALTER TABLE `game_resources`
+  ADD PRIMARY KEY (`id_resource`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Index pour la table `game_structures`
+--
+ALTER TABLE `game_structures`
+  ADD PRIMARY KEY (`id_structure`);
+
+--
+-- Index pour la table `game_structures_types`
+--
+ALTER TABLE `game_structures_types`
+  ADD PRIMARY KEY (`id_structure_type`);
+
+--
+-- Index pour la table `game_translations`
+--
+ALTER TABLE `game_translations`
+  ADD PRIMARY KEY (`id_translation`);
+
+--
+-- Index pour la table `game_users`
+--
+ALTER TABLE `game_users`
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `game_chat`
+--
+ALTER TABLE `game_chat`
+  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT pour la table `game_languages`
+--
+ALTER TABLE `game_languages`
+  MODIFY `id_language` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `game_menus`
+--
+ALTER TABLE `game_menus`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT pour la table `game_planets`
+--
+ALTER TABLE `game_planets`
+  MODIFY `id_planet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `game_planets_images`
+--
+ALTER TABLE `game_planets_images`
+  MODIFY `id_planet_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `game_resources`
+--
+ALTER TABLE `game_resources`
+  MODIFY `id_resource` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `game_structures_types`
+--
+ALTER TABLE `game_structures_types`
+  MODIFY `id_structure_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `game_translations`
+--
+ALTER TABLE `game_translations`
+  MODIFY `id_translation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+--
+-- AUTO_INCREMENT pour la table `game_users`
+--
+ALTER TABLE `game_users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -2,7 +2,7 @@
 
 (defined("EXEC") && (int)$_SESSION["id"] > 0) or die();
 
-$currentPlanet = PlaneteDAO::selectMainPlanet($user);
+$currentPlanet = PlanetService::getMainPlanet($user);
 $parse = array_merge((array)$currentPlanet->getPlanetImage(), $parse);
 $parse = array_merge((array)$currentPlanet, $parse);
 

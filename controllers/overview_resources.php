@@ -9,7 +9,7 @@ foreach ($ressources as $ress) {
     $ressName  = $ressource_lang->name;
     $ressValue = utf8_encode($ressource_lang->value);
     
-    $batimentlevel = 2;
+    $batimentlevel = 2; //TODO
     $prod = array();
     $prod[$ressName] = Formuleressource($ress->coef_prod, $batimentlevel);
     

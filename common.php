@@ -66,16 +66,18 @@ try {
             //Est dans le jeu (pour le menu)
             $isInGame = false;
         }
+        
+        //Récupération de la configuration générale du jeu
+        $config = ConfigurationDAO::selectAll();
 
         //Gestion des menus
         require_once NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . 'menu.php';
         $listMenus = MenuDAO::selectAppropriateMenu($isInGame);
         $parse['navbar_menus'] = getMenu($listMenus);
-    //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
     } catch (Exception $ex) {
         echo $ex->getMessage();
     }
-
 
     //Gestion des langues
     $langimg = "";
@@ -96,7 +98,6 @@ try {
     } else {
         require_once NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . "ajax_erreur.php";
     }
-
 } catch (Exception $ex) {
     MessageSIWE::showSimpleMessage($ex->getMessage(), "Erreur");
 }
