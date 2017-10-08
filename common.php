@@ -13,7 +13,7 @@
 try {
 
     define("EXEC", true);
-    require_once "/tools/includes.php";
+    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "tools/includes.php";
 
     if (session_status() != PHP_SESSION_ACTIVE) {
         session_start();
