@@ -9,15 +9,28 @@ class TranslationService {
     ///////////////////////////////////////
     
     public static function translate($id_lang, $name) {
-        $translations = TranslationService::getTranslations();
+        $translations_language = TranslationService::getTranslationsByLanguage($id_lang);
         
-        foreach ($translations as $translation) {
-            if ($translation->id_language == $id_lang && $translation->name == $name) {
-                return $translation;
+        foreach ($translations_language as $translation_lang) {
+            if ($translation_lang->name == $name) {
+                return $translation_lang;
             }
         }
         
         return null;
+    }
+    
+    public static function getTranslationsByLanguage($id_lang) {
+        $translations = TranslationService::getTranslations();
+        
+        $translations_language = null;
+        foreach ($translations as $translation) {
+            if ($translation->id_language == $id_lang) {
+                $translations_language[] = $translation;
+            }
+        }
+        
+        return $translations_language;
     }
     
     ///////////////////////////////////////

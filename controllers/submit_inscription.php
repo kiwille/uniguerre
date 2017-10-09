@@ -26,7 +26,7 @@ if ($fullData) {
         $u = new User();
         $u->id_language = $id_language;
         $u->username = $username;
-        $u->hash_password = encodePassword($password);
+        $u->hash_password = hashPassword($password);
         $u->email = $email;
         UtilisateurDAO::add($u);
 

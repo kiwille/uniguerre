@@ -2,13 +2,14 @@
 
 /**
  * ---------------------------------
- * Enumération des variables gloables
+ * Enumération des variables globales
  * ---------------------------------
  * $pageDefaut      : Retourne la page par défaut du jeu
  * $pageVisite      : Retourne la page visite
+ * $menuVisite      : Retourne le menu visite (selon la page)
  * $tabLangue       : Tableau de langues
  * $user            : Informations du joueur connecté
- * ...
+ * $parse           : contient des mots dans la langue de l'utilisateur
  */
 try {
 
@@ -40,11 +41,10 @@ try {
     }
 
     //Traduction
-    $translations = TranslationDAO::selectAll();
+    $lang = array();
+    $translations = TranslationService::getTranslationsByLanguage($tabLangue[$_SESSION['language']]);
     foreach ($translations as $translation) {
-        if ($translation->id_language == $tabLangue[$_SESSION['language']]) {
-            $lang[$translation->name] = utf8_encode($translation->value);
-        }
+        $lang[$translation->name] = utf8_encode($translation->value);
     }
 
     $parse = $lang;
@@ -74,6 +74,13 @@ try {
         require_once NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . 'menu.php';
         $listMenus = MenuDAO::selectAppropriateMenu($isInGame);
         $parse['navbar_menus'] = getMenu($listMenus);
+        
+        $menuVisite = null;
+        foreach($listMenus as $menu) {
+            if ($menu->url == $pageVisite) {
+                $menuVisite = $menu;
+            }
+        }
         //-------------------------------------------------------------------------------
     } catch (Exception $ex) {
         echo $ex->getMessage();

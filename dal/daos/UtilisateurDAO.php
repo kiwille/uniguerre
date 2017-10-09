@@ -42,15 +42,16 @@ class UtilisateurDAO extends DataAccessModel {
         return false;
     }
     
-    public static function getUserByLogins($username, $hashPassword) {
+    public static function getUserByLogins($username, $password) {
         $us = self::selectAll();
+        
         foreach ($us as $u) {
-            if (strtolower($u->username) == strtolower($username) || 
-                strtolower($u->hash_password) == strtolower($hashPassword)
-               ) {
+            if (strtolower($u->username) == strtolower($username) && 
+                    verifyPassword($password, $u->hash_password)) {
                 return $u;
             }
         }
+        
         return null;
     }
 }

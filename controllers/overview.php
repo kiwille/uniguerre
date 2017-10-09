@@ -5,7 +5,7 @@
 require_once "overview_resources.php";
 require_once "overview_planets.php";
 
-$currentPlanet = PlaneteDAO::selectMainPlanet($user);
+$currentPlanet = PlanetService::getMainPlanet($user);
 $parse = array_merge((array)$currentPlanet->getPlanetImage(), $parse);
 $parse = array_merge((array)$currentPlanet, $parse);
 

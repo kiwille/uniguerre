@@ -14,9 +14,9 @@ if (isset($username) && respectsLengthWord($username, ">=", 3) &&
 
 //Toutes les informations sont complètes...
 if ($fullData) {
-    $user = UtilisateurDAO::getUserByLogins($username, encodePassword($password));
-    //Si les données sont exactes, on va alors tenté la redirection
-
+    $user = UtilisateurDAO::getUserByLogins($username, $password);
+    
+    //Si les données sont exactes, on va alors tenter la redirection
     if (isset($user) && $user->id_user > 0) {
         $_SESSION = array();
         $_SESSION["id"] = $user->id_user;

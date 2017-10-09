@@ -2,7 +2,7 @@
 
 require_once dirname(__FILE__) . "/tools/includes.php";
 
-echo getNameReceivers("2,3");
+/*echo getNameReceivers("2,3");
 
 function getNameReceivers($idsReceivers) {
     $strReceivers = "";
@@ -14,6 +14,17 @@ function getNameReceivers($idsReceivers) {
     }
     
     return $strReceivers;
-}
+}*/
+$value1 = "test";
+$value2 = "demo";
 
+$hash1 = hashPassword($value1);
+var_dump($hash1);
+var_dump(verifyPassword($value1, $hash1));
+
+    
+$hash2 = hashPassword($value2);
+var_dump($hash2);
+var_dump(verifyPassword($value2, $hash2));
+        
 ?>
