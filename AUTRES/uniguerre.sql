@@ -198,6 +198,27 @@ INSERT INTO `game_resources` (`id_resource`, `name`, `coef_prod`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `game_structures`
+--
+
+CREATE TABLE `game_structures` (
+  `id_structure` int(11) NOT NULL,
+  `structure_type` int(11) DEFAULT NULL,
+  `name_label` varchar(50) NOT NULL,
+  `name_description` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `game_structures`
+--
+
+INSERT INTO `game_structures` (`id_structure`, `structure_type`, `name_label`, `name_description`) VALUES
+(1, 1, 'buildings_mine_metal_name', 'buildings_mine_metal_description'),
+(2, 1, 'buildings_mine_crystal_name', 'buildings_mine_crystal_description');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `game_translations`
 --
 
