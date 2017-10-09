@@ -2,8 +2,8 @@
 
 (defined("EXEC") && (int)$_SESSION["id"] > 0) or die();
 
-require_once "overview_resources.php";
-require_once "overview_planets.php";
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "overview_resources.php";
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "overview_planets.php";
 
 $currentPlanet = PlaneteDAO::selectMainPlanet($user);
 $parse = array_merge((array)$currentPlanet->getPlanetImage(), $parse);
