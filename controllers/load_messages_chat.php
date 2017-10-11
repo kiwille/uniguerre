@@ -22,7 +22,7 @@ function canSeeMessage($message, $user) {
  */
 function getNameSender($idSender) {
     if ($idSender > 0) {
-        $sender = UtilisateurDAO::selectById($idSender);
+        $sender = UserDAO::selectById($idSender);
         return $sender->username;
     }
 
@@ -44,7 +44,7 @@ function getNameReceivers($idsReceivers) {
             $strReceivers = "TOUS";
         } else {
             foreach ($receivers as $key => $idReceiver) {
-                $receiver = UtilisateurDAO::selectById($idReceiver);
+                $receiver = UserDAO::selectById($idReceiver);
                 $strReceivers .= $receiver->username;
                 $strReceivers .= iif((count($receivers) - 1) != $key, ", ", "");
             }

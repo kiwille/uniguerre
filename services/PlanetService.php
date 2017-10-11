@@ -12,7 +12,7 @@ class PlanetService {
      * @return type
      */
     public static function getPlanetsUser(\User $user) {
-        $planets = PlaneteDAO::selectAll();
+        $planets = PlanetDAO::selectAll();
         
         $planetsUser = array();
         foreach ($planets as $planet) {
@@ -29,12 +29,11 @@ class PlanetService {
      * @return type
      */
     public static function getMainPlanet(\User $user) {
-        $planets = PlaneteDAO::selectAll();
+        $planets = PlanetDAO::selectAll();
         
-        $mainPlanet = null;
         foreach ($planets as $planet) {
             if ($planet->id_user == $user->id_user && $planet->is_main_planet) {
-                $planetImage = PlaneteImageDAO::selectById($planet->id_planet_image);
+                $planetImage = PlanetImageDAO::selectById($planet->id_planet_image);
                 $planet->setPlanetImage($planetImage);
                 return $planet;
             }

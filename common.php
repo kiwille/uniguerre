@@ -35,7 +35,7 @@ try {
     }
 
     $tabLangue = array();
-    $langues = LangueDAO::selectAll(); 
+    $langues = LanguageDAO::selectAll(); 
     foreach ($langues as $langue) {
         $tabLangue[$langue->code] = $langue->id_language;
     }
@@ -52,16 +52,16 @@ try {
     try {
         //-------------------------------------------------------------------------------
         if (isset($_SESSION["id"])) {
-            $user = UtilisateurDAO::selectById(intval($_SESSION["id"]));
+            $user = UserDAO::selectById(intval($_SESSION["id"]));
             //$planet = PlaneteDAO::selectPlaneteParId(...);
             //Language
-            $langage = LangueDAO::selectById($user->id_language);
+            $langage = LanguageDAO::selectById($user->id_language);
 
             //Est dans le jeu (pour le menu)
             $isInGame = true;
         } else {
             //Language
-            $langage = LangueDAO::selectById($tabLangue[$_SESSION['language']]);
+            $langage = LanguageDAO::selectById($tabLangue[$_SESSION['language']]);
 
             //Est dans le jeu (pour le menu)
             $isInGame = false;

@@ -91,12 +91,12 @@ require_once UNIGUERRE_DIR_DAL . '/daos/DataAccessModel.php';
  */
 require_once UNIGUERRE_DIR_DAL . '/daos/ChatDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/ConfigurationDAO.php';
-require_once UNIGUERRE_DIR_DAL . '/daos/LangueDAO.php';
+require_once UNIGUERRE_DIR_DAL . '/daos/LanguageDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/MenuDAO.php';
-require_once UNIGUERRE_DIR_DAL . '/daos/PlaneteDAO.php';
-require_once UNIGUERRE_DIR_DAL . '/daos/PlaneteImageDAO.php';
-require_once UNIGUERRE_DIR_DAL . '/daos/UtilisateurDAO.php';
-require_once UNIGUERRE_DIR_DAL . '/daos/RessourceDAO.php';
+require_once UNIGUERRE_DIR_DAL . '/daos/PlanetDAO.php';
+require_once UNIGUERRE_DIR_DAL . '/daos/PlanetImageDAO.php';
+require_once UNIGUERRE_DIR_DAL . '/daos/UserDAO.php';
+require_once UNIGUERRE_DIR_DAL . '/daos/ResourceDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/StructureDAO.php';
 require_once UNIGUERRE_DIR_DAL . '/daos/TranslationDAO.php';
 

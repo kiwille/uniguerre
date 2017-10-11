@@ -1,6 +1,6 @@
 <?php
 
-class RessourceDAO extends DataAccessModel {
+class PlanetDAO extends DataAccessModel {
     
     public static function add($obj) {
         
@@ -11,7 +11,7 @@ class RessourceDAO extends DataAccessModel {
     }
 
     public static function selectAll() {
-        return (new SQLSelectResources())->read();
+        return (new SQLSelectPlanets())->read();
     }
 
     public static function selectById($id) {
@@ -21,5 +21,5 @@ class RessourceDAO extends DataAccessModel {
     public static function update($obj, $id) {
         
     }
-
+    
 }

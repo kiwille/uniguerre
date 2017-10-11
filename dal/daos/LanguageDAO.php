@@ -1,6 +1,6 @@
 <?php
 
-class PlaneteImageDAO extends DataAccessModel {
+class LanguageDAO extends DataAccessModel {
     
  
     public static function add($obj) {
@@ -12,19 +12,17 @@ class PlaneteImageDAO extends DataAccessModel {
     }
 
     public static function selectAll() {
-        return (new SQLSelectPlanetsImages())->read();
+        return (new SQLSelectLanguages())->read();
     }
 
     public static function selectById($id) {
         //TODO
-        $planetImages = PlaneteImageDAO::selectAll();
-        
-        foreach ($planetImages as $pi) {
-            if ($pi->id_planet_image == $id) {
-                return $pi;
+        $ls = self::selectAll();
+        foreach ($ls as $l) {
+            if ($l->id_language == $id) {
+                return $l;
             }
         }
-        
         return null;
     }
 

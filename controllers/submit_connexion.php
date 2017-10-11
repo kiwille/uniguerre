@@ -14,7 +14,7 @@ if (isset($username) && respectsLengthWord($username, ">=", 3) &&
 
 //Toutes les informations sont complètes...
 if ($fullData) {
-    $user = UtilisateurDAO::getUserByLogins($username, $password);
+    $user = UserService::getUserByLogins($username, $password);
     
     //Si les données sont exactes, on va alors tenter la redirection
     if (isset($user) && $user->id_user > 0) {

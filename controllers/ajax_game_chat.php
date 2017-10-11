@@ -2,7 +2,7 @@
 
 (defined("EXEC") && (int)$_SESSION["id"] > 0) or die();
 
-$users = UtilisateurDAO::selectAll();
+$users = UserDAO::selectAll();
 
 $available_users = array();
 $i = 0;

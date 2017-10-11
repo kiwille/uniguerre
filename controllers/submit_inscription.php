@@ -18,7 +18,7 @@ if (isset($username) && respectsLengthWord($username, ">=", 3) &&
 
 //Toutes les informations sont complètes...
 if ($fullData) {
-    if (!UtilisateurDAO::userExistByUsernameAndEmail($username, $email)) {
+    if (!UserService::userExistByUsernameAndEmail($username, $email)) {
         //Création planète
         $p = new Planet();
         $p->assignValueDefault();
@@ -28,7 +28,7 @@ if ($fullData) {
         $u->username = $username;
         $u->hash_password = hashPassword($password);
         $u->email = $email;
-        UtilisateurDAO::add($u);
+        UserDAO::add($u);
 
         $message = $lang['sign_finish'] . "" . $username . "" . $lang['return_mail'];
         MessageSIWE::showAjaxMessage($message, $lang['title_sign'] . $lang['title_game'], null, MessageSIWE::MESSAGE_SUCCESS);

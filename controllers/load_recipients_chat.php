@@ -1,6 +1,6 @@
 <?php
 
-$users = UtilisateurDAO::selectAll();
+$users = UserDAO::selectAll();
 
 $available_users = array();
 foreach ($users as $i => $user) {

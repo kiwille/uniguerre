@@ -1,6 +1,6 @@
 <?php
 
-$ressources = RessourceDAO::selectAll();
+$ressources = ResourceDAO::selectAll();
 
 $ressource="";
 foreach ($ressources as $ress) {
