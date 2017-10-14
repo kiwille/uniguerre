@@ -1,7 +1,7 @@
 <?php
 
 if (filesize("config.php") > 0) {
-    require_once "./common.php";
+    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR ."common.php";
 } else {
-    require_once "./install/";
+    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR ."/install/";
 }

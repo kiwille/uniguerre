@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . "/tools/includes.php";
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "tools/includes.php";
 
 /*echo getNameReceivers("2,3");
 
