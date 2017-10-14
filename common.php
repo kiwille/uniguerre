@@ -14,7 +14,7 @@
 try {
 
     define("EXEC", true);
-    require_once "/tools/includes.php";
+    require_once "./tools/includes.php";
 
     if (session_status() != PHP_SESSION_ACTIVE) {
         session_start();
