@@ -2,13 +2,14 @@
 
 /**
  * ---------------------------------
- * Enumération des variables gloables
+ * Enumération des variables globales
  * ---------------------------------
  * $pageDefaut      : Retourne la page par défaut du jeu
  * $pageVisite      : Retourne la page visite
+ * $menuVisite      : Retourne le menu visite (selon la page)
  * $tabLangue       : Tableau de langues
  * $user            : Informations du joueur connecté
- * ...
+ * $parse           : contient des mots dans la langue de l'utilisateur
  */
 try {
 
@@ -34,17 +35,16 @@ try {
     }
 
     $tabLangue = array();
-    $langues = LangueDAO::selectAll(); 
+    $langues = LanguageDAO::selectAll(); 
     foreach ($langues as $langue) {
         $tabLangue[$langue->code] = $langue->id_language;
     }
 
     //Traduction
-    $translations = TranslationDAO::selectAll();
+    $lang = array();
+    $translations = TranslationService::getTranslationsByLanguage($tabLangue[$_SESSION['language']]);
     foreach ($translations as $translation) {
-        if ($translation->id_language == $tabLangue[$_SESSION['language']]) {
-            $lang[$translation->name] = utf8_encode($translation->value);
-        }
+        $lang[$translation->name] = utf8_encode($translation->value);
     }
 
     $parse = $lang;
@@ -52,30 +52,39 @@ try {
     try {
         //-------------------------------------------------------------------------------
         if (isset($_SESSION["id"])) {
-            $user = UtilisateurDAO::selectById(intval($_SESSION["id"]));
+            $user = UserDAO::selectById(intval($_SESSION["id"]));
             //$planet = PlaneteDAO::selectPlaneteParId(...);
             //Language
-            $langage = LangueDAO::selectById($user->id_language);
+            $langage = LanguageDAO::selectById($user->id_language);
 
             //Est dans le jeu (pour le menu)
             $isInGame = true;
         } else {
             //Language
-            $langage = LangueDAO::selectById($tabLangue[$_SESSION['language']]);
+            $langage = LanguageDAO::selectById($tabLangue[$_SESSION['language']]);
 
             //Est dans le jeu (pour le menu)
             $isInGame = false;
         }
+        
+        //Récupération de la configuration générale du jeu
+        $config = ConfigurationDAO::selectAll();
 
         //Gestion des menus
         require_once NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . 'menu.php';
         $listMenus = MenuDAO::selectAppropriateMenu($isInGame);
         $parse['navbar_menus'] = getMenu($listMenus);
-    //-------------------------------------------------------------------------------
+        
+        $menuVisite = null;
+        foreach($listMenus as $menu) {
+            if ($menu->url == $pageVisite) {
+                $menuVisite = $menu;
+            }
+        }
+        //-------------------------------------------------------------------------------
     } catch (Exception $ex) {
         echo $ex->getMessage();
     }
-
 
     //Gestion des langues
     $langimg = "";
@@ -96,7 +105,6 @@ try {
     } else {
         require_once NAME_DIRECTORY_CONTROLLERS . DIRECTORY_SEPARATOR . "ajax_erreur.php";
     }
-
 } catch (Exception $ex) {
     MessageSIWE::showSimpleMessage($ex->getMessage(), "Erreur");
 }

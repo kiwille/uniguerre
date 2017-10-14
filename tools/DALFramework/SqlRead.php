@@ -29,9 +29,7 @@ abstract class SqlRead extends SqlBase {
             $req = $sql->prepare($requete, $tables);
 
             if (!is_null($parametres) && is_array($parametres)) {
-                foreach ($parametres as $champ => $valeur) {
-                    $sql->parametre($req, $champ, $valeur);
-                }
+                $this->addParametresAuSQL($sql, $req, $parametres);
             }
 
             $sql->execute($req);
@@ -45,4 +43,19 @@ abstract class SqlRead extends SqlBase {
         }
     }
 
+    /**
+     * Ajoute les paramètres Sql à classe _SQL
+     * 
+     * @param _SQL $sql
+     * @param type $req
+     * @param type $parametres
+     * @return type
+     */
+    private function addParametresAuSQL($sql, $req, $parametres) {
+        foreach ($parametres as $champ => $valeur) {
+            $sql->parametre($req, $champ, $valeur);
+        }
+        
+        return $sql;
+    }
 }

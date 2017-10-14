@@ -7,9 +7,15 @@ $structures = StructureDAO::selectAll();
 $buildings = array();
 $buildingsHtml = "";
 foreach ($structures as $key => $structure) {
-    if ($structure->structure_type == 1) {
+    if ($structure->id_structure_type == 1) {
+        $building_label_lang = TranslationService::translate($langage->id_language, $structure->name_label);
+        $building_description_lang = TranslationService::translate($langage->id_language, $structure->name_description);
+        
         $building = (array)$structure;
-        $buildingsHtml .= Page::construirePagePartielle('part_game_batiments_ligne', $building);
+        $building["label"] = utf8_encode($building_label_lang->value);
+        //$building["description"] = $building_description_lang->value;
+        $building["structure_level"] = "NaN";
+        $buildingsHtml .= Page::construirePagePartielle('part_game_batimentsligne', $building);
     }
 }
 

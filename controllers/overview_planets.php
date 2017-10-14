@@ -1,6 +1,6 @@
 <?php
 
-$planets = PlaneteDAO::selectPlanetsUser($user);
+$planets = PlanetService::getPlanetsUser($user);
 
 $planete="";
 foreach ($planets as $pl) {

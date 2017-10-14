@@ -1,8 +1,7 @@
 <?php
 
-class TranslationDAO extends DataAccessModel {
+class ResourceDAO extends DataAccessModel {
     
- 
     public static function add($obj) {
         
     }
@@ -12,7 +11,7 @@ class TranslationDAO extends DataAccessModel {
     }
 
     public static function selectAll() {
-        return (new SQLSelectTranslations())->read();
+        return (new SQLSelectResources())->read();
     }
 
     public static function selectById($id) {
@@ -22,5 +21,5 @@ class TranslationDAO extends DataAccessModel {
     public static function update($obj, $id) {
         
     }
-    
+
 }

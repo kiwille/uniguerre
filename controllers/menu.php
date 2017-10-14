@@ -12,7 +12,7 @@ function buildUrlMenu($values, $navbar_menu_links, $template) {
     if ($navbar_menu_links != null) {
         $bloc["navbar_menu_links"] = $navbar_menu_links;
     }
-    $bloc["menuValue"] = utf8_encode(TranslationDAO::translate($langage->id_language, $values->denomination)->value);
+    $bloc["menuValue"] = utf8_encode(TranslationService::translate($langage->id_language, $values->denomination)->value);
     $bloc["menuUrl"] = $values->url;
     return Page::construirePagePartielle($template, $bloc);
 }

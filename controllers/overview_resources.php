@@ -1,15 +1,15 @@
 <?php
 
-$ressources = RessourceDAO::selectAll();
+$ressources = ResourceDAO::selectAll();
 
 $ressource="";
 foreach ($ressources as $ress) {
-    $ressource_lang = TranslationDAO::translate($langage->id_language, $ress->name);
+    $ressource_lang = TranslationService::translate($langage->id_language, $ress->name);
     
     $ressName  = $ressource_lang->name;
     $ressValue = utf8_encode($ressource_lang->value);
     
-    $batimentlevel = 2;
+    $batimentlevel = 2; //TODO
     $prod = array();
     $prod[$ressName] = Formuleressource($ress->coef_prod, $batimentlevel);
     

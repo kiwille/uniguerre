@@ -6,6 +6,11 @@ class Planet {
     public $id_planet_image;
     public $id_user;
     public $name;
+    public $current_size;
+    public $max_size;
+    public $min_temperature;
+    public $max_temperature;
+    public $is_main_planet;
     
     private $planet_image;
     
@@ -17,5 +22,5 @@ class Planet {
         $this->planet_image = $planet_image;
     }
 
-
+    
 }

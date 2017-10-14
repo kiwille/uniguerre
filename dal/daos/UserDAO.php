@@ -1,8 +1,7 @@
 <?php
 
-class LangueDAO extends DataAccessModel {
+class UserDAO extends DataAccessModel {
     
- 
     public static function add($obj) {
         
     }
@@ -12,15 +11,15 @@ class LangueDAO extends DataAccessModel {
     }
 
     public static function selectAll() {
-        return (new SQLSelectLanguages())->read();
+        return (new SQLSelectUsers())->read();
     }
 
     public static function selectById($id) {
-        //TODO
-        $ls = self::selectAll();
-        foreach ($ls as $l) {
-            if ($l->id_language == $id) {
-                return $l;
+        //TODO 
+        $us = self::selectAll();
+        foreach ($us as $u) {
+            if ($u->id_user == $id) {
+                return $u;
             }
         }
         return null;
@@ -29,4 +28,5 @@ class LangueDAO extends DataAccessModel {
     public static function update($obj, $id) {
         
     }
+    
 }

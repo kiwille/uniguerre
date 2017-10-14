@@ -12,7 +12,7 @@ if (count($id_recipients) > 0) {
     $temp_array = array();
     foreach ($id_recipients as $id_recipient) {
         $id_recipient = (int)$id_recipient;
-        if ($id_recipient > 0 && UtilisateurDAO::selectById($id_recipient)) {
+        if ($id_recipient > 0 && UserDAO::selectById($id_recipient)) {
             $temp_array[] = $id_recipient;
         }
     }
