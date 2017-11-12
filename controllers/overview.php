@@ -1,6 +1,6 @@
 <?php
 
-(defined("EXEC") && (int)$_SESSION["id"] > 0) or die();
+(defined("EXEC") && $param_session_id > 0) or die();
 
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "overview_resources.php";
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "overview_planets.php";

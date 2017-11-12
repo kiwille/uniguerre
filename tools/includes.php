@@ -22,12 +22,23 @@ require_once dirname(__DIR__) . "/" . UNIGUERRE_FILE_CONFIG;
 //////////////////////////////////////////////
 
 /**
- * Mini-Framework spécialement réalisé pour ce projet. Ne pas y toucher!
+ * Mini-Framework DALFramework. Ne pas y toucher!
  */
 require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/_SQL.php';
 require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/Parameters.php';
+require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/SqlBase.php';
 require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/SqlRead.php';
 require_once UNIGUERRE_DIR_TOOLS . '/DALFramework/SqlWrite.php';
+
+/**
+ * Mini-Framework variableRequest. Ne pas y toucher!
+ */
+require_once UNIGUERRE_DIR_TOOLS . '/variableRequest/Definitions.php';
+require_once UNIGUERRE_DIR_TOOLS . '/variableRequest/FilterSanitize.php';
+require_once UNIGUERRE_DIR_TOOLS . '/variableRequest/FilterValidate.php';
+require_once UNIGUERRE_DIR_TOOLS . '/variableRequest/Input.php';
+require_once UNIGUERRE_DIR_TOOLS . '/variableRequest/Options.php';
+require_once UNIGUERRE_DIR_TOOLS . '/variableRequest/VariableRequest.php';
 
 /**
  * Les fichiers ci-dessous sont des fonctionnalités pouvant être utilisés 
@@ -76,6 +87,7 @@ require_once UNIGUERRE_DIR_MODELS . '/core/DatabaseBackup.php';
  */
 require_once UNIGUERRE_DIR_SERVICES . '/PlanetService.php';
 require_once UNIGUERRE_DIR_SERVICES . '/TranslationService.php';
+require_once UNIGUERRE_DIR_SERVICES . '/UserService.php';
 
 //////////////////////////////////////////////
 // DATA ACCESS LAYER (DAL)
