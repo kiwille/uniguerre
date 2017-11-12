@@ -1,36 +1,79 @@
 <?php
 
-$fullData       = false;
-$username       = trim($_POST["identifiant"]);
-$password       = trim($_POST["motdepasse"]);
-$email          = trim($_POST["email"]);
-$nameMainPlanet = trim($_POST["PM"]);
-$id_language    = (int)$_POST['Lang'];
+/**
+ * ---------------------------------
+ * PARAMETRES
+ * ---------------------------------
+ * Récupérer les valeurs externes lors du chargement de la page
+ */
+$arguments = array(
+    'identifiant'       => VariableRequest::create(
+                            Input::INPUT_POST, 
+                            FilterValidate::FILTER_VALIDATE_STRING,
+                            FilterSanitize::FILTER_SANITIZE_STRING
+                        ),
+    'motdepasse'        => VariableRequest::create(
+                            Input::INPUT_POST, 
+                            FilterValidate::FILTER_VALIDATE_STRING,
+                            FilterSanitize::FILTER_SANITIZE_STRING
+                        ),
+    'email'             => VariableRequest::create(
+                            Input::INPUT_POST, 
+                            FilterValidate::FILTER_VALIDATE_STRING,
+                            FilterSanitize::FILTER_SANITIZE_EMAIL
+                        ),
+    'PM'                => VariableRequest::create(
+                            Input::INPUT_POST, 
+                            FilterValidate::FILTER_VALIDATE_STRING,
+                            FilterSanitize::FILTER_SANITIZE_STRING
+                        ),
+    'Lang'              => VariableRequest::create(
+                            Input::INPUT_POST, 
+                            FilterValidate::FILTER_VALIDATE_INT
+                        ),
+);
 
-if (isset($username) && respectsLengthWord($username, ">=", 3) &&
-    isset($password) && respectsLengthWord($password, ">=", 3) && 
-    isset($email) && respectsLengthWord($email, ">=", 3) && 
-    isset($nameMainPlanet) && respectsLengthWord($nameMainPlanet, ">=", 3) && 
-    isset($id_language)
+$parameters = VariableRequest::getParameters($arguments);
+
+$param_identifiant = $parameters['identifiant'];
+$param_motdepasse = $parameters['motdepasse'];
+$param_email = $parameters['email'];
+$param_PM = $parameters['PM'];
+$param_lang = $parameters['Lang'];
+
+unset($parameters);
+
+/**
+ * ---------------------------------
+ * TRAITEMENT DE LA PAGE
+ * ---------------------------------
+ * 
+ */
+$fullData       = false;
+if (isset($param_identifiant) && respectsLengthWord($param_identifiant, ">=", 3) &&
+    isset($param_motdepasse) && respectsLengthWord($param_motdepasse, ">=", 3) && 
+    isset($param_email) && respectsLengthWord($param_email, ">=", 3) && 
+    isset($param_PM) && respectsLengthWord($param_PM, ">=", 3) && 
+    isset($param_lang)
    ) {
         $fullData = true;
 }
 
 //Toutes les informations sont complètes...
 if ($fullData) {
-    if (!UserService::userExistByUsernameAndEmail($username, $email)) {
+    if (!UserService::userExistByUsernameAndEmail($param_identifiant, $param_motdepasse)) {
         //Création planète
         $p = new Planet();
         $p->assignValueDefault();
         //Création utilisateur
         $u = new User();
-        $u->id_language = $id_language;
-        $u->username = $username;
-        $u->hash_password = hashPassword($password);
-        $u->email = $email;
+        $u->id_language = $param_lang;
+        $u->username = $param_identifiant;
+        $u->hash_password = hashPassword($param_motdepasse);
+        $u->email = $param_email;
         UserDAO::add($u);
 
-        $message = $lang['sign_finish'] . "" . $username . "" . $lang['return_mail'];
+        $message = $lang['sign_finish'] . "" . $param_identifiant . "" . $lang['return_mail'];
         MessageSIWE::showAjaxMessage($message, $lang['title_sign'] . $lang['title_game'], null, MessageSIWE::MESSAGE_SUCCESS);
     } else {
         MessageSIWE::showAjaxMessage($lang['error_isset_user'], $lang['title_sign'], null, MessageSIWE::MESSAGE_ERROR);
