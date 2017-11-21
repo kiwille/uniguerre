@@ -1,0 +1,1 @@
+	protected $_{name};
