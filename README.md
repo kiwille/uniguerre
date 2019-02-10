@@ -1,6 +1,9 @@
 # UNIGUERRE
 
-Uniguerre est un jeu par navigateur multijoueurs mettant en scène un joueur dans son empire planétaire. Le joueur doit gérer ses ressources, défendre ses planètes et collaborer avec les autres joueurs pour survivre dans cet univers hostile.
+Uniguerre est un projet de jeu par navigateur multijoueur mettant en scène un joueur dans son empire planétaire. Le joueur doit gérer ses ressources, défendre ses planètes et collaborer avec les autres joueurs pour survivre dans cet univers hostile.
+
+> Le projet a été suspendu en raison de la difficulté à gérer la petite équipe et la grosse part de développement à réaliser. 
+> Il devait être une "alternative" aux projets XNova et Wootook (le support des deux projets n'existant plus).
 
 ## Version de développement utilisée: wampserver 2.5
 
