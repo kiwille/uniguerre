@@ -77,6 +77,7 @@ require_once UNIGUERRE_DIR_MODELS . '/Translation.php';
 require_once UNIGUERRE_DIR_MODELS . '/core/Page.php';
 require_once UNIGUERRE_DIR_MODELS . '/core/Alert.php';
 require_once UNIGUERRE_DIR_MODELS . '/core/DatabaseBackup.php';
+require_once UNIGUERRE_DIR_MODELS . '/core/minify.php';
 
 //////////////////////////////////////////////
 // SERVICES
